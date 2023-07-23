@@ -26,7 +26,7 @@
                     </div>
                     <div>
                         <label for="user" class="form-label">Usuario</label>
-                        <input type="text" class="form-control" id="user" aria-describedby="emailHelp">
+                        <input type="text" class="form-control" id="user">
                     </div>
                     <div class="mb-4">
                         <label for="password" class="form-label">Contraseña</label>
@@ -44,7 +44,6 @@
         </div>
     </div>
     
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
         crossorigin="anonymous">

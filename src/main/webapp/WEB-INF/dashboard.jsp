@@ -23,7 +23,7 @@
             </div>
             <div class="img-profile">
                 <img src="./img/perfil.jpg" alt="Imagen de perfil">
-                <p>@Tom.pérez1208</p>
+                <p class="text-secondary"><small>@Tom.pérez1208</small></p>
             </div>
             <div class="title-two text-light">
                 <small>Menu principal</small>
@@ -38,7 +38,7 @@
 
             </div>
             <div class="img-buttom">
-                <img src="" alt="">
+
                 <button type="submit">Cerrar sesión</button>
             </div>
         </div>
@@ -221,7 +221,7 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
             crossorigin="anonymous">
-            </script>
+        </script>
 
 </body>
 

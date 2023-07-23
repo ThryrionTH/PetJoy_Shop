@@ -23,7 +23,7 @@
             </div>
             <div class="img-profile">
                 <img src="./img/perfil.jpg" alt="Imagen de perfil">
-                <p class="text-secondary">@Tom.pérez1208</p>
+                <p class="text-secondary"><small>@Tom.pérez1208</small></p>
             </div>
             <div class="title-two text-light">
                 <small>Menu principal</small>
@@ -37,7 +37,6 @@
                 </ul>
             </div>
             <div class="img-buttom">
-                <img src="" alt="">
                 <button type="submit">Cerrar sesión</button>
             </div>
         </div>
@@ -47,42 +46,37 @@
     <div class="container-all dash-add">
         <div class="container mt-5 mb-5 col-9">
             <h2 class="ml-green mb-4">Agregar producto</h2>
-            <form action="/dashboard" method="" class="mt-4">
-                <div class="row g-0 d-flex align-items-end mb-4">
-                    <div class="col-md-4 d-flex align-items-center">
-                        <img src="" class="img-fluid rounded-start" alt="Imagen producto">
-                    </div>
-
-                    <div class="col-md-8">
-                        <div class="card-body">
-                            <div>
-                                <small><label for="formFile" class="form-label">Imagen</label></small>
-                                <input class="form-control" type="file" id="formFile">
-                            </div>
+            <form action="/dashboard" class="mt-4">
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <div>
+                            <small><label for="formFile" class="form-label">Imagen</label></small>
+                            <input class="form-control" type="file" id="formFile">
                         </div>
                     </div>
-                    <div class="my-3">
-                        <small><label for="name" class="form-label">Nombre</label></small>
-                        <input type="text" class="form-control" id="name" aria-describedby="nameProdcuct">
+                </div>
+                <div class="my-3">
+                    <small><label for="name" class="form-label">Nombre</label></small>
+                    <input type="text" class="form-control" id="name">
+                </div>
+                <div class="d-flex justify-content-between">
+                    <div class="col-7 mb-3">
+                        <small><label for="precio" class="form-label">Precio</label></small>
+                        <input type="number" class="form-control" id="precio">
                     </div>
-                    <div class="d-flex justify-content-between">
-                        <div class="col-7 mb-3">
-                            <small><label for="precio" class="form-label">Precio</label></small>
-                            <input type="int" class="form-control" id="precio" aria-describedby="priceProdcuct">
-                        </div>
-                        <div class="col-4 mb-3">
-                            <small><label for="stock" class="form-label">Stock</label></small>
-                            <input type="int" class="form-control" id="stock" aria-describedby="priceProdcuct">
-                        </div>
+                    <div class="col-4 mb-3">
+                        <small><label for="stock" class="form-label">Stock</label></small>
+                        <input type="number" class="form-control" id="stock">
                     </div>
-                    <div class="mb-4">
-                        <small>Descripción</small>
-                        <textarea class="form-control" aria-label="description"></textarea>
-                    </div>
-                    <div class="mt-4 d-flex justify-content-end">
-                        <button type="button" class="btn btn-dark me-4">Cancelar</button>
-                        <button type="submit" class="btn btn-success">Agregar producto</button>
-                    </div>
+                </div>
+                <div class="mb-4">
+                    <small>Descripción</small>
+                    <textarea class="form-control" aria-label="description"></textarea>
+                </div>
+                <div class="mt-4 d-flex justify-content-end">
+                    <button type="button" class="btn btn-dark me-4">Cancelar</button>
+                    <button type="submit" class="btn btn-success">Agregar producto</button>
+                </div>
             </form>
 
         </div>
@@ -92,7 +86,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
         crossorigin="anonymous">
-        </script>
+    </script>
 
 </body>
 
