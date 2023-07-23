@@ -37,6 +37,10 @@ body {
     font-size: 14px;
 }
 
+.bg-green{
+    background-color: #B3EEA5;
+}
+
 /* page products */
 .mundo{
     background: url('../img/bg-gatuno.png');
@@ -90,13 +94,6 @@ body {
 }
 
 /* Sidebar */
-/* 
-body, html {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-} */
 
 .container-sidebar ul{
     list-style: none;

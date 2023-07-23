@@ -102,10 +102,16 @@
         </div>
     </div>
 
-
     <div class="container mt-5 mb-5">
-        <div>
+        
+        <!-- categorias -->
+        <h2 class="ml-green">Categorías</h2>
+        <div class="d-flex align-items-center justify-content-around bg-green rounded" style="max-width:16rem;">
+            <img src="./img/categories/accesorios.png" alt="imagen categoría" height="100px">
+            <p class="text-center m-0">accesorios</p>
+        </div>
 
+        <div>
             <!-- Formulario de búsqueda -->
             <div class="d-flex justify-content-end mb-4">
                 <form class="d-flex col-md-3" action="${pageContext.request.contextPath}/buscar-producto" method="GET">
