@@ -221,3 +221,9 @@ body {
     }
     
 }
+
+/* dashboard */
+.dash-add{
+    background: url('../img/bg-dash.png');
+    height: 100vh;
+}

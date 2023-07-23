@@ -41,6 +41,11 @@ public class HomeController {
         addListaProductos(model);
         return "dashboard";
     }
+
+    @GetMapping("/dashboardAdd")
+    public String dashboardAdd() {
+        return "dashboardAdd";
+    }
     
     // private List<Product> listaProductos;
     
