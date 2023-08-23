@@ -91,16 +91,18 @@
     </div>
 
     <!-- Carrito de compras -->
-    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight"
-        aria-labelledby="offcanvasRightLabel">
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
         <div class="offcanvas-header">
             <h5 class="offcanvas-title" id="offcanvasRightLabel">Carrito de compras</h5>
             <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
         <div class="offcanvas-body">
-            Carrito vacío :(
+            <div id="cart-content">
+                <!-- contenido del carrito -->
+            </div>
         </div>
     </div>
+
 
     <div class="container mt-5 mb-5">
         
@@ -123,10 +125,10 @@
             <!-- Productos-->
             <div>
                 <div class="d-flex flex-wrap justify-content-between">
-                    <c:forEach items="${listaProductos}" var="producto" varStatus="status">
+                    <c:forEach items="${productsList}" var="producto" varStatus="status">
                         <div class="card m-1" style="max-width: 18rem;">
                             <div class="card-header d-flex justify-content-center align-self-cente">
-                                <img src="./img/${producto.imagen}" alt="${producto.nombre}" height="150px">
+                                <img src="${producto.imagen}" alt="${producto.nombre}" height="150px">
                                 <button type="button" class="btn btn-secondary modal-product"
                                     data-bs-toggle="modal" data-bs-target="#modalProduct-${status.index}">
                                     <i class="bi bi-search"></i>
@@ -137,15 +139,12 @@
                                 <p class="card-text">$${producto.precio}</p>
                             </div>
                             <div class="card-footer">
-                                <button type="button" class="btn btn-dark"><i
-                                        class="bi bi-dash-lg"></i></button>
-                                <strong class="m-1">1</strong>
-                                <button type="button" class="btn btn-dark"><i
-                                        class="bi bi-plus-lg"></i></button>
-                                <button type="button" class="btn btn-success"><i class="bi bi-cart-fill"></i>
-                                    Agregar
-                                </button>
+                                <button class="btn btn-dark quantity-decrease" data-product-id="${producto.id}">-</button>
+                                <strong class="m-1" id="product-quantity-${producto.id}">1</strong>
+                                <button class="btn btn-dark quantity-increase" data-product-id="${producto.id}">+</button>
+                                <button class="btn btn-primary add-to-cart-button" data-product-id="2">Agregar</button>
                             </div>
+                            
                         </div>
 
                         <!-- Modal -->
@@ -163,7 +162,7 @@
                                         <div class="mb-3" style="max-width: 540px;">
                                             <div class="row g-0">
                                                 <div class="col-md-5 d-flex align-items-center">
-                                                    <img src="./img/${producto.imagen}"
+                                                    <img src="${producto.imagen}"
                                                         class="img-fluid rounded-start"
                                                         alt="${producto.nombre}">
                                                 </div>
@@ -175,16 +174,12 @@
                                                                 producto:000000</small></p>
                                                         <p class="card-text">Precio: $${producto.precio}</p>
                                                         <hr width="215px">
-                                                        <div>
-                                                            <button type="button" class="btn btn-dark"><i
-                                                                    class="bi bi-dash-lg"></i></button>
+                                                        <div class="card-footer">
+                                                            <button type="button" class="btn btn-dark"><i class="bi bi-dash-lg"></i></button>
                                                             <strong class="m-1">1</strong>
-                                                            <button type="button" class="btn btn-dark"><i
-                                                                    class="bi bi-plus-lg"></i></button>
-                                                            <button type="button" class="btn btn-success"><i
-                                                                    class="bi bi-cart-fill"></i> Agregar
-                                                            </button>
-                                                        </div>
+                                                            <button type="button" class="btn btn-dark"><i class="bi bi-plus-lg"></i></button>
+                                                            <button type="button" class="btn btn-success"><i class="bi bi-cart-fill"></i> Agregar</button>
+                                                        </div>                                                        
                                                     </div>
                                                 </div>
                                                 <p class="mt-4">${producto.descripcion}</p>
@@ -201,165 +196,8 @@
                     </c:forEach>
                 </div>
 
-                <div class="d-flex flex-wrap justify-content-between">
-                    <c:forEach items="${listaProductos}" var="producto" varStatus="status">
-                        <div class="card m-1" style="max-width: 18rem;">
-                            <div class="card-header d-flex justify-content-center align-self-cente">
-                                <img src="./img/${producto.imagen}" alt="${producto.nombre}" height="150px">
-                                <button type="button" class="btn btn-secondary modal-product"
-                                    data-bs-toggle="modal" data-bs-target="#modalProduct-${status.index}">
-                                    <i class="bi bi-search"></i>
-                                </button>
-                            </div>
-                            <div class="card-body">
-                                <h5 class="card-title">${producto.nombre}</h5>
-                                <p class="card-text">$${producto.precio}</p>
-                            </div>
-                            <div class="card-footer">
-                                <button type="button" class="btn btn-dark"><i
-                                        class="bi bi-dash-lg"></i></button>
-                                <strong class="m-1">1</strong>
-                                <button type="button" class="btn btn-dark"><i
-                                        class="bi bi-plus-lg"></i></button>
-                                <button type="button" class="btn btn-success"><i class="bi bi-cart-fill"></i>
-                                    Agregar
-                                </button>
-                            </div>
-                        </div>
-
-                        <!-- Modal -->
-                        <div class="modal fade" id="modalProduct-${status.index}" tabindex="-1"
-                            aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h1 class="modal-title fs-5" id="exampleModalLabel">${producto.nombre}
-                                        </h1>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                            aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <div class="mb-3" style="max-width: 540px;">
-                                            <div class="row g-0">
-                                                <div class="col-md-5 d-flex align-items-center">
-                                                    <img src="./img/${producto.imagen}"
-                                                        class="img-fluid rounded-start"
-                                                        alt="${producto.nombre}">
-                                                </div>
-                                                <div class="col-md-7">
-                                                    <div class="card-body">
-                                                        <h5 class="card-title">${producto.nombre}</h5>
-                                                        <p class="card-text"><small
-                                                                class="text-body-secondary">Código de
-                                                                producto:000000</small></p>
-                                                        <p class="card-text">Precio: $${producto.precio}</p>
-                                                        <hr width="215px">
-                                                        <div>
-                                                            <button type="button" class="btn btn-dark"><i
-                                                                    class="bi bi-dash-lg"></i></button>
-                                                            <strong class="m-1">1</strong>
-                                                            <button type="button" class="btn btn-dark"><i
-                                                                    class="bi bi-plus-lg"></i></button>
-                                                            <button type="button" class="btn btn-success"><i
-                                                                    class="bi bi-cart-fill"></i> Agregar
-                                                            </button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <p class="mt-4">${producto.descripcion}</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary"
-                                            data-bs-dismiss="modal">Cancelar</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </c:forEach>
-                </div>
             </div>
 
-            <div class="d-flex flex-wrap justify-content-between">
-                <c:forEach items="${listaProductos}" var="producto" varStatus="status">
-                    <div class="card m-1" style="max-width: 18rem;">
-                        <div class="card-header d-flex justify-content-center align-self-cente">
-                            <img src="./img/${producto.imagen}" alt="${producto.nombre}" height="150px">
-                            <button type="button" class="btn btn-secondary modal-product"
-                                data-bs-toggle="modal" data-bs-target="#modalProduct-${status.index}">
-                                <i class="bi bi-search"></i>
-                            </button>
-                        </div>
-                        <div class="card-body">
-                            <h5 class="card-title">${producto.nombre}</h5>
-                            <p class="card-text">$${producto.precio}</p>
-                        </div>
-                        <div class="card-footer">
-                            <button type="button" class="btn btn-dark"><i
-                                    class="bi bi-dash-lg"></i></button>
-                            <strong class="m-1">1</strong>
-                            <button type="button" class="btn btn-dark"><i
-                                    class="bi bi-plus-lg"></i></button>
-                            <button type="button" class="btn btn-success"><i class="bi bi-cart-fill"></i>
-                                Agregar
-                            </button>
-                        </div>
-                    </div>
-
-                    <!-- Modal -->
-                    <div class="modal fade" id="modalProduct-${status.index}" tabindex="-1"
-                        aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h1 class="modal-title fs-5" id="exampleModalLabel">${producto.nombre}
-                                    </h1>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                        aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
-                                    <div class="mb-3" style="max-width: 540px;">
-                                        <div class="row g-0">
-                                            <div class="col-md-5 d-flex align-items-center">
-                                                <img src="./img/${producto.imagen}"
-                                                    class="img-fluid rounded-start"
-                                                    alt="${producto.nombre}">
-                                            </div>
-                                            <div class="col-md-7">
-                                                <div class="card-body">
-                                                    <h5 class="card-title">${producto.nombre}</h5>
-                                                    <p class="card-text"><small
-                                                            class="text-body-secondary">Código de
-                                                            producto:000000</small></p>
-                                                    <p class="card-text">Precio: $${producto.precio}</p>
-                                                    <hr width="215px">
-                                                    <div>
-                                                        <button type="button" class="btn btn-dark"><i
-                                                                class="bi bi-dash-lg"></i></button>
-                                                        <strong class="m-1">1</strong>
-                                                        <button type="button" class="btn btn-dark"><i
-                                                                class="bi bi-plus-lg"></i></button>
-                                                        <button type="button" class="btn btn-success"><i
-                                                                class="bi bi-cart-fill"></i> Agregar
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <p class="mt-4">${producto.descripcion}</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary"
-                                        data-bs-dismiss="modal">Cancelar</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </c:forEach>
-            </div>
-        </div>
 
 
         <!-- Paginación -->
@@ -472,6 +310,7 @@
         integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
         crossorigin="anonymous">
     </script>
+    <script src="./js/cart.js"></script>
 
 </body>
 

@@ -1,5 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -15,51 +16,8 @@
 </head>
 
 <body>
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg bg-body-tertiary" id="navbar-petjoy">
-        <div class="container-fluid">
-            <a class="navbar-brand c-white" href="/"><i class="bi bi-shop"></i> PetJoy Shop</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link active c-white" aria-current="page" href="#"><i
-                                class="bi bi-person-circle"></i> Cristian Arevalo</a>
-                    </li>
-
-                </ul>
-                <div class="d-flex">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <a class="nav-link active c-white" aria-current="page" href="products"><i
-                                    class="bi bi-gift-fill"></i> Productos</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link c-white" href="#"><i class="bi bi-clipboard2-check-fill"></i>
-                                Servicios</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link c-white" href="#"><i class="bi bi-clipboard-heart-fill"></i> Adopción</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link c-white" href="#"> <i class="bi bi-info-circle-fill"></i> Acerca de
-                                nosotros</a>
-                        </li>
-                        <li class="nav-item">
-                            <!-- Button trigger modal -->
-                            <button class="btn btn-outline-success c-white b-white" type="submit" data-bs-toggle="offcanvas"
-                            data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><i class="bi bi-cart4"></i> <span
-                                    class="badge bg-success rounded-pill">5</span> <strong>$ 0</strong></button>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </nav>
+    
+    <%@ include file="./layouts/navbar.jsp"%>
     <!-- Carousel -->
     <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
@@ -90,7 +48,9 @@
             <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
         <div class="offcanvas-body">
-            Carrito vacío :(
+            <div id="cart-content">
+                <!-- contenido del carrito -->
+            </div>
         </div>
     </div>
 
@@ -134,26 +94,15 @@
             </div>
         </div>
 
-        <!-- <div>
-            <h2 class="ml-green">Categorías</h2>
-            <div class="d-flex justify-content-around m-3">
-                <img src="./img/dog_category.png" alt="CategoryDog">
-                <img src="./img/cat_category.png" alt="CategoryCat">
-            </div>
-        </div> -->
-
         <!-- Productos recomendados -->
         <div>
-        
-        
-            <!-- Productos recomendados -->
             <div class="my-4">
                 <h2 class="ml-green">Productos recomendados</h2>
                 <div class="d-flex flex-wrap justify-content-between">
-                    <c:forEach items="${listaProductos}" var="producto" varStatus="status">
+                    <c:forEach items="${productsList}" var="producto" varStatus="status">
                         <div class="card m-1" style="max-width: 18rem;">
                             <div class="card-header d-flex justify-content-center align-self-cente">
-                                <img src="./img/${producto.imagen}" alt="${producto.nombre}" height="150px">
+                                <img src="${producto.imagen}" alt="${producto.nombre}" height="150px">
                                 <button type="button" class="btn btn-secondary modal-product" data-bs-toggle="modal"
                                     data-bs-target="#modalProduct-${status.index}">
                                     <i class="bi bi-search"></i>
@@ -186,7 +135,7 @@
                                         <div class="mb-3" style="max-width: 540px;">
                                             <div class="row g-0">
                                                 <div class="col-md-5 d-flex align-items-center">
-                                                    <img src="./img/${producto.imagen}" class="img-fluid rounded-start" alt="${producto.nombre}">
+                                                    <img src="${producto.imagen}" class="img-fluid rounded-start" alt="${producto.nombre}">
                                                 </div>
                                                 <div class="col-md-7">
                                                     <div class="card-body">
@@ -217,10 +166,10 @@
                 </div>
             </div>
         </div>
-
-
+        
         </div>
     </div>
+
     <!-- Footer -->
     <footer class="text-center text-lg-start text-white" style="background-color: #202123">
         <!-- Grid container -->

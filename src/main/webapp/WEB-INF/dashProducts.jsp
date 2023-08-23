@@ -11,75 +11,55 @@
         integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
         crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="/css/style.css">
     <title>PetJoy Shop</title>
 </head>
 
 <body id="body-dashboard">
-    <aside>
-        <div class="container-sidebar">
-            <div class="title-one text-light mb-3">
-                <h2>Hola,<strong>Tom</strong></h2>
-            </div>
-            <div class="img-profile">
-                <img src="./img/perfil.jpg" alt="Imagen de perfil">
-                <p class="text-secondary"><small>@Tom.pérez1208</small></p>
-            </div>
-            <div class="title-two text-light">
-                <small>Menu principal</small>
-            </div>
-            <div class="sidebar">
-
-                <ul class="sidebar-options">
-                    <li class="me-4 active"><i class="bi bi-menu-button-wide"></i><a href="#">Productos</a></li>
-                    <li class="me-4"><i class="bi bi-receipt"></i><a href="#">Facturas</a></li>
-                    <li class="me-4"><i class="bi bi-people-fill"></i><a href="#">Usuarios</a></li>
-                </ul>
-
-            </div>
-            <div class="img-buttom">
-
-                <button type="submit">Cerrar sesión</button>
-            </div>
-        </div>
-    </aside>
+    
+    <%@ include file="./layouts/aside.jsp"%>
 
     <div class="container-all">
+        
         <!-- Productos-->
-        <div class="container mt-5 mb-5">
+        <div class="container mt-5 mb-5 px-4">
             <div>
 
-                <!-- Formulario de búsqueda -->
-                <div class="d-flex justify-content-end mb-4">
-                    <form class="d-flex col-md-3" action="${pageContext.request.contextPath}/buscar-producto"
-                        method="GET">
-                        <input class="form-control me-2" type="search" name="nombreProducto"
-                            placeholder="Buscar producto" aria-label="Search">
+                <div class="d-flex justify-content-between mb-4">
+                    <a href="/dashboard/add" type="button" class="btn btn-success me-4">
+                        <i class="bi bi-file-earmark-plus-fill me-1"></i> Agregar producto 
+                    </a>
+                
+                    <!-- Formulario de búsqueda -->
+                    <form class="d-flex col-md-3" action="${pageContext.request.contextPath}/buscar-producto" method="GET">
+                        <input class="form-control me-2" type="search" name="nombreProducto" placeholder="Buscar producto"
+                            aria-label="Search">
                         <button class="btn btn-outline-success" type="submit">Buscar</button>
                     </form>
+                
                 </div>
 
                 <!-- Productos-->
                 <div>
                     <div class="d-flex flex-wrap justify-content-between">
-                        <c:forEach items="${listaProductos}" var="producto" varStatus="status">
-                            <div class="card m-1" style="max-width: 18rem;">
+                        <c:forEach items="${products}" var="product" varStatus="status">
+                            <div class="card m-1 card-product">
                                 <div class="card-header d-flex justify-content-center align-self-cente">
-                                    <img src="./img/${producto.imagen}" alt="${producto.nombre}" height="150px">
+                                    <img src="${product.imagen}" alt="${product.nombre}" height="150px">
                                     <button type="button" class="btn btn-secondary modal-product"
                                         data-bs-toggle="modal" data-bs-target="#modalProduct-${status.index}">
                                         <i class="bi bi-search"></i>
                                     </button>
                                 </div>
                                 <div class="card-body">
-                                    <h5 class="card-title">${producto.nombre}</h5>
-                                    <p class="card-text">$${producto.precio}</p>
+                                    <h5 class="card-title">${product.nombre}</h5>
+                                    <p class="card-text">$${product.precio}</p>
                                 </div>
-                                <div class="card-footer">
-                                    <button type="button" class="btn btn-danger">
-                                        <i class="bi bi-trash3-fill"></i>
-                                        Eliminar
-                                    </button>
+                                <div class="card-footer d-flex justify-content-between">
+                                    <form action="dashboard/${product.id}/delete" method="post" id="deleteForm"> 
+                                        <input type="hidden" name="_method" value="delete">
+                                        <button type="button" class="btn btn-danger" onclick="confirmDeleteProduct()"> <i class="bi bi-trash3-fill"></i> Eliminar</button>
+                                    </form>
                                     <button type="button" class="btn btn-dark" data-bs-toggle="modal"
                                         data-bs-target="#modalEdicion-${status.index}">
                                         <i class="bi bi-pencil-square"></i>
@@ -95,7 +75,7 @@
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <h1 class="modal-title fs-5" id="exampleModalLabel">
-                                                ${producto.nombre}
+                                                ${product.nombre}
                                             </h1>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                 aria-label="Close"></button>
@@ -104,17 +84,17 @@
                                             <div class="mb-3" style="max-width: 540px;">
                                                 <div class="row g-0">
                                                     <div class="col-md-5 d-flex align-items-center">
-                                                        <img src="./img/${producto.imagen}"
+                                                        <img src="${product.imagen}"
                                                             class="img-fluid rounded-start"
-                                                            alt="${producto.nombre}">
+                                                            alt="${producto.nombre}" width="80%">
                                                     </div>
                                                     <div class="col-md-7">
                                                         <div class="card-body">
-                                                            <h5 class="card-title">${producto.nombre}</h5>
+                                                            <h5 class="card-title">${product.nombre}</h5>
                                                             <p class="card-text"><small
                                                                     class="text-body-secondary">Código de
-                                                                    producto:000000</small></p>
-                                                            <p class="card-text">Precio: $${producto.precio}</p>
+                                                                    product:</small></p>
+                                                            <p class="card-text">Precio: $${product.precio}</p>
                                                             <hr width="215px">
                                                             <div>
                                                                 <button type="button" class="btn btn-dark"><i
@@ -128,7 +108,7 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <p class="mt-4">${producto.descripcion}</p>
+                                                    <p class="mt-4">${product.descripcion}</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -141,88 +121,77 @@
                             </div>
 
                             <!-- Modal Edición -->
-                            <div class="modal fade" id="modalEdicion-${status.index}" tabindex="-1"
-                                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal fade" id="modalEdicion-${status.index}" tabindex="-1" aria-labelledby="exampleModalLabel"
+                                aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-centered">
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <h1 class="modal-title fs-5" id="exampleModalLabel">
-                                                ${producto.nombre}
+                                                ${product.nombre}
                                             </h1>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                aria-label="Close"></button>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body">
-                                            <form action="" method="post">
+                                            <form action="/dashboard/edit" method="post" th:object="${product}">
                                                 <div class="mb-3" style="max-width: 540px;">
                                                     <div class="row g-0 d-flex align-items-end mb-4">
                                                         <div class="col-md-4 d-flex align-items-center">
-                                                            <img src="./img/${producto.imagen}"
-                                                                class="img-fluid rounded-start"
-                                                                alt="${producto.nombre}">
+                                                            <img src="${product.imagen}" class="img-fluid rounded-start" alt="${product.nombre}">
                                                         </div>
-
                                                         <div class="col-md-8">
                                                             <div class="card-body">
                                                                 <div>
-                                                                    <small><label for="formFile"
-                                                                            class="form-label">Imagen</label></small>
-                                                                    <input class="form-control" type="file"
-                                                                        id="formFile">
+                                                                    <small><label for="formFile" class="form-label">Imagen</label></small>
+                                                                    <input class="form-control" type="text" id="formFile" name="imagen"
+                                                                        th:value="${product.imagen}">
                                                                 </div>
                                                             </div>
                                                         </div>
                                                         <div class="my-3">
-                                                            <small><label for="name"
-                                                                    class="form-label">Nombre</label></small>
-                                                            <input type="text" class="form-control" id="name"
-                                                                aria-describedby="nameProdcuct"
-                                                                value="${producto.nombre}">
+                                                            <small><label for="name" class="form-label">Nombre</label></small>
+                                                            <input type="text" class="form-control" id="name" name="nombre"
+                                                                aria-describedby="nameProduct" th:value="${product.nombre}">
                                                         </div>
                                                         <div class="d-flex justify-content-between">
                                                             <div class="col-7 mb-3">
-                                                                <small><label for="precio"
-                                                                        class="form-label">Precio</label></small>
-                                                                <input type="int" class="form-control"
-                                                                    id="precio" aria-describedby="priceProdcuct"
-                                                                    value="${producto.precio}">
+                                                                <small><label for="precio" class="form-label">Precio</label></small>
+                                                                <input type="number" class="form-control" id="precio" name="precio"
+                                                                    aria-describedby="priceProduct" th:value="${product.precio}" th:field="${product.precio}">
                                                             </div>
                                                             <div class="col-4 mb-3">
-                                                                <small><label for="stock"
-                                                                        class="form-label">Stock</label></small>
-                                                                <input type="int" class="form-control"
-                                                                    id="stock" aria-describedby="priceProdcuct"
-                                                                    value="${producto.stock}">
+                                                                <small><label for="stock" class="form-label">Stock</label></small>
+                                                                <input type="number" class="form-control" id="stock" name="stock"
+                                                                    aria-describedby="stockProduct" th:value="${product.stock}" th:field="${product.stock}">
                                                             </div>
                                                         </div>
                                                         <div class="mb-3">
                                                             <small>Descripción</small>
-                                                            <textarea class="form-control"
-                                                                aria-label="description">${producto.descripcion}</textarea>
+                                                            <textarea class="form-control" id="description" name="descripcion"
+                                                                aria-label="description" th:text="${product.descripcion}"></textarea>
                                                         </div>
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Cancelar</button>
+                                                    <button type="submit" class="btn btn-success" data-bs-dismiss="modal">Guardar cambios</button>
+                                                </div>
                                             </form>
-
                                         </div>
                                     </div>
                                 </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-dark"
-                                        data-bs-dismiss="modal">Cancelar</button>
-                                    <button type="button" class="btn btn-success"
-                                        data-bs-dismiss="modal">Guardar cambios</button>
-                                </div>
                             </div>
-                    </div>
-                </div>
+
                 </c:forEach>
             </div>
         </div>
+    </div>
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
             crossorigin="anonymous">
         </script>
-
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="/js/deleteAlert.js"></script>
 </body>
 
 </html>

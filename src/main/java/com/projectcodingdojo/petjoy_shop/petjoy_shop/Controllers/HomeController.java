@@ -1,78 +1,43 @@
-package com.projectcodingdojo.petjoy_shop.petjoy_shop.Controllers;
+package com.projectcodingdojo.petjoy_shop.petjoy_shop.controllers;
 
-import com.projectcodingdojo.petjoy_shop.petjoy_shop.models.Product;
-import com.projectcodingdojo.petjoy_shop.petjoy_shop.models.ProductCreate;
+import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-
-import java.util.List;
+import org.springframework.web.bind.annotation.RequestMapping;
+import com.projectcodingdojo.petjoy_shop.petjoy_shop.models.Product;
+import com.projectcodingdojo.petjoy_shop.petjoy_shop.services.ProductService;
 
 @Controller
+@RequestMapping("/")
 public class HomeController {
-    
-    private List<Product> listaProductos;
-    private void addListaProductos(Model model) {
-        if (listaProductos == null) {
-            listaProductos = ProductCreate.getListaProductos();
-        }
-        model.addAttribute("listaProductos", listaProductos);
-    }
 
-    @GetMapping("/")
-    public String inicio(Model model) {
-        addListaProductos(model);
-        return "index";
-    }
-
-    @GetMapping("/products")
-    public String productos(Model model) {
-        addListaProductos(model);
-        return "products";
-    }
+    @Autowired
+    private ProductService productService;
 
     @GetMapping("/login")
     public String login() {
         return "login";
     }
 
-    @GetMapping("/dashboard")
-    public String dashboard(Model model) {
-        addListaProductos(model);
-        return "dashboard";
+    // Mostrar lista de productos 
+    @GetMapping("")
+    public String home(Model model) {
+        addProductList(model);
+        return "home";
     }
 
-    @GetMapping("/dashboardAdd")
-    public String dashboardAdd() {
-        return "dashboardAdd";
+    @GetMapping("products")
+    public String products(Model model) {
+        addProductList(model);
+        return "products";
     }
-    
-    // private List<Product> listaProductos;
-    
-    // @GetMapping("/")
-    // public String inicio(Model model) {
-    //     listaProductos = ProductCreate.getListaProductos();
-    //     model.addAttribute("listaProductos", listaProductos);
-    //     return "index";
-    // }
 
-    // @GetMapping("/products")
-    // public String productos(Model model) {
-    //     listaProductos = ProductCreate.getListaProductos();
-    //     model.addAttribute("listaProductos", listaProductos);
-    //     return "products";
-    // }
 
-    // @GetMapping("/login")
-    // public String login() {
-    //     return "login";
-    // }
-
-    // @GetMapping("/dashboard")
-    // public String dashboard(Model model) {
-    //     listaProductos = ProductCreate.getListaProductos();
-    //     model.addAttribute("listaProductos", listaProductos);
-    //     return "dashboard";
-    // }
+    private void addProductList(Model model) {
+        List<Product> productsList = productService.findAll();
+        model.addAttribute("productsList", productsList);
+    }
 
 }

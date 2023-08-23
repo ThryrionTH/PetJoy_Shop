@@ -1,4 +1,4 @@
-package com.projectcodingdojo.petjoy_shop.petjoy_shop.Controllers;
+package com.projectcodingdojo.petjoy_shop.petjoy_shop;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
