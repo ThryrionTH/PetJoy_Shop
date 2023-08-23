@@ -108,15 +108,19 @@
         
         <!-- categorias -->
         <h2 class="ml-green">Categorías</h2>
-        <div class="d-flex align-items-center justify-content-around bg-green rounded" style="max-width:16rem;">
-            <img src="./img/categories/accesorios.png" alt="imagen categoría" height="100px">
-            <p class="text-center m-0">accesorios</p>
+        <div class="d-flex justify-content-between mb-5">
+            <c:forEach items="${productsTypes}" var="category">
+                <div class="d-flex align-items-center justify-content-around bg-green rounded" style="width:14rem;">
+                    <img src="${category.imagen}" alt="imagen categoría" height="100px">
+                    <p class="text-center m-0">${category.categoria}</p>
+                </div>
+            </c:forEach>
         </div>
 
         <div>
             <!-- Formulario de búsqueda -->
             <div class="d-flex justify-content-end mb-4">
-                <form class="d-flex col-md-3" action="${pageContext.request.contextPath}/buscar-producto" method="GET">
+                <form class="d-flex col-md-3">
                     <input class="form-control me-2" type="search" name="nombreProducto" placeholder="Buscar producto" aria-label="Search">
                     <button class="btn btn-outline-success" type="submit">Buscar</button>
                 </form>

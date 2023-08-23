@@ -7,7 +7,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import com.projectcodingdojo.petjoy_shop.petjoy_shop.models.Product;
+import com.projectcodingdojo.petjoy_shop.petjoy_shop.models.ProductType;
 import com.projectcodingdojo.petjoy_shop.petjoy_shop.services.ProductService;
+import com.projectcodingdojo.petjoy_shop.petjoy_shop.services.ProductTypeService;
 
 @Controller
 @RequestMapping("/")
@@ -15,6 +17,9 @@ public class HomeController {
 
     @Autowired
     private ProductService productService;
+
+    @Autowired
+    private ProductTypeService productTypeService;
 
     @GetMapping("/login")
     public String login() {
@@ -30,6 +35,8 @@ public class HomeController {
 
     @GetMapping("products")
     public String products(Model model) {
+        List<ProductType> productsTypes = productTypeService.findActive();
+        model.addAttribute("productsTypes", productsTypes);
         addProductList(model);
         return "products";
     }

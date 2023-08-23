@@ -30,18 +30,27 @@
                     <li class="breadcrumb-item active" aria-current="page">Categorías de producto</li>
                 </ol>
             </nav>
-            <form:form action="" method="post" modelAttribute="productType" class="d-flex align-items-end justify-content-between col-7 m-auto">
-                <p class="p-0 m-0 col-9">
-                    <form:label path="categoria" class="form-label">Nombre de categoría de producto</form:label>
+            <form:form action="" method="post" modelAttribute="productType" class="d-flex flex-column justify-content-between col-7 m-auto">
+                <div class="p-0 m-0 mb-4">
+                    <div class="card-body">
+                        <div>
+                            <small><label for="imagen" class="form-label">Imagen</label></small>
+                            <form:input type="text" path="imagen" cssClass="form-control" id="imagen"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-0 m-0 mb-4">
+                    <small><form:label path="categoria" class="form-label">Nombre de categoría de producto</form:label></small>
                     <form:input path="categoria" class="form-control"/>
                     <form:errors path="categoria" />
-                </p>
+                </div>
                 <button type="submit" class="btn btn-dark col-2">Agregar</button>
             </form:form>
             <ul class="list-categories col-7 d-flex justify-content-between flex-wrap">
                 <c:forEach items="${productsTypes}" var="type">
-                    <li class="list-item">
-                        <c:out value="${type.categoria}" />
+                    <li class="list-item d-flex align-items-center">
+                        <img src="${type.imagen}" class="img-type" alt="${type.categoria}">
+                        <p class="m-0 ms-4"><c:out value="${type.categoria}" /></p>
                     </li>
                     <form action="/dashboard/categories/${type.id}/delete" method="post" class="delete-form">
                         <input type="hidden" name="_method" value="delete">
