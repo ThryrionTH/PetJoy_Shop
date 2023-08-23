@@ -38,7 +38,7 @@ public class ProductController {
     // Mostrar lista de productos 
     @GetMapping("")
     public String showDashboard(Model model) {
-        List<Product> products = productService.findAll();
+        List<Product> products = productService.findActive();
         model.addAttribute("products", products);
         return "dashProducts";
     }
@@ -49,15 +49,15 @@ public class ProductController {
         model.addAttribute("product", new Product());
         
         // Obtener la lista de marcas de productos y agregarla al modelo
-        List<ProductBrand> productsBrands = productBrandService.findAll();
+        List<ProductBrand> productsBrands = productBrandService.findActive();
         model.addAttribute("productsBrands", productsBrands);
 
         // Obtener la lista de animales  y agregarla al modelo
-        List<ProductAnimal> productsAnimals = productAnimalService.findAll();
+        List<ProductAnimal> productsAnimals = productAnimalService.findActive();
         model.addAttribute("productsAnimals", productsAnimals);
 
         // Obtener la lista de categorias de producto y agregarla al modelo
-        List<ProductType> productsTypes = productTypeService.findAll();
+        List<ProductType> productsTypes = productTypeService.findActive();
         model.addAttribute("productsTypes", productsTypes);
         
         return "dashAddProduct";

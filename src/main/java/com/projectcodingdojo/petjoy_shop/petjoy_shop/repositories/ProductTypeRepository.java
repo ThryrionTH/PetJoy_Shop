@@ -11,5 +11,7 @@ public interface ProductTypeRepository extends BaseRepository<ProductType> {
     
     @Query("SELECT pt FROM ProductType pt WHERE pt.categoria = :categoria")
     Optional<ProductType> findByCategoria(String categoria);
+    
+    Optional<ProductType> findByCategoriaAndActive(String categoria, int active);
 
 }

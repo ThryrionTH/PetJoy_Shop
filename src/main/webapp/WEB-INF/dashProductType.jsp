@@ -43,9 +43,12 @@
                     <li class="list-item">
                         <c:out value="${type.categoria}" />
                     </li>
-                    <a href="/dashboard/categories/delete/${type.id}" type="button" class="btn btn-danger">
-                        <i class="bi bi-trash3-fill"></i>
-                    </a>
+                    <form action="/dashboard/categories/${type.id}/delete" method="post" class="delete-form">
+                        <input type="hidden" name="_method" value="delete">
+                        <button type="button" class="btn btn-danger delete-button" onclick="confirmDelete(this)">
+                            <i class="bi bi-trash3-fill"></i>
+                        </button>
+                    </form>
                 </c:forEach>
             </ul>
         </main>
@@ -56,7 +59,8 @@
             integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
             crossorigin="anonymous">
     </script>
-    <script src="/js/app.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="/js/deleteAlert.js"></script>
 
 </body>
 

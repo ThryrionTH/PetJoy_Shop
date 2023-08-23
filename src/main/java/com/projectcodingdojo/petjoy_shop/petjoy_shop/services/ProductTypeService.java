@@ -16,6 +16,15 @@ public class ProductTypeService extends BaseService<ProductType>{
         this.repository = repository;
     }
 
+    public ProductType findByCategoriaAndActive(String categoria, int active) {
+        Optional<ProductType> optionalProductType = repository.findByCategoriaAndActive(categoria, active);
+        if (optionalProductType.isPresent()) {
+            return optionalProductType.get();
+        } else {
+            return null;
+        }
+    }
+
     public ProductType findByCategoria(String categoria){
         Optional <ProductType> productType = repository.findByCategoria(categoria);
         if(productType.isPresent()){

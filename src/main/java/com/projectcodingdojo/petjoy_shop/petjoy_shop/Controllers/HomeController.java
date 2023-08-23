@@ -36,7 +36,7 @@ public class HomeController {
 
 
     private void addProductList(Model model) {
-        List<Product> productsList = productService.findAll();
+        List<Product> productsList = productService.findActive();
         model.addAttribute("productsList", productsList);
     }
 

@@ -139,10 +139,10 @@
                                 <p class="card-text">$${producto.precio}</p>
                             </div>
                             <div class="card-footer">
-                                <button class="btn btn-dark quantity-decrease" data-product-id="${producto.id}">-</button>
-                                <strong class="m-1" id="product-quantity-${producto.id}">1</strong>
-                                <button class="btn btn-dark quantity-increase" data-product-id="${producto.id}">+</button>
-                                <button class="btn btn-primary add-to-cart-button" data-product-id="2">Agregar</button>
+                                <button type="button" class="btn btn-dark"><i class="bi bi-dash-lg"></i></button>
+                                <strong class="m-1">1</strong>
+                                <button type="button" class="btn btn-dark"><i class="bi bi-plus-lg"></i></button>
+                                <button class="btn btn-success add-to-cart-button" data-product-id="2"><i class="bi bi-cart-fill"></i>Agregar</button>
                             </div>
                             
                         </div>

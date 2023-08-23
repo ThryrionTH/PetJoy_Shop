@@ -17,8 +17,6 @@ import com.projectcodingdojo.petjoy_shop.petjoy_shop.services.ProductTypeService
 
 import jakarta.validation.Valid;
 
-
-
 @Controller
 @RequestMapping("/dashboard/categories")
 public class ProductTypeController {
@@ -28,13 +26,18 @@ public class ProductTypeController {
 
     @GetMapping("")
     public String productType(@ModelAttribute("productType") ProductType productType, Model model) {
-        List<ProductType> productsTypes = productTypeService.findAll();
+        List<ProductType> productsTypes = productTypeService.findActive();
         model.addAttribute("productsTypes", productsTypes);
         return "dashProductType";
     }
 
     @PostMapping("")
     public String saveProductType(@Valid @ModelAttribute("productType") ProductType productType, BindingResult result) {
+        ProductType existingActiveType = productTypeService.findByCategoriaAndActive(productType.getCategoria(), 1);
+        if (existingActiveType != null) {
+            result.rejectValue("categoria", "duplicate", "Ya existe una categoría con el mismo nombre.");
+        }
+        
         if (result.hasErrors()) {
             return "dashProductType";
         }
@@ -50,6 +53,6 @@ public class ProductTypeController {
             productType.setActive(0);
             productTypeService.update(productType);
         }
-        return "redirect:/dashboard";
+        return "redirect:/dashboard/categories";
     }
 }
