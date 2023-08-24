@@ -1,17 +1,21 @@
 package com.projectcodingdojo.petjoy_shop.petjoy_shop.Controllers;
 
-import com.projectcodingdojo.petjoy_shop.petjoy_shop.Models.Product;
+import com.projectcodingdojo.petjoy_shop.petjoy_shop.Models.Products;
+import com.projectcodingdojo.petjoy_shop.petjoy_shop.Models.Clients;
 import com.projectcodingdojo.petjoy_shop.petjoy_shop.Models.ProductCreate;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 @Controller
 public class HomeController {
-    
-    private List<Product> listaProductos;
+    private final int MAYOR_EDAD_DIAS = 6570;
+    private List<Products> listaProductos;
     private void addListaProductos(Model model) {
         if (listaProductos == null) {
             listaProductos = ProductCreate.getListaProductos();
@@ -22,18 +26,15 @@ public class HomeController {
     @GetMapping("/")
     public String inicio(Model model) {
         addListaProductos(model);
-        return "index";
+        
+        LocalDate date = LocalDate.now().minusDays(MAYOR_EDAD_DIAS);
+        return "home";
     }
 
     @GetMapping("/products")
     public String productos(Model model) {
         addListaProductos(model);
         return "products";
-    }
-
-    @GetMapping("/login")
-    public String login() {
-        return "login";
     }
 
     @GetMapping("/dashboard")
@@ -45,6 +46,12 @@ public class HomeController {
     @GetMapping("/dashboardAdd")
     public String dashboardAdd() {
         return "dashboardAdd";
+    }
+
+    @GetMapping("/verification")
+    public String verificationClient() {
+        
+        return "verification";
     }
     
     // private List<Product> listaProductos;
@@ -61,11 +68,6 @@ public class HomeController {
     //     listaProductos = ProductCreate.getListaProductos();
     //     model.addAttribute("listaProductos", listaProductos);
     //     return "products";
-    // }
-
-    // @GetMapping("/login")
-    // public String login() {
-    //     return "login";
     // }
 
     // @GetMapping("/dashboard")
