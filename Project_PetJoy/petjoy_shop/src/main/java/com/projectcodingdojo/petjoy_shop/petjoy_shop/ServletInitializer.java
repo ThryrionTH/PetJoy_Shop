@@ -1,4 +1,4 @@
-package com.projectcodingdojo.petjoy_shop.petjoy_shop.Controllers;
+package com.projectcodingdojo.petjoy_shop.petjoy_shop;
 
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;

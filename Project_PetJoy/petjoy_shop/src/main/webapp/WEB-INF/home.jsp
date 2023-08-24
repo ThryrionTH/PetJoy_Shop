@@ -91,6 +91,7 @@
         </div>
         <div class="offcanvas-body">
             Carrito vacío :(
+                <a href="/verification" class="btn btn-secondary">Pagar</a>
         </div>
     </div>
 

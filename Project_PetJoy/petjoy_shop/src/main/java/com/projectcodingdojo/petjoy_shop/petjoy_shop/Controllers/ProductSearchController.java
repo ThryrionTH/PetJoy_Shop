@@ -1,6 +1,6 @@
 package com.projectcodingdojo.petjoy_shop.petjoy_shop.Controllers;
 
-import com.projectcodingdojo.petjoy_shop.petjoy_shop.Models.Product;
+import com.projectcodingdojo.petjoy_shop.petjoy_shop.Models.Products;
 import com.projectcodingdojo.petjoy_shop.petjoy_shop.Models.ProductCreate;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,10 +15,10 @@ public class ProductSearchController {
 
     @GetMapping("/buscar-producto")
     public String buscarProductoPorNombre(@RequestParam("nombreProducto") String nombreProducto, Model model) {
-        List<Product> listaProductos = ProductCreate.getListaProductos();
+        List<Products> listaProductos = ProductCreate.getListaProductos();
 
-        List<Product> productosFiltrados = new ArrayList<>();
-        for (Product producto : listaProductos) {
+        List<Products> productosFiltrados = new ArrayList<>();
+        for (Products producto : listaProductos) {
             if (producto.getNombre().toLowerCase().contains(nombreProducto.toLowerCase())) {
                 productosFiltrados.add(producto);
             }

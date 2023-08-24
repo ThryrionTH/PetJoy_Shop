@@ -4,11 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ProductCreate {
-    public static List<Product> getListaProductos() {
-        List<Product> listaProductos = new ArrayList<>();
+    public static List<Products> getListaProductos() {
+        List<Products> listaProductos = new ArrayList<>();
 
         // Agregar productos a la lista
-        Product producto1 = new Product();
+        Products producto1 = new Products();
         producto1.setNombre("Producto 1");
         producto1.setPrecio(10.99);
         producto1.setDescripcion("Descripción del Producto 1 - Lorem ipsum dolor sit amet consectetur. Massa eu aenean malesuada in. Ut est interdum donec pretium ullamcorper metus aliquam mi in. Senectus pellentesque pretium adipiscing sapien augue cursus. Amet nam lorem diam gravida.");
@@ -17,7 +17,7 @@ public class ProductCreate {
         producto1.setStock(20);
         producto1.setProveedor("Proveedor A");
 
-        Product producto2 = new Product();
+        Products producto2 = new Products();
         producto2.setNombre("Producto 2");
         producto2.setPrecio(19.95);
         producto2.setDescripcion("Descripción del Producto 2 - Lorem ipsum dolor sit amet consectetur. Massa eu aenean malesuada in. Ut est interdum donec pretium ullamcorper metus aliquam mi in. Senectus pellentesque pretium adipiscing sapien augue cursus. Amet nam lorem diam gravida.");
@@ -26,7 +26,7 @@ public class ProductCreate {
         producto2.setStock(15);
         producto2.setProveedor("Proveedor B");
 
-        Product producto3 = new Product();
+        Products producto3 = new Products();
         producto3.setNombre("Producto 3");
         producto3.setPrecio(9.45);
         producto3.setDescripcion("Descripción del Producto 3 - Lorem ipsum dolor sit amet consectetur. Massa eu aenean malesuada in. Ut est interdum donec pretium ullamcorper metus aliquam mi in. Senectus pellentesque pretium adipiscing sapien augue cursus. Amet nam lorem diam gravida.");
@@ -35,7 +35,7 @@ public class ProductCreate {
         producto3.setStock(15);
         producto3.setProveedor("Proveedor B");
 
-        Product producto4 = new Product();
+        Products producto4 = new Products();
         producto4.setNombre("Producto 4");
         producto4.setPrecio(30.00);
         producto4.setDescripcion("Descripción del Producto 4 - Lorem ipsum dolor sit amet consectetur. Massa eu aenean malesuada in. Ut est interdum donec pretium ullamcorper metus aliquam mi in. Senectus pellentesque pretium adipiscing sapien augue cursus. Amet nam lorem diam gravida.");
