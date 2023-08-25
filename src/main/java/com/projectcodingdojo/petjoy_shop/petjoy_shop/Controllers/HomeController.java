@@ -1,5 +1,6 @@
 package com.projectcodingdojo.petjoy_shop.petjoy_shop.controllers;
 
+import java.time.LocalDate;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,16 +22,19 @@ public class HomeController {
     @Autowired
     private ProductTypeService productTypeService;
 
-    @GetMapping("/login")
-    public String login() {
-        return "login";
-    }
+    private final int MAYOR_EDAD_DIAS = 6570;
 
-    // Mostrar lista de productos 
     @GetMapping("")
     public String home(Model model) {
         addProductList(model);
+        LocalDate date = LocalDate.now().minusDays(MAYOR_EDAD_DIAS);
         return "home";
+    }
+
+    @GetMapping("/verification")
+    public String verificationClient() {
+        
+        return "verification";
     }
 
     @GetMapping("products")

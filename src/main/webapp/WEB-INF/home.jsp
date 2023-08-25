@@ -48,9 +48,8 @@
             <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
         <div class="offcanvas-body">
-            <div id="cart-content">
-                <!-- contenido del carrito -->
-            </div>
+            Carrito vacío :(
+                <a href="/verification" class="btn btn-secondary">Pagar</a>
         </div>
     </div>
 
