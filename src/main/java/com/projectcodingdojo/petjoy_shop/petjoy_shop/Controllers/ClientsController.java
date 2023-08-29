@@ -52,7 +52,8 @@ public class ClientsController {
         
         Clients newClient = clientsService.createClient(client);
 
-        
+        session.setAttribute("client_name", newClient.getNombre());
+        session.setAttribute("client_apellido", newClient.getApellido());
         session.setAttribute("client_id", newClient.getId());
 
         return "redirect:/checkout";
@@ -82,6 +83,8 @@ public class ClientsController {
 
     @RequestMapping("/logout")
     public String logout(HttpSession session) {
+        session.removeAttribute("client_name");
+         session.removeAttribute("client_apellido");
         session.removeAttribute("client_id");
         return "redirect:/";
     }
