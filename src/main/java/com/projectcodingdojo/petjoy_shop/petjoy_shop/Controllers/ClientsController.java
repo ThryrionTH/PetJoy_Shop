@@ -49,8 +49,11 @@ public class ClientsController {
             return "signup";
         }
 
+        
         Clients newClient = clientsService.createClient(client);
 
+        session.setAttribute("client_name", newClient.getNombre());
+        session.setAttribute("client_apellido", newClient.getApellido());
         session.setAttribute("client_id", newClient.getId());
 
         return "redirect:/checkout";
@@ -72,13 +75,16 @@ public class ClientsController {
         }
 
         Clients authClients = clientsService.findClientByEmail(email);
-
+        session.setAttribute("client_name", authClients.getNombre());
+        session.setAttribute("client_apellido", authClients.getApellido());
         session.setAttribute("client_id", authClients.getId());
         return "redirect:/checkout";
     }
 
     @RequestMapping("/logout")
     public String logout(HttpSession session) {
+        session.removeAttribute("client_name");
+         session.removeAttribute("client_apellido");
         session.removeAttribute("client_id");
         return "redirect:/";
     }
