@@ -26,7 +26,7 @@
         </div>
         <div class="img-buttom">
 
-            <button type="submit">Cerrar sesión</button>
+            <a href="/logout">Cerrar Sesión</a>
         </div>
     </div>
 </aside>
