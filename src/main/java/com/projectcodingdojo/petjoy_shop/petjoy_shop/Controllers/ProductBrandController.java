@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.projectcodingdojo.petjoy_shop.petjoy_shop.models.ProductBrand;
@@ -43,6 +44,16 @@ public class ProductBrandController {
             return "dashProductBrand";
         }
         productBrandService.save(productBrand); 
+        return "redirect:/dashboard/brands";
+    }
+
+    @PutMapping("/{id}/editProductBrand")
+    public String editProductBrand(@Valid @PathVariable("id") Long id,
+            @ModelAttribute("productBrand") ProductBrand productBrand, BindingResult result, Model model) {
+        if (result.hasErrors()) {
+            return "dashProductBrand";
+        }
+        productBrandService.update(productBrand);
         return "redirect:/dashboard/brands";
     }
 

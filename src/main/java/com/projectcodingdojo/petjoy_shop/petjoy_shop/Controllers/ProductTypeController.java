@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.projectcodingdojo.petjoy_shop.petjoy_shop.models.ProductType;
@@ -42,6 +43,16 @@ public class ProductTypeController {
             return "dashProductType";
         }
         productTypeService.save(productType);
+        return "redirect:/dashboard/categories";
+    }
+
+    @PutMapping("/{id}/editProductType")
+    public String editProductType(@Valid @PathVariable("id") Long id,
+            @ModelAttribute("productType") ProductType productType, BindingResult result, Model model) {
+        if (result.hasErrors()) {
+            return "dashProductType";
+        }
+        productTypeService.update(productType);
         return "redirect:/dashboard/categories";
     }
 

@@ -101,7 +101,7 @@
                     <c:forEach items="${productsList}" var="producto" varStatus="status">
                         <div class="card m-1" style="max-width: 18rem;">
                             <div class="card-header d-flex justify-content-center align-self-cente">
-                                <img src="${producto.imagen}" alt="${producto.nombre}" height="150px">
+                                <img src="/img/products/${producto.imagen}" alt="${producto.nombre}" height="150px">
                                 <button type="button" class="btn btn-secondary modal-product" data-bs-toggle="modal"
                                     data-bs-target="#modalProduct-${status.index}">
                                     <i class="bi bi-search"></i>
@@ -133,7 +133,7 @@
                                         <div class="mb-3" style="max-width: 540px;">
                                             <div class="row g-0">
                                                 <div class="col-md-5 d-flex align-items-center">
-                                                    <img src="${producto.imagen}" class="img-fluid rounded-start" alt="${producto.nombre}">
+                                                    <img src="/img/products/${producto.imagen}" alt="${producto.nombre}" height="150px">
                                                 </div>
                                                 <div class="col-md-7">
                                                     <div class="card-body">

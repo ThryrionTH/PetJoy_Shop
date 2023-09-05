@@ -1,6 +1,7 @@
 package com.projectcodingdojo.petjoy_shop.petjoy_shop.controllers;
 
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.projectcodingdojo.petjoy_shop.petjoy_shop.models.ProductAnimal;
@@ -44,6 +46,15 @@ public class ProductAnimalController {
         return "redirect:/dashboard/animals";
     }
 
+    @PutMapping("/{id}/editProductAnimal")
+    public String editProductAnimal(@Valid @PathVariable("id") Long id, @ModelAttribute("productAnimal") ProductAnimal productAnimal, BindingResult result, Model model){
+        if(result.hasErrors()){
+            return "dashProductAnimal";
+        }
+        productAnimalService.update(productAnimal);
+        return "redirect:/dashboard/animals";
+    }
+
     @DeleteMapping("/{id}/delete")
     public String deleteProductAnimal(@PathVariable("id") Long id) {
         ProductAnimal productAnimal = productAnimalService.findById(id);
@@ -53,5 +64,6 @@ public class ProductAnimalController {
         }
         return "redirect:/dashboard/animals";
     }
+
 }
 

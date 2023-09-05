@@ -44,8 +44,8 @@
                     <div class="d-flex flex-wrap justify-content-between">
                         <c:forEach items="${products}" var="product" varStatus="status">
                             <div class="card m-1 card-product">
-                                <div class="card-header d-flex justify-content-center align-self-cente">
-                                    <img src="${product.imagen}" alt="${product.nombre}" height="150px">
+                                <div class="card-header d-flex justify-content-center align-self-cente" id="container-img">
+                                    <img src="/img/products/${product.imagen}" alt="${product.nombre}" height="150px">
                                     <button type="button" class="btn btn-secondary modal-product"
                                         data-bs-toggle="modal" data-bs-target="#modalProduct-${status.index}">
                                         <i class="bi bi-search"></i>
@@ -60,11 +60,12 @@
                                         <input type="hidden" name="_method" value="delete">
                                         <button type="button" class="btn btn-danger" onclick="confirmDeleteProduct()"> <i class="bi bi-trash3-fill"></i> Eliminar</button>
                                     </form>
-                                    <button type="button" class="btn btn-dark" data-bs-toggle="modal"
+                                    <a href="/dashboard/${product.id}/edit" class="btn btn-dark"><i class="bi bi-pencil-square me-1"></i>Editar</a>
+                                    <!-- <button type="button" class="btn btn-dark" data-bs-toggle="modal"
                                         data-bs-target="#modalEdicion-${status.index}">
                                         <i class="bi bi-pencil-square"></i>
                                         Editar
-                                    </button>
+                                    </button> -->
                                 </div>
                             </div>
 
@@ -84,7 +85,7 @@
                                             <div class="mb-3" style="max-width: 540px;">
                                                 <div class="row g-0">
                                                     <div class="col-md-5 d-flex align-items-center">
-                                                        <img src="${product.imagen}"
+                                                        <img src="/img/products/${product.imagen}"
                                                             class="img-fluid rounded-start"
                                                             alt="${producto.nombre}" width="80%">
                                                     </div>

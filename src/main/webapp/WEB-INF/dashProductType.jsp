@@ -36,32 +36,77 @@
                         <div>
                             <small><label for="imagen" class="form-label">Imagen</label></small>
                             <form:input type="text" path="imagen" cssClass="form-control" id="imagen"/>
+                            <form:errors path="imagen" class="text-danger d-block text-end error"/>
                         </div>
                     </div>
                 </div>
                 <div class="p-0 m-0 mb-4">
                     <small><form:label path="categoria" class="form-label">Nombre de categoría de producto</form:label></small>
                     <form:input path="categoria" class="form-control"/>
-                    <form:errors path="categoria" />
+                    <form:errors path="categoria" class="text-danger d-block text-end error"/>
                 </div>
                 <button type="submit" class="btn btn-dark col-2">Agregar</button>
             </form:form>
             <ul class="list-categories col-7 d-flex justify-content-between flex-wrap">
-                <c:forEach items="${productsTypes}" var="type">
+                <c:forEach items="${productsTypes}" var="type" varStatus="loop">
                     <li class="list-item d-flex align-items-center">
                         <img src="${type.imagen}" class="img-type" alt="${type.categoria}">
                         <p class="m-0 ms-4"><c:out value="${type.categoria}" /></p>
                     </li>
                     <form action="/dashboard/categories/${type.id}/delete" method="post" class="delete-form">
                         <input type="hidden" name="_method" value="delete">
+                        <button type="button" class="btn btn-dark" data-bs-toggle="modal"
+                                data-bs-target="#modalEdicion-${loop.index}" data-animal="${type.categoria}">
+                                <i class="bi bi-pencil-square"></i>
+                        </button>
                         <button type="button" class="btn btn-danger delete-button" onclick="confirmDelete(this)">
                             <i class="bi bi-trash3-fill"></i>
                         </button>
                     </form>
+
+                    <!-- Modal Edición -->
+                    <div class="modal fade" id="modalEdicion-${loop.index}" tabindex="-1" aria-labelledby="exampleModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="exampleModalLabel">
+                                        ${type.categoria} - Edición
+                                    </h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <form:form action="/dashboard/categories/${type.id}/editProductType" modelAttribute="productType"
+                                        method="post" class="mt-4">
+                                        <input type="hidden" name="_method" value="put">
+                                        <div class="col-md-8">
+                                            <div class="card-body">
+                                                <div>
+                                                    <small><label for="imagen" class="form-label">Imagen de categoría de producto</label></small>
+                                                    <form:input type="text" path="imagen" cssClass="form-control" id="categoria"
+                                                        value="${type.imagen}" />
+                                                    <form:errors path="imagen" class="text-danger d-block error" />
+                                                </div>
+                                                <div>
+                                                    <small><label for="categoria" class="form-label">Nombre de categoría de producto</label></small>
+                                                    <form:input type="text" path="categoria" cssClass="form-control" id="categoria"
+                                                        value="${type.categoria}" />
+                                                    <form:errors path="categoria" class="text-danger d-block error" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer mt-4">
+                                            <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Cancelar</button>
+                                            <button type="submit" class="btn btn-success" data-bs-dismiss="modal">Guardar cambios</button>
+                                        </div>
+                                    </form:form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </c:forEach>
             </ul>
         </main>
-
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
