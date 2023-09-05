@@ -38,7 +38,7 @@
                         <!-- Button trigger modal -->
                         <button class="btn btn-outline-success c-white b-white" type="submit" data-bs-toggle="offcanvas"
                         data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><i class="bi bi-cart4"></i> <span
-                                class="badge bg-success rounded-pill">5</span> <strong>$ 0</strong></button>
+                                class="badge bg-success rounded-pill">Tus productos</span> </button>
                     </li>
                 </ul>
             </div>

@@ -15,7 +15,8 @@
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 <link rel="stylesheet" href="./css/style.css">
-<title>PetJoy Shop</title>
+
+<title>PetJoy Shop </title>
 </head>
 
 <body>
@@ -49,7 +50,7 @@
 	</div>
 
 	<!-- Carrito de compras -->
-	<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight"
+	<div class="offcanvas offcanvas-end" width="500px" tabindex="-1" id="offcanvasRight"
 		aria-labelledby="offcanvasRightLabel">
 		<div class="offcanvas-header">
 			<h5 class="offcanvas-title" id="offcanvasRightLabel">Carrito de
@@ -58,8 +59,21 @@
 				aria-label="Close"></button>
 		</div>
 		<div class="offcanvas-body">
-			<div id="cart-content">
-				<!-- contenido del carrito -->
+			<!-- contenido del carrito -->
+			<div id="carrito">            
+				<table id="lista-carrito" class=" table u-full-width">
+					<thead>
+						<tr>
+							<th>Imagen</th>
+							<th>Nombre</th>
+							<th>Precio</th>
+							<th>Cantidad</th>
+							<th></th>
+						</tr>
+					</thead>
+					<tbody></tbody>
+				</table>
+				<a href="#" id="vaciar-carrito" class="button u-full-width">Vaciar Carrito</a>
 			</div>
 		</div>
 	</div>
@@ -111,7 +125,7 @@
 
 			<!-- Productos-->
 			<div>
-			<div class="d-flex flex-wrap justify-content text-center" >
+			<div class="d-flex flex-wrap justify-content text-center" id="lista-cursos">
 				<c:forEach items="${productsList}" var="producto" varStatus="status" >
 					<div class="card mt-2 m-1" style="max-width: 18rem;">
 						<div class="card-header d-flex justify-content-center align-self-cente">
@@ -123,17 +137,17 @@
 						</div>
 						<div class="card-body">
 							<h5 class="card-title">${producto.nombre}</h5>
-							<p class="card-text">$${producto.precio}</p>
+							<p class="card-text precio "><span>$${producto.precio}</span></p>
 						</div>
 						<div class="card-footer">
-							<button type="button" class="btn btn-dark">
+							<!-- <button type="button" class="btn btn-dark">
 								<i class="bi bi-dash-lg"></i>
 							</button>
 							<strong class="m-1">1</strong>
 							<button type="button" class="btn btn-dark">
 								<i class="bi bi-plus-lg"></i>
-							</button>
-							<button class="btn btn-success add-to-cart-button"
+							</button> -->
+							<button id="cart-button" class="btn btn-success add-to-cart-button agregar-carrito" data-id="$${producto.id}"
 								data-product-id="2">
 								<i class="bi bi-cart-fill"></i>Agregar
 							</button>
@@ -168,13 +182,13 @@
 													<p class="card-text">Precio: $${producto.precio}</p>
 													<hr width="215px">
 													<div class="card-footer">
-														<button type="button" class="btn btn-dark">
+														<!-- <button type="button" class="btn btn-dark">
 															<i class="bi bi-dash-lg"></i>
 														</button>
 														<strong class="m-1">1</strong>
 														<button type="button" class="btn btn-dark">
 															<i class="bi bi-plus-lg"></i>
-														</button>
+														</button> -->
 														<button type="button" class="btn btn-success">
 															<i class="bi bi-cart-fill"></i> Agregar
 														</button>
@@ -321,7 +335,7 @@
 			</section>
 		</div>
 	</footer>
-    
+    <script src="/js/car.js"></script>
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
