@@ -26,12 +26,19 @@
             <form:form action="/dashboard/${product.id}/editProduct" modelAttribute="product" enctype="multipart/form-data" method="post" class="mt-4">
                 <input type="hidden" name="_method" value="put">
                 <div class="col-md-8">
-                    <div class="card-body">
-                        <div>
-                            <small><label for="imagenFile" class="form-label">Imagen</label></small>
-                            <input type="file" name="imagenFile" class="form-control"/>
-                            <form:errors path="imagenFile" class="text-danger d-block error"/>
+                    <div class="card-body d-flex align-items-center">
+                        <div id="image-preview-container" class="col-md-8">
+                            <div id="image-preview-placeholder" class="gray-bg">
+                                <i class="bi bi-image" style="display: none;"></i>
+                            </div>
+                            <img id="preview-image" src="/img/products/${product.imagen}" alt="Imagen previa">
                         </div>
+                        
+                        <input type="file" id="imagenFile" name="imagenFile" accept="image/*" style="display: none;" onchange="previewImage(this)" />
+                        <label for="imagenFile" id="custom-file-button" class="btn btn-dark ms-5">
+                            Cambiar Imagen
+                        </label>               
+                        <form:errors path="imagenFile" class="text-danger d-block error"/>
                     </div>
                 </div>
                 <div class="d-flex justify-content-between">
@@ -121,6 +128,7 @@
         </div>
     </div>
 
+    <script src="/js/imagePreview.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
         crossorigin="anonymous">
