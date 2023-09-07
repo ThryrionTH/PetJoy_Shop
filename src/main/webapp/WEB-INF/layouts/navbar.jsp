@@ -10,6 +10,8 @@
             aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
+        <a class="navbar-brand c-white" href="/login"><i class="bi bi-shop"></i> Iniciar Sesión</a>
+        <a class="navbar-brand c-white" href="/signup"><i class="bi bi-shop"></i> Registrarse</a>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <c:if test="${not empty client_name}">
@@ -36,7 +38,7 @@
                   
                     <li class="nav-item">
                         <!-- Button trigger modal -->
-                        <button class="btn btn-outline-success c-white b-white" type="submit" data-bs-toggle="offcanvas"
+                        <button id="btnProdCart" class="btn btn-outline-success c-white b-white" type="submit" data-bs-toggle="offcanvas"
                         data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><i class="bi bi-cart4"></i> <span
                                 class="badge bg-success rounded-pill">Tus productos</span> </button>
                     </li>
