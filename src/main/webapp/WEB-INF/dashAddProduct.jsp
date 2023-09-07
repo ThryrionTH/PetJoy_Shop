@@ -25,11 +25,18 @@
             <h2 class="ml-green mb-4">Agregar producto</h2>
             <form:form action="/dashboard/add" modelAttribute="product" enctype="multipart/form-data" class="mt-4">
                 <div class="col-md-8">
-                    <div class="card-body">
-                        <div>
-                            <!-- <small><label for="imagen" class="form-label">Imagen</label></small> -->
-                            <input type="file" name="imagenFile" cssClass="form-control"/>
+                    <div class="card-body d-flex align-items-center">
+                        <div id="image-preview-container" class="col-md-8">
+                            <div id="image-preview-placeholder" class="gray-bg">
+                                <i class="bi bi-image"></i>
+                            </div>
+                            <img id="preview-image" src="" alt="Imagen previa" style="display: none">
                         </div>
+                        <input type="file" id="imagenFile" name="imagenFile" accept="image/*" style="display: none;"
+                            onchange="previewImage(this)" />
+                        <label for="imagenFile" id="custom-file-button" class="btn btn-dark ms-5">
+                            Seleccionar Imagen
+                        </label>
                     </div>
                 </div>
                 <div class="d-flex justify-content-between">
@@ -115,6 +122,7 @@
 
     </div>
 
+    <script src="/js/imagePreview.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
         crossorigin="anonymous">

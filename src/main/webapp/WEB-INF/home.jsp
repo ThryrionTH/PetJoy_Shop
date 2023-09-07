@@ -74,15 +74,14 @@
                 </div>
             </div>
 
-            <!-- Category -->
+        <!-- Category -->
+        <div class="my-4 ">
+            <h2 class="ml-green">Categorías</h2>
+            <div class="d-flex">
+                <div class="mundo container-fluid me-3">
+                    <h1 class="title">Mundo gatuno</h1>
+                    <div class="gatuno">
 
-            <div class="my-4 ">
-                <h2 class="ml-green">Categorías</h2>
-                <div class="d-flex">
-                    <div class="mundo container-fluid me-3">
-                        <h1 class="title">Mundo gatuno</h1>
-                        <div class="gatuno">
-                        </div>
                     </div>
                     <div class="mundo container-fluid ms-3">
                         <div class="perruno">
@@ -92,74 +91,64 @@
                 </div>
             </div>
 
-            <!-- Productos recomendados -->
-            <div>
-                <div class="my-4">
-                    <h2 class="ml-green">Productos recomendados</h2>
-                    <div class="d-flex flex-wrap justify-content-between" id="lista-cursos">
-                        <c:forEach items="${productsList}" var="producto" varStatus="status">
-                            <div class="card m-1" style="max-width: 18rem;">
-                                <div class="card-header d-flex justify-content-center align-self-cente">
-                                    <img src="/img/products/${producto.imagen}" alt="${producto.nombre}" height="150px">
-                                    <button type="button" class="btn btn-secondary modal-product" data-bs-toggle="modal"
-                                            data-bs-target="#modalProduct-${status.index}">
-                                        <i class="bi bi-search"></i>
-                                    </button>
-                                </div>
-                                <div class="card-body">
-                                    <h5 class="card-title">${producto.nombre}</h5>
-                                    <p class="card-text precio "><span>$${producto.precio}</span></p>
-                                </div>
-                                <div class="card-footer">
-                                    <button type="button" class="btn btn-dark"><i class="bi bi-dash-lg"></i></button>
-                                    <strong class="m-1">1</strong>
-                                    <button type="button" class="btn btn-dark"><i class="bi bi-plus-lg"></i></button>
 
-                                    <button id="cart-button" class="btn btn-success add-to-cart-button agregar-carrito" data-id="$${producto.id}"
-                                            data-product-id="2">
-                                        <i class="bi bi-cart-fill"></i>Agregar
-                                    </button>                                
-                                </div>
+        <!-- Productos recomendados -->
+        <div>
+            <div class="my-4">
+                <h2 class="ml-green">Productos recomendados</h2>
+                <div class="d-flex flex-wrap justify-content-between">
+                    <c:forEach items="${productsList}" var="producto" varStatus="status">
+                        <div class="card m-1" style="max-width: 18rem;">
+                            <div class="card-header d-flex justify-content-center align-self-cente">
+                                <img src="/img/products/${producto.imagen}" alt="${producto.nombre}" height="150px">
+                                <button type="button" class="btn btn-secondary modal-product" data-bs-toggle="modal"
+                                    data-bs-target="#modalProduct-${status.index}">
+                                    <i class="bi bi-search"></i>
+                                </button>
                             </div>
+                            <div class="card-body">
+                                <h5 class="card-title">${producto.nombre}</h5>
+                                <p class="card-text">$${producto.precio}</p>
+                            </div>
+                            <div class="card-footer">
+                                <button class="btn btn-success add-to-cart-button" data-product-id="2"><i class="bi bi-cart-fill"></i>Agregar</button>
+                            </div>
+                        </div>
+        
+                        <!-- Modal -->
+                        <div class="modal fade" id="modalProduct-${status.index}" tabindex="-1"
+                            aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="exampleModalLabel">${producto.nombre}</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="mb-3" style="max-width: 540px;">
+                                            <div class="row g-0">
+                                                <div class="col-md-5 d-flex align-items-center">
+                                                    <img src="/img/products/${producto.imagen}" alt="${producto.nombre}" height="150px">
+                                                </div>
+                                                <div class="col-md-7">
+                                                    <div class="card-body">
+                                                        <h5 class="card-title">${producto.nombre}</h5>
+                                                        <p class="card-text"><small class="text-body-secondary">Código de producto:000000</small></p>
+                                                        <p class="card-text">Precio: $${producto.precio}</p>
+                                                        <hr width="215px">
+                                                        <button id="cart-button" class="btn btn-success add-to-cart-button agregar-carrito" data-id="$${producto.id}"
+                                                            data-product-id="2">
+                                                            <i class="bi bi-cart-fill"></i>Agregar
+                                                        </button>
 
-                            <!-- Modal -->
-                            <div class="modal fade" id="modalProduct-${status.index}" tabindex="-1"
-                                 aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog modal-dialog-centered">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h1 class="modal-title fs-5" id="exampleModalLabel">${producto.nombre} MODAL</h1>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                    aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <div class="mb-3" style="max-width: 540px;">
-                                                <div class="row g-0">
-
-                                                    <div class="col-md-7">
-                                                        <div class="card-body">
-                                                            <div class="col-md-5 d-flex align-items-center">
-                                                                <img src="/img/products/${producto.imagen}" alt="${producto.nombre}" height="150px">
-                                                            </div>
-
-                                                            <h5 class="card-title">${producto.nombre}</h5>
-                                                            <p class="card-text"><small class="text-body-secondary">Código de producto:000000</small></p>
-                                                            <p class="card-text precio "><span>$${producto.precio}</span></p>
-                                                            <hr width="215px">
-                                                            <div>
-                                                                <button type="button" class="btn btn-dark"><i class="bi bi-dash-lg"></i></button>
-                                                                <strong class="m-1">1</strong>
-                                                                <button type="button" class="btn btn-dark"><i class="bi bi-plus-lg"></i></button>
-                                                                <button id="cart-button" class="btn btn-success add-to-cart-button agregar-carrito" data-id="$${producto.id}"
-                                                                        data-product-id="2">
-                                                                    <i class="bi bi-cart-fill"></i>Agregar
-                                                                </button>
-                                                            </div>
-                                                        </div>
                                                     </div>
                                                     <p class="mt-4">${producto.descripcion}</p>
                                                 </div>
-                                            </div>
+
+                                                <p class="mt-4">${producto.descripcion}</p>
+                                                </div>
+
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
