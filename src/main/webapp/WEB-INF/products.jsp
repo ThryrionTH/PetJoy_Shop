@@ -80,9 +80,9 @@
                     <a href="/products?idCateg=${category.id}"
                        style="text-decoration: none;">
                         <div
-                            class="d-flex align-items-center justify-content-around bg-green rounded ${cssClass}"
+                            class="d-flex align-items-center justify-content-around bg-green rounded ${cssClass} me-3"
                             style="width: 14rem;">
-                            <img src="img/categories/${category.imagen}"
+                            <img src="${category.imagen}"
                                  alt="imagen categoría" height="100px">
                             <p class="text-center m-0">${category.categoria}</p>
                         </div>
@@ -110,9 +110,9 @@
 
                 <!-- Productos-->
                 <div>
-                    <div class="d-flex flex-wrap justify-content text-center" id="lista-cursos">
+                    <div class="d-flex flex-wrap justify-content-between text-center" id="lista-cursos">
                         <c:forEach items="${productsList}" var="producto" varStatus="status" >
-                            <div class="card mt-2 m-1" style="max-width: 18rem;">
+                            <div class="card mt-2 m-1" style="width: 18rem;">
                                 <div class="card-header d-flex justify-content-center align-self-cente">
                                     <img src="/img/products/${producto.imagen}" alt="${producto.nombre}" height="150px">
                                     <button type="button" class="btn btn-secondary modal-product"
