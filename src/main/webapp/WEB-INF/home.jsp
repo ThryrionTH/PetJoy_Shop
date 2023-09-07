@@ -76,7 +76,6 @@
         </div>
 
         <!-- Category -->
-
         <div class="my-4 ">
             <h2 class="ml-green">Categorías</h2>
             <div class="d-flex">
@@ -112,9 +111,6 @@
                                 <p class="card-text">$${producto.precio}</p>
                             </div>
                             <div class="card-footer">
-                                <button type="button" class="btn btn-dark"><i class="bi bi-dash-lg"></i></button>
-                                <strong class="m-1">1</strong>
-                                <button type="button" class="btn btn-dark"><i class="bi bi-plus-lg"></i></button>
                                 <button class="btn btn-success add-to-cart-button" data-product-id="2"><i class="bi bi-cart-fill"></i>Agregar</button>
                             </div>
                         </div>
@@ -140,18 +136,15 @@
                                                         <h5 class="card-title">${producto.nombre}</h5>
                                                         <p class="card-text"><small class="text-body-secondary">Código de producto:000000</small></p>
                                                         <p class="card-text">Precio: $${producto.precio}</p>
-                                                    <hr width="215px">
-                                                        <div>
-                                                            <button type="button" class="btn btn-dark"><i class="bi bi-dash-lg"></i></button>
-                                                            <strong class="m-1">1</strong>
-                                                            <button type="button" class="btn btn-dark"><i class="bi bi-plus-lg"></i></button>
-                                                            <button type="button" class="btn btn-success"><i class="bi bi-cart-fill"></i> Agregar
-                                                            </button>
-                                                        </div>
+                                                        <hr width="215px">
+                                                        <button id="cart-button" class="btn btn-success add-to-cart-button agregar-carrito" data-id="$${producto.id}"
+                                                            data-product-id="2">
+                                                            <i class="bi bi-cart-fill"></i>Agregar
+                                                        </button>
                                                     </div>
                                                 </div>
                                                 <p class="mt-4">${producto.descripcion}</p>
-                                            </div>
+                                                </div>
                                         </div>
                                     </div>
                                     <div class="modal-footer">

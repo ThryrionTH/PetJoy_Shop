@@ -28,6 +28,8 @@ public class SeguridadWeb {
                 .permitAll()
                 .requestMatchers(new AntPathRequestMatcher("/dashboard/**"))
                 .hasAnyRole(ADMIN)
+                .requestMatchers(new AntPathRequestMatcher("/dashboard/*/delete"))
+                .hasRole(ADMIN)
             .anyRequest()
                 .permitAll();
         })

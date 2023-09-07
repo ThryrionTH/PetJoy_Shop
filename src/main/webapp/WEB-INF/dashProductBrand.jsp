@@ -52,6 +52,7 @@
                                 <i class="bi bi-pencil-square"></i>
                         </button>
                         <button type="button" class="btn btn-danger delete-button" onclick="confirmDelete(this)">
+                            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
                             <i class="bi bi-trash3-fill"></i>
                         </button>
                     </form>

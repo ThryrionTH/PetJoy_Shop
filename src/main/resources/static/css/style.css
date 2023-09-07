@@ -269,3 +269,23 @@ text-decoration: none;
 color: white;
 font-weight: bold;
 }
+
+#image-preview-container{
+    background-color: #808080;
+    width: 180px;
+    height: 130px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+}
+
+#image-preview-container i{
+    font-size: 60px;
+}
+
+#image-preview-container img{
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+}
