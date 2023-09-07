@@ -210,4 +210,14 @@ public class ProductController {
         }
         return "redirect:/dashboard";
     }
+
+    // @PostMapping("/{id}/delete")
+    // public String deleteProduct(@PathVariable("id") Long id) {
+    //     Product product = productService.findById(id);
+    //     if (product != null) {
+    //         product.setActive(0);
+    //         productService.update(product);
+    //     }
+    //     return "redirect:/dashboard";
+    // }
 }

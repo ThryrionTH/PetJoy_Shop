@@ -58,6 +58,7 @@
                                 <div class="card-footer d-flex justify-content-between">
                                     <form action="dashboard/${product.id}/delete" method="post" id="deleteForm"> 
                                         <input type="hidden" name="_method" value="delete">
+                                        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
                                         <button type="button" class="btn btn-danger" onclick="confirmDeleteProduct()"> <i class="bi bi-trash3-fill"></i> Eliminar</button>
                                     </form>
                                     <a href="/dashboard/${product.id}/edit" class="btn btn-dark"><i class="bi bi-pencil-square me-1"></i>Editar</a>
