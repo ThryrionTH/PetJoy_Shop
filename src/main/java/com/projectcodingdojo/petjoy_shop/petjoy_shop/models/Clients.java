@@ -12,6 +12,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
@@ -21,6 +22,7 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Past;
 import jakarta.validation.constraints.Size;
+import java.util.List;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -28,8 +30,8 @@ import lombok.Setter;
 @Getter
 @Setter
 @Table(name = "clients")
-public class Clients extends BaseModel{
-    
+public class Clients extends BaseModel {
+
     @NotNull
     @NotBlank(message = "El nombre no debe estar vacio")
     @Size(min = 3, max = 40, message = "El nombre debe tener minimo 3 caracteres")
@@ -77,22 +79,21 @@ public class Clients extends BaseModel{
     @Size(max = 60, message = "La dirección maximo debe tener 60 caracteres")
     private String direccion;
 
-    
-  
-    public Clients() {}
+    @OneToMany(mappedBy = "cliente", fetch = FetchType.LAZY)
+    private List<Factura> facturas; 
 
-    public Clients(String nombre, String apellido, String email, String contrasena)  {
-        this.nombre = nombre;
-        this.apellido = apellido;
-        this.email = email; 
-        this.contrasena = contrasena;
+    public Clients() {
     }
 
-
+    public Clients(String nombre, String apellido, String email, String contrasena) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.email = email;
+        this.contrasena = contrasena;
+    }
 
     @ManyToOne(fetch = FetchType.EAGER) //Tiene que leer el dato antes de cargar todo
     @JoinColumn(name = "role_id")
     private Role role;
 
 }
-

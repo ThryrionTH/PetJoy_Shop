@@ -70,10 +70,10 @@
             <c:if test="${not empty error}">
                 <p class="text-danger">${error}</p>
             </c:if>
-            <input type="submit" value="Sign Up" class="btn btn-primary" />
+            <input type="submit" value="Registrarse" class="btn btn-primary" />
         </form:form>
         <br>
-        <a href="/" class="btn btn-secondary">Cancel</a>
+        <a href="/" class="btn btn-secondary">Cancelar</a>
     </div>
 </body>
 

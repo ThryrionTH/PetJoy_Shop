@@ -19,6 +19,8 @@ import com.projectcodingdojo.petjoy_shop.petjoy_shop.models.ProductType;
 import com.projectcodingdojo.petjoy_shop.petjoy_shop.services.ProductService;
 import com.projectcodingdojo.petjoy_shop.petjoy_shop.services.ProductTypeService;
 
+import jakarta.servlet.http.HttpSession;
+
 @Controller
 @RequestMapping("/")
 public class HomeController {
@@ -39,8 +41,11 @@ public class HomeController {
     }
 
     @GetMapping("/verification")
-    public String verificationClient() {
-        
+    public String verificationClient(HttpSession session, Model model) {
+		Long clientId = (Long) session.getAttribute("client_id");
+        if (clientId != null) {
+            return "redirect:/checkout";
+        }
         return "verification";
     }
 

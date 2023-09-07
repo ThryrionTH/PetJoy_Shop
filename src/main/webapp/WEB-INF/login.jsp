@@ -47,7 +47,7 @@
                     <p class="text-danger">${error}</p>
                 </c:if>
                 <br>
-                <a href="/" class="btn btn-secondary">Cancel</a>
+                <a href="/" class="btn btn-secondary">Cancelar</a>
             </div>
         </div>
     </div>

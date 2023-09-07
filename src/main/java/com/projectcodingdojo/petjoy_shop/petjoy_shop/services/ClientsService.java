@@ -19,10 +19,4 @@ public class ClientsService extends BaseService<Clients> {
         return clientsRepository.findByEmail(email);
     }
 
-  
-
-
-
-  
-
 }

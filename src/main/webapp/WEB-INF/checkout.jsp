@@ -20,50 +20,24 @@
         <a href="/logout">Log out</a>
         <h2 class="mb-4">Tu factura</h2>
         <a href="/">Home</a>
-        <!-- <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>Number of Table</th>
-                    <th>Guest Name</th>
-                    <th># Guest</th>
-                    <th>Arrived at</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                <c:forEach items="${tables}" var="table">
-                    <tr>
-                        <td>
-                            <a href="/tables/${table.id}">
-                                <c:out value="${table.id}" />
-                            </a>
-                        </td>
-                        <td>
-                            <c:out value="${table.guest_name}" />
-                        </td>
-                        <td>
-                            <c:out value="${table.guests}" />
-                        </td>
-                        <td>
-                            <c:out value="${table.createdAt}" />
-                        </td>
-                        <td>
-                            <form action="/tables/${table.id}/delete" method="post" class="d-inline">
-                                <input type="hidden" name="_method" value="DELETE">
-                                <button type="button" class="btn btn-danger"
-                                    onclick="showConfirmation(this)">Finished</button>
-                            </form>
-                            <a href="/tables/${table.id}/edit" class="btn btn-primary">Edit</a>
-                            <a href="/tables/${table.id}/giveup" class="btn btn-primary">Give Up Table</a>
-                        </td>
-                    </tr>
-                </c:forEach>
-            </tbody>
-        </table>
-        <a href="/tables">See All Tables</a>
-        <a href="/tables/open">See Open Tables</a>
-        <a href="/tables/new" class="btn btn-primary">+ New Table</a>
-    </div> -->
+        <h3 class="mb-4">
+            Nombre: <c:out value="${client.nombre}" />
+        </h3>
+        <h3 class="mb-4">
+            Apellido: <c:out value="${client.apellido}" />
+        </h3>
+        <h3 class="mb-4">
+            Nro de identificación: <c:out value="${client.nro_identificacion}" />
+        </h3>
+        <h3 class="mb-4">
+            Email: <c:out value="${client.email}" />
+        </h3>
+        <h3 class="mb-4">
+            Celular: <c:out value="${client.celular}" />
+        </h3>
+        
+        <a href="/checkout/pay" class="btn btn-primary">Pagar</a>
+    </div>
 </body>
 
 </html>

@@ -3,10 +3,12 @@ package com.projectcodingdojo.petjoy_shop.petjoy_shop.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.projectcodingdojo.petjoy_shop.petjoy_shop.models.Clients;
@@ -46,6 +48,18 @@ public class ClientsController {
         return "signup";
     }
 
+    @RequestMapping("/checkout")
+    public String clientCheckout(HttpSession session, Model model) {
+        Long clientId = (Long) session.getAttribute("client_id");
+        if (clientId == null) {
+            return "redirect:/login1";
+        }
+
+        Clients client = clientsService.findById(clientId);
+        model.addAttribute("client", client);
+        return "checkout";
+    }
+    
     @PostMapping("/signup")
     public String registerClients(
             @Valid @ModelAttribute("client") Clients client, BindingResult result, HttpSession session,
@@ -66,8 +80,6 @@ public class ClientsController {
             return "signup";
         }
   
-
-        
         Clients newClient = clientsService.save(client);
 
         session.setAttribute("client_name", newClient.getNombre());
@@ -83,7 +95,5 @@ public class ClientsController {
 
         return "redirect:/";
     }
-
-  
 
 }

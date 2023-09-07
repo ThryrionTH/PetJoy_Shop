@@ -83,4 +83,8 @@ public class Product extends BaseModel{
     @JoinColumn(name = "tipo_producto_id")
     private ProductType tipo_producto;
 
+    
+    public void DisminuirStock(int cantidad){
+        this.stock = this.stock - cantidad;
+    }
 }
