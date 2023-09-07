@@ -222,7 +222,7 @@ body {
         display: grid;
         grid-template-columns: 225px auto;
     }
-    
+
 }
 
 /* dashboard */
@@ -262,10 +262,24 @@ body {
     width: 500px !important;
 }
 .borrar-producto {
-background-color: red;
-border-radius: 50%;
-padding: 5px 10px;
-text-decoration: none;
-color: white;
-font-weight: bold;
+    background-color: red;
+    border-radius: 50%;
+    padding: 5px 10px;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}
+
+.sombreado_categ{
+    background-color: #4DB46F;
+    color: white;
+}
+
+.ocultar {
+    opacity: .7;
+    cursor: default !important;
+    pointer-events: none;
+}
+.cursor{
+    cursor: pointer;
 }

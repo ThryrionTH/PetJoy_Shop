@@ -14,43 +14,39 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 public class SeguridadWeb {
 
     @Value("${role_user}")
-    private String USER; 
+    private String USER;
     @Value("${role_admin}")
-    private String ADMIN; 
-    
+    private String ADMIN;
+
     @Bean
-    SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception{
-        
+    SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+
         http
-        .authorizeHttpRequests((request) ->{
-            request
-            .requestMatchers( new AntPathRequestMatcher("/"))
-                .permitAll()
-                .requestMatchers(new AntPathRequestMatcher("/dashboard/**"))
-                .hasAnyRole(ADMIN)
-            .anyRequest()
-                .permitAll();
-        })
-        .formLogin((login ->{
-            Customizer.withDefaults();
-            login
-                .loginPage("/login")
-                .defaultSuccessUrl("/user");
-        }))
-        .logout(logout -> logout 
-            .logoutUrl("/logout")
-            .logoutSuccessUrl("/")
-            .invalidateHttpSession(true)
-            .clearAuthentication(true)
-            .deleteCookies("JSESSIONID")
-        )
-        .csrf(Customizer.withDefaults()); //evitar suplantación en el sitio
-       
-       
-            
+                .authorizeHttpRequests((request) -> {
+                    request
+                            .requestMatchers(new AntPathRequestMatcher("/"))
+                            .permitAll()
+                            .requestMatchers(new AntPathRequestMatcher("/dashboard/**"))
+                            .hasAnyRole(ADMIN)
+                            .anyRequest()
+                            .permitAll();
+                })
+                .formLogin((login -> {
+                    Customizer.withDefaults();
+                    login
+                            .loginPage("/login")
+                            .defaultSuccessUrl("/user");
+                }))
+                .logout(logout -> logout
+                .logoutUrl("/logout")
+                .logoutSuccessUrl("/")
+                .invalidateHttpSession(true)
+                .clearAuthentication(true)
+                .deleteCookies("JSESSIONID")
+                )
+                .csrf(Customizer.withDefaults()); //evitar suplantación en el sitio
+
         return http.build();
     }
 
-
-    
 }
