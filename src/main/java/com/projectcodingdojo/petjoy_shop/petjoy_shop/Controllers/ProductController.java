@@ -46,7 +46,6 @@ public class ProductController {
         return "dashProducts";
     }
 
-
     @GetMapping("/add")
     public String showAddForm(Model model) {
         model.addAttribute("product", new Product());
@@ -62,7 +61,6 @@ public class ProductController {
 
         return "dashAddProduct";
     }
-
 
     @PostMapping("/add")
     public String saveProduct(@Valid @ModelAttribute("product") Product product,
@@ -125,11 +123,81 @@ public class ProductController {
             productService.save(product);
         }
 
+        productService.save(product);
         System.out.println("producto: " + product);
 
         return "redirect:/dashboard";
     }
 
+
+    @GetMapping("/{id}/edit")
+    public String showEditForm(@PathVariable("id") Long id, Model model) {
+        Product product = productService.findById(id);
+        model.addAttribute("product", product);
+        List<ProductBrand> productsBrands = productBrandService.findActive();
+        model.addAttribute("productsBrands", productsBrands);
+        List<ProductAnimal> productsAnimals = productAnimalService.findActive();
+        model.addAttribute("productsAnimals", productsAnimals);
+        List<ProductType> productsTypes = productTypeService.findActive();
+        model.addAttribute("productsTypes", productsTypes);
+
+        return "dashEditProduct";
+    }
+
+    @PutMapping("/{id}/editProduct")
+    public String editProduct(@PathVariable("id") Long id, @Valid @ModelAttribute("product") Product product,
+            @RequestParam("imagenFile") MultipartFile imagenFile, BindingResult result, Model model) {
+
+        if (result.hasErrors()) {
+            return "dashEditProduct";
+        }
+
+        Product existingProduct = productService.findById(id);
+        if (existingProduct == null) {
+            return "redirect:/dashboard"; 
+        }
+
+        existingProduct.setNombre(product.getNombre());
+        existingProduct.setCodigo(product.getCodigo());
+        existingProduct.setPrecio(product.getPrecio());
+        existingProduct.setStock(product.getStock());
+        existingProduct.setMarca_producto(product.getMarca_producto());
+        existingProduct.setProducto_animal(product.getProducto_animal());
+        existingProduct.setTipo_producto(product.getTipo_producto());
+        existingProduct.setFechaElaboracion(product.getFechaElaboracion());
+        existingProduct.setFechaVencimiento(product.getFechaVencimiento());
+        existingProduct.setDescripcion(product.getDescripcion());
+
+        if (!imagenFile.isEmpty()) {
+            String contentType = imagenFile.getContentType();
+
+            if (contentType != null && (contentType.equals("image/png") || contentType.equals("image/jpeg"))) {
+                try {
+                    String originalFileName = imagenFile.getOriginalFilename();
+                    String extension = originalFileName.substring(originalFileName.lastIndexOf("."));
+                    String fileName = existingProduct.getId() + extension;
+                    File imagenFileDestino = new File("src/main/resources/static/img/products", fileName);
+
+                    System.out.println("Image save path: " + imagenFileDestino.getAbsolutePath());
+
+                    byte[] bytes = imagenFile.getBytes();
+                    BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(imagenFileDestino));
+                    stream.write(bytes);
+                    stream.close();
+
+                    existingProduct.setImagen(fileName);
+                } catch (Exception e) {
+                    System.out.println("Error al subir el archivo");
+                }
+            } else {
+                result.rejectValue("imagenFile", "invalidFormat", "Solo se admiten formatos PNG o JPEG");
+                return "dashEditProduct";
+            }
+        }
+
+        productService.save(existingProduct);
+        return "redirect:/dashboard";
+    }
 
     @DeleteMapping("/{id}/delete")
     public String deleteProduct(@PathVariable("id") Long id) {
@@ -141,13 +209,4 @@ public class ProductController {
         return "redirect:/dashboard";
     }
 
-    // @PostMapping("/{id}/delete")
-    // public String deleteProduct(@PathVariable("id") Long id) {
-    //     Product product = productService.findById(id);
-    //     if (product != null) {
-    //         product.setActive(0);
-    //         productService.update(product);
-    //     }
-    //     return "redirect:/dashboard";
-    // }
 }
