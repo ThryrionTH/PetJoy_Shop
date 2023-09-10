@@ -55,39 +55,21 @@ public class FacturaController {
     @Value("${codigo_fact}")
     private String CODIGO_FACT;
 
-    @RequestMapping("/checkout-cart")
-    public String clientCheckout(HttpSession session, Model model) {
-        Clients client = new Clients();
-        model.addAttribute("client", client);
-        return "checkout_cart";
-    }
+    @Autowired
+    private HttpSession session;
 
     @GetMapping("/checkout-save")
-    public ResponseEntity<Object> clientCheckoutSave(String nombre, String apellido,
-            String documento, String telefono, String correo, String ciudad, String municipio, String direccion,
+    public ResponseEntity<Object> clientCheckoutSave(String ciudad, String municipio, String direccion,
             String descripcion, String entrega, String items_id, String items_cantidad) {
         String msg = "";
 
         try {
             // OBTENCION CLIENTE
-            Clients objCliente = new Clients();
-            objCliente.setNombre(nombre);
-            objCliente.setApellido(apellido);
-            objCliente.setNro_identificacion(documento);
-            objCliente.setCelular(telefono);
-            objCliente.setEmail(correo);
-            objCliente.setCiudad(!ciudad.trim().equals("") ? ciudad : "---");
-            objCliente.setDireccion(!direccion.trim().equals("") ? direccion : "---");
-            objCliente.setDepartamento("departamento");
-            objCliente.setContrasena("12345678");
-            Role role = roleService.findByNameContaining(USER_ROLE);
-            objCliente.setRole(role);
 
-            clientsService.save(objCliente);
-
-            if (objCliente.getId() != null) {
+            if (session.getAttribute("cliente") != null) {
                 // Obtencion Forma Pago
                 FormaPago objFormaPg = formaPgService.findByDescripcion(FORMA_PAGO_EFECTIVO).get();
+                Clients objCliente = (Clients) session.getAttribute("cliente");
 
                 if (objFormaPg != null) {
                     int nEntrega = Integer.parseInt(entrega);
@@ -169,18 +151,16 @@ public class FacturaController {
         }
         return lista;
     }
-    /*
-    // ANTERIOR
-   @RequestMapping("/checkout")
-    public String clientCheckout(HttpSession session, Model model) {
-        Long clientId = (Long) session.getAttribute("client_id");
-        if (clientId == null) {
-            return "redirect:/login1";
+
+    @GetMapping("/pedidos")
+    public String verMisPedidos(Model model) {
+        if (session.getAttribute("cliente") == null) {
+            return "redirect:/login";
         }
 
-        Clients client = clientsService.findById(clientId);
-        model.addAttribute("client", client);
-        return "checkout";
+        Clients objCliente = (Clients) session.getAttribute("cliente");
+        List<Factura> listFact = facturaService.findByIdClent(objCliente.getId());
+        model.addAttribute("facturas", listFact);
+        return "facturas";
     }
-     */
 }

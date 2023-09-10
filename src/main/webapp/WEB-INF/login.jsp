@@ -28,12 +28,12 @@
                     </div>
                     <div>
                         <label for="username" class="form-label">Usuario</label>
-                        <input type="text" name="username" id="username" class="form-control" />
+                        <input  type="text" name="username" id="username" class="form-control" />
                     </div>
                     <div class="mb-4">
                         <label for="contrasena" class="form-label">Contraseña</label>
                         <div class="input-group">
-                            <input type="password" name="password" id="password" class="form-control" />
+                            <input  type="password" name="password" id="password" class="form-control" />
                             <button class="btn btn-outline-secondary" type="button" id="togglePassword">
                                 <i class="bi bi-eye"></i>
                             </button>

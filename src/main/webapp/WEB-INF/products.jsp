@@ -60,15 +60,15 @@
             </div>
             <div class="offcanvas-body">
                 <jsp:include page="layouts/carrito.jsp"></jsp:include>
+                </div>
             </div>
-        </div>
 
 
-        <div class="container mt-5 mb-5">
+            <div class="container mt-5 mb-5">
 
-            <!-- categorias -->
-            <h2 class="ml-green">Categorías</h2>
-            <div class="d-flex justify-content mb-5">
+                <!-- categorias -->
+                <h2 class="ml-green">Categorías</h2>
+                <div class="d-flex justify-content mb-5">
                 <c:forEach items="${productsTypes}" var="category">
                     <c:if test='${category.id == idCateg}'>
                         <c:set value="sombreado_categ" var="cssClass"></c:set>
@@ -82,7 +82,7 @@
                         <div
                             class="d-flex align-items-center justify-content-around bg-green rounded ${cssClass} me-3"
                             style="width: 14rem;">
-                            <img src="${category.imagen}"
+                            <img src="img/categories/${category.imagen}"
                                  alt="imagen categoría" height="100px">
                             <p class="text-center m-0">${category.categoria}</p>
                         </div>
@@ -155,34 +155,25 @@
                                         <div class="modal-body">
                                             <div class="mb-3" style="max-width: 540px;">
                                                 <div class="row g-0">
-                                                    
-                                                    <div class="col-md-7">
-                                                        <div class="card-body">
-                                                            <div class="col-md-5 d-flex align-items-center">
+                                                    <div class="card-body">
+                                                        <div class="row">
+                                                            <div class="col-sm-5 d-flex align-items-center">
                                                                 <img src="/img/products/${producto.imagen}" alt="${producto.nombre}" height="150px">
                                                             </div>
-                                                            <h5 class="card-title">${producto.nombre}</h5>
-                                                            <p class="card-text">
-                                                                <small class="text-body-secondary">${producto.codigo}</small>
-                                                            </p>
-                                                            <p class="card-text precio"><span>$${producto.precio}</span></p>
-                                                            <hr width="215px">
-                                                            <div class="card-footer">
-                                                                <!-- <button type="button" class="btn btn-dark">
-                                                                        <i class="bi bi-dash-lg"></i>
-                                                                </button>
-                                                                <strong class="m-1">1</strong>
-                                                                <button type="button" class="btn btn-dark">
-                                                                        <i class="bi bi-plus-lg"></i>
-                                                                </button> -->
+                                                            <div class="col-sm-7">
+                                                                <h5 class="card-title">${producto.nombre}</h5>
+                                                                <p class="card-text"><small class="text-body-secondary">Código de producto:000000</small></p>
+                                                                <p class="card-text precio"><span>$${producto.precio}</span></p>
+                                                                <hr width="215px">
                                                                 <button id="cart-button" class="btn btn-success add-to-cart-button agregar-carrito" data-id="$${producto.id}"
                                                                         data-product-id="2">
                                                                     <i class="bi bi-cart-fill"></i>Agregar
-                                                                </button> 
+                                                                </button>
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <p class="mt-4">${producto.descripcion}</p>
+
                                                 </div>
                                             </div>
                                         </div>
