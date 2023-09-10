@@ -1,6 +1,7 @@
 package com.projectcodingdojo.petjoy_shop.petjoy_shop.controllers;
 
 import java.time.LocalDate;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -35,7 +36,7 @@ public class HomeController {
 
     @GetMapping("")
     public String home(Model model) {
-        addProductList(model);
+        addRandomProductList(model);
         LocalDate date = LocalDate.now().minusDays(MAYOR_EDAD_DIAS);
         return "home";
     }
@@ -91,5 +92,13 @@ public class HomeController {
         List<Product> productsList = productService.findActive();
         model.addAttribute("productsList", productsList);
     }
+
+	private void addRandomProductList(Model model) {
+		List<Product> productsList = productService.findActive(); // Obtén la lista completa de productos
+		Collections.shuffle(productsList); // Baraja la lista de productos de manera aleatoria
+		List<Product> randomProducts = productsList.stream().limit(8).collect(Collectors.toList()); // Selecciona los primeros 8 productos aleatorios
+		model.addAttribute("randomProducts", randomProducts); // Agrega la lista de productos aleatorios al modelo
+	}
+	
 
 }
