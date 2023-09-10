@@ -1,16 +1,21 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
 <link rel="stylesheet" href="/css/layouts/aside.css">
 
 <aside>
     <div class="container-sidebar">
         <div class="title-one text-light mb-3">
-            <h2>Hola,<strong>Tom</strong></h2>
+            <h2>Hola,<strong>
+                <c:out value="${sessionScope.nombreUsuario}" />
+            </strong></h2>
         </div>
         <div class="img-profile">
             <img src="../img/perfil.jpg" alt="Imagen de perfil">
-            <p class="text-secondary"><small>@Tom.pérez1208</small></p>
+            <sec:authorize access="isAuthenticated()">
+                <p class="text-secondary"><small><sec:authentication property="name"/></small></p>
+            </sec:authorize>
         </div>
         <div class="title-two text-light">
             <small>Menu principal</small>

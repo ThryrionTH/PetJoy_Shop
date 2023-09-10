@@ -30,6 +30,8 @@ public class SeguridadWeb {
                 .hasAnyRole(ADMIN)
                 .requestMatchers(new AntPathRequestMatcher("/dashboard/*/delete"))
                 .hasRole(ADMIN)
+                .requestMatchers(new AntPathRequestMatcher("/checkout-cart"))
+                .hasAnyRole(USER)
             .anyRequest()
                 .permitAll();
         })

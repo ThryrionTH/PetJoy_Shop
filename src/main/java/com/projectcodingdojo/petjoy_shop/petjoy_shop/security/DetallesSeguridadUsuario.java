@@ -17,10 +17,13 @@ import org.springframework.stereotype.Service;
 import com.projectcodingdojo.petjoy_shop.petjoy_shop.models.Clients;
 import com.projectcodingdojo.petjoy_shop.petjoy_shop.repositories.ClientsRepository;
 
+import jakarta.servlet.http.HttpSession;
+
 @Configuration
 @Service
 public class DetallesSeguridadUsuario implements UserDetailsService {
     @Autowired ClientsRepository clientsRepository;
+    @Autowired private HttpSession httpSession;
 
     @Bean
     public BCryptPasswordEncoder bCryptPasswordEncoder(){
@@ -39,6 +42,9 @@ public class DetallesSeguridadUsuario implements UserDetailsService {
             clients.getContrasena(), 
             getAuthorities(clients)
         );
+        httpSession.setAttribute("nombreUsuario", clients.getNombre());
+        httpSession.setAttribute("apellidoUsuario", clients.getApellido());
+
         return userDetail;
     }
      private List<GrantedAuthority> getAuthorities(Clients clients){

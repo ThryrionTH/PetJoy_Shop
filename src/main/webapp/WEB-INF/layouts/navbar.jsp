@@ -1,5 +1,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+
 
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg bg-body-tertiary" id="navbar-petjoy">
@@ -10,31 +12,45 @@
             aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <a class="navbar-brand c-white" href="/login"><i class="bi bi-shop"></i> Iniciar Sesión</a>
-        <a class="navbar-brand c-white" href="/signup"><i class="bi bi-shop"></i> Registrarse</a>
+
+        
+
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <c:if test="${not empty client_name}">
-                    <li class="nav-item">
-                        <a class="nav-link active c-white" aria-current="page" href="#"><i
-                                class="bi bi-person-circle"></i> ${client_name} ${client_apellido}</a>
-                    </li>
-                </c:if>
+            <sec:authorize access="isAuthenticated()">
+                <li class="nav-item">
+                    <a class="nav-link active c-white" aria-current="page" href="#">
+                        <i class="bi bi-person-circle"></i>
+                        <c:out value="${sessionScope.nombreUsuario}" />
+                        <c:out value="${sessionScope.apellidoUsuario}" />
+                    </a>
+                </li>
+            </sec:authorize>
 
             </ul>
             <div class="d-flex">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
+                        <sec:authorize access="!isAuthenticated()">
+                            <a class="nav-link active c-white" href="/login" aria-current="page"><i class="bi bi-box-arrow-in-right"></i> Iniciar Sesión</a>
+                        </sec:authorize>
+                    </li>
+                    <li>
+                        <sec:authorize access="!isAuthenticated()">
+                            <a class="nav-link active c-white" href="/signup" aria-current="page"><i class="bi bi-r-square"></i> Registrarse</a>
+                        </sec:authorize>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link active c-white" aria-current="page" href="products"><i
                                 class="bi bi-gift-fill"></i> Productos</a>
                     </li>
-                    <c:if test="${not empty client_name}">
+                    <sec:authorize access="isAuthenticated()">
                         <li class="nav-item">
-                            <a class="nav-link active c-white" aria-current="page" href="/logout">
+                            <a class="nav-link active c-white" aria-current="page" href="<c:url value='/logout' />">
                                 <i class="bi bi-box-arrow-right"></i> Logout
                             </a>
                         </li>
-                    </c:if>
+                    </sec:authorize>
                   
                     <li class="nav-item">
                         <!-- Button trigger modal -->
