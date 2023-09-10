@@ -71,6 +71,8 @@ public class ProductController {
         System.out.println("Image received: " + imagenFile.getOriginalFilename());
         System.out.println(imagenFile.getOriginalFilename());
         System.out.println("GetName: " + imagenFile.getName());
+        
+
 
         if (result.hasErrors()) {
             return "dashAddProduct";
