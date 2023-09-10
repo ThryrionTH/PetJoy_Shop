@@ -78,12 +78,10 @@
                     </c:if>
 
                     <a href="/products?idCateg=${category.id}"
-                       style="text-decoration: none;">
-                        <div
-                            class="d-flex align-items-center justify-content-around bg-green rounded ${cssClass} me-3"
+                       style="text-decoration: none; color:black;">
+                        <div class="d-flex align-items-center justify-content-around bg-green rounded ${cssClass} me-3 pe-2"
                             style="width: 14rem;">
-                            <img src="${category.imagen}"
-                                 alt="imagen categoría" height="100px">
+                            <img src="${category.imagen}" alt="imagen categoría" height="100px">
                             <p class="text-center m-0">${category.categoria}</p>
                         </div>
                     </a>
@@ -238,90 +236,35 @@
             </c:if>
         </div>
 
-        <!-- Footer -->
-        <footer class="text-center text-lg-start text-white"
-                style="background-color: #202123">
-            <!-- Grid container -->
-            <div class="container p-4 pb-0">
-                <!-- Section: Links -->
-                <section class="">
-                    <!--Grid row-->
-                    <div class="row">
-                        <!-- Grid column -->
-                        <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
-                            <h6 class="text-uppercase mb-4 font-weight-bold">PetJoy Shop
-                            </h6>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                Ad, eligendi accusamus nemo natus quod quaerat sunt adipisci.</p>
-                        </div>
-                        <!-- Grid column -->
-
-                        <hr class="w-100 clearfix d-md-none" />
-
-                        <!-- Grid column -->
-                        <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
-                            <h6 class="text-uppercase mb-4 font-weight-bold">Products</h6>
-                            <p>
-                                <a class="text-white">LoremIpsum</a>
-                            </p>
-                            <p>
-                                <a class="text-white">LoremIpsum</a>
-                            </p>
-                        </div>
-                        <!-- Grid column -->
-
-                        <hr class="w-100 clearfix d-md-none" />
-
-                        <!-- Grid column -->
-                        <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
-                            <h6 class="text-uppercase mb-4 font-weight-bold">Useful links
-                            </h6>
-                            <p>
-                                <a class="text-white">Your Account</a>
-                            </p>
-                            <p>
-                                <a class="text-white">Become an Affiliate</a>
-                            </p>
-                        </div>
-                        <hr class="w-100 clearfix d-md-none" />
-
-                        <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
-                            <h6 class="text-uppercase mb-4 font-weight-bold">Contact</h6>
-                            <p>
-                                <i class="fas fa-home mr-3"></i> New York, NY 10012, US
-                            </p>
-                            <p>
-                                <i class="fas fa-envelope mr-3"></i> info@gmail.com
-                            </p>
-                            <p>
-                                <i class="fas fa-phone mr-3"></i> + 01 234 567 88
-                            </p>
-                        </div>
+        <div class="container advantages">
+            <div class="row">
+                <div class="col-md-1"></div>
+                <div class="col-md-3">
+                    <div class="text-center">
+                        <i class="bi bi-emoji-heart-eyes mb-3"></i>
+                        <h5>Productos de alta calidad que tu mascota amará.</h5>
                     </div>
-                </section>
-                <hr class="my-3">
-                <section class="p-3 pt-0">
-                    <div class="row d-flex align-items-center">
-                        <div class="col-md-7 col-lg-8 text-center text-md-start">
-                            <div class="p-3">
-                                © 2023 Copyright: <a class="text-white" href="#">petjoyshop.com</a>
-                            </div>
-                        </div>
-                        <div class="col-md-5 col-lg-4 ml-lg-0 text-center text-md-end">
-                            <a class="btn btn-outline-light btn-floating m-1"
-                               class="text-white" role="button"> <i class="bi bi-facebook"></i>
-                            </a> <a class="btn btn-outline-light btn-floating m-1"
-                                    class="text-white" role="button"> <i class="bi bi-twitter"></i>
-                            </a> <a class="btn btn-outline-light btn-floating m-1"
-                                    class="text-white" role="button"> <i class="bi bi-google"></i>
-                            </a> <a class="btn btn-outline-light btn-floating m-1"
-                                    class="text-white" role="button"> <i class="bi bi-instagram"></i>
-                            </a>
-                        </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="text-center">
+                        <i class="bi bi-truck mb-3"></i>
+                        <h5>Entrega rápida y segura en toda la ciudad.</h5>
                     </div>
-                </section>
+                </div>
+                <div class="col-md-3">
+                    <div class="text-center">
+                        <i class="bi bi-chat-dots mb-3"></i>
+                        <h5>Atención al cliente 24/7 para resolver tus dudas.</h5>
+                    </div>
+                </div>
+                <div class="col-md-1 text-center">
+                    <img src="/img/doggy.png" alt="Perrito feliz" class="img-fluid">
+                </div>
             </div>
-        </footer>
+        </div>
+        
+        <%@ include file="./layouts/footer.jsp"%>
+
         <script src="/js/car.js"></script>
         <script
             src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"

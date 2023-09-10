@@ -209,4 +209,22 @@ public class ProductController {
         return "redirect:/dashboard";
     }
 
+
+    // Facturación
+
+    @GetMapping("/bills")
+    public String showBills(){
+        return "dashBills";
+    }
+
+    @GetMapping("/bills/1")
+    public String showBillsDetail(){
+        return "dashBillDetail";
+    }
+
+    // @GetMapping("/bills/{id}")
+    // public String showBillsDetail(@PathVariable("id") Long id){
+    //     return "dashBillDetail";
+    // }
+
 }

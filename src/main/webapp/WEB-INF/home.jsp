@@ -62,16 +62,12 @@
                 </div>
                 <div class="col-md-8">
                     <div class="card-body">
-                        <h5 class="card-title ml-green">Lorem ipsum dolor sit amet consectetur adipisicing
-                            elit. Perspiciatis quidem vel, nobis a omnis ab libero dolorum cupiditate.</h5>
-                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
-                            additional content. This content is a little bit longer. Lorem ipsum dolor sit amet
-                            consectetur adipisicing elit. Obcaecati sed autem rerum alias provident ipsam maxime vel
-                            veritatis.
-                        </p>
-                        <button type="button" class="btn btn-success">Lorem ipsum</button>
+                        <h4 class="card-title ml-green">¡Descubre el poder de nuestros productos!</h4>
+                        <p class="card-text">Mejora tu vida con nuestra amplia gama de productos de alta calidad. Nuestros productos están diseñados para brindarte comodidad y satisfacción en cada uso. ¡No esperes más para experimentar la diferencia!</p>
+                        <a href="/productos" class="btn btn-success">Ver Productos</a>
                     </div>
                 </div>
+                
             </div>
         </div>
 
@@ -93,11 +89,12 @@
         </div>
 
         <!-- Productos recomendados -->
+        
         <div>
             <div class="my-4">
                 <h2 class="ml-green">Productos recomendados</h2>
                 <div class="d-flex flex-wrap justify-content-between">
-                    <c:forEach items="${productsList}" var="producto" varStatus="status">
+                    <c:forEach items="${randomProducts}" var="producto" varStatus="status">
                         <div class="card m-1" style="width: 18rem;">
                             <div class="card-header d-flex justify-content-center align-self-cente">
                                 <img src="/img/products/${producto.imagen}" alt="${producto.nombre}" height="150px">
@@ -161,91 +158,8 @@
         </div>
     </div>
 
-    <!-- Footer -->
-    <footer class="text-center text-lg-start text-white" style="background-color: #202123">
-        <!-- Grid container -->
-        <div class="container p-4 pb-0">
-            <!-- Section: Links -->
-            <section class="">
-                <!--Grid row-->
-                <div class="row">
-                    <!-- Grid column -->
-                    <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
-                        <h6 class="text-uppercase mb-4 font-weight-bold">
-                            PetJoy Shop
-                        </h6>
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad, eligendi accusamus nemo natus
-                            quod quaerat sunt adipisci.
-                        </p>
-                    </div>
-                    <!-- Grid column -->
+    <%@ include file="./layouts/footer.jsp"%>
 
-                    <hr class="w-100 clearfix d-md-none" />
-
-                    <!-- Grid column -->
-                    <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
-                        <h6 class="text-uppercase mb-4 font-weight-bold">Products</h6>
-                        <p>
-                            <a class="text-white">LoremIpsum</a>
-                        </p>
-                        <p>
-                            <a class="text-white">LoremIpsum</a>
-                        </p>
-                    </div>
-                    <!-- Grid column -->
-
-                    <hr class="w-100 clearfix d-md-none" />
-
-                    <!-- Grid column -->
-                    <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
-                        <h6 class="text-uppercase mb-4 font-weight-bold">
-                            Useful links
-                        </h6>
-                        <p>
-                            <a class="text-white">Your Account</a>
-                        </p>
-                        <p>
-                            <a class="text-white">Become an Affiliate</a>
-                        </p>
-                    </div>
-                    <hr class="w-100 clearfix d-md-none" />
-
-                    <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
-                        <h6 class="text-uppercase mb-4 font-weight-bold">Contact</h6>
-                        <p><i class="fas fa-home mr-3"></i> New York, NY 10012, US</p>
-                        <p><i class="fas fa-envelope mr-3"></i> info@gmail.com</p>
-                        <p><i class="fas fa-phone mr-3"></i> + 01 234 567 88</p>
-                    </div>
-                </div>
-            </section>
-            <hr class="my-3">
-            <section class="p-3 pt-0">
-                <div class="row d-flex align-items-center">
-                    <div class="col-md-7 col-lg-8 text-center text-md-start">
-                        <div class="p-3">
-                            © 2023 Copyright:
-                            <a class="text-white" href="#">petjoyshop.com</a>
-                        </div>
-                    </div>
-                    <div class="col-md-5 col-lg-4 ml-lg-0 text-center text-md-end">
-                        <a class="btn btn-outline-light btn-floating m-1" class="text-white" role="button">
-                            <i class="bi bi-facebook"></i>
-                        </a>
-                        <a class="btn btn-outline-light btn-floating m-1" class="text-white" role="button">
-                            <i class="bi bi-twitter"></i>
-                        </a>
-                        <a class="btn btn-outline-light btn-floating m-1" class="text-white" role="button">
-                            <i class="bi bi-google"></i>
-                        </a>
-                        <a class="btn btn-outline-light btn-floating m-1" class="text-white" role="button">
-                            <i class="bi bi-instagram"></i>
-                        </a>
-                    </div>
-                </div>
-            </section>
-        </div>
-    </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
         crossorigin="anonymous">

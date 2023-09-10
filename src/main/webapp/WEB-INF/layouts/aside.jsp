@@ -18,15 +18,19 @@
         <div class="sidebar">
 
             <ul class="sidebar-options">
-                <li class="me-4 active"><i class="bi bi-menu-button-wide"></i><a href="#">Productos</a></li>
-                <li class="me-4"><i class="bi bi-receipt"></i><a href="#">Facturas</a></li>
-                <li class="me-4"><i class="bi bi-people-fill"></i><a href="#">Usuarios</a></li>
+                <li class="me-4"><i class="bi bi-menu-button-wide"></i><a href="/dashboard">Productos</a></li>
+                <li class="me-4"><i class="bi bi-menu-button-wide"></i><a href="/dashboard/categories">Categorias</a></li>
+                <li class="me-4"><i class="bi bi-menu-button-wide"></i><a href="/dashboard/animals">Animales</a></li>
+                <li class="me-4"><i class="bi bi-menu-button-wide"></i><a href="/dashboard/brands">Marcas</a></li>
+                <li class="me-4"><i class="bi bi-receipt"></i><a href="/dashboard/bills">Facturas</a></li>
+                <!-- <li class="me-4"><i class="bi bi-people-fill"></i><a href="#">Usuarios</a></li> -->
             </ul>
 
         </div>
         <div class="img-buttom">
-
             <a href="/logout">Cerrar Sesión</a>
         </div>
     </div>
 </aside>
+
+<script src="/js/sidebar.js"></script>
