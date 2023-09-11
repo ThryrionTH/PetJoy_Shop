@@ -1,6 +1,7 @@
 package com.projectcodingdojo.petjoy_shop.petjoy_shop.controllers;
 
 import java.time.LocalDate;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -35,14 +36,14 @@ public class HomeController {
 
     @GetMapping("")
     public String home(Model model) {
-        addProductList(model);
+        addRandomProductList(model);
         LocalDate date = LocalDate.now().minusDays(MAYOR_EDAD_DIAS);
         return "home";
     }
 
     @GetMapping("/verification")
     public String verificationClient(HttpSession session, Model model) {
-		Long clientId = (Long) session.getAttribute("client_id");
+        Long clientId = (Long) session.getAttribute("client_id");
         if (clientId != null) {
             return "redirect:/checkout";
         }
@@ -50,47 +51,54 @@ public class HomeController {
     }
 
     @GetMapping("products")
-	public String products(Model model, @RequestParam(name = "idCateg", required = false) Integer idCateg,
-			@RequestParam(required = false) Integer page,
-			@RequestParam(required = false) String s) {
-		int idCategoria = (idCateg == null ? 0 : idCateg);
-		String search = (s == null ? "": s.trim().toLowerCase());
+    public String products(Model model, @RequestParam(name = "idCateg", required = false) Integer idCateg,
+            @RequestParam(required = false) Integer page,
+            @RequestParam(required = false) String s) {
+        int idCategoria = (idCateg == null ? 0 : idCateg);
+        String search = (s == null ? "" : s.trim().toLowerCase());
 
-		if (page == null || page == 0) {
-			page = 0;
-		} else {
-			page = page - 1;
-		}
+        if (page == null || page == 0) {
+            page = 0;
+        } else {
+            page = page - 1;
+        }
 
-		PageRequest pageRequest = PageRequest.of(page, 8);
+        PageRequest pageRequest = PageRequest.of(page, 8);
 
-		List<ProductType> productsTypes = productTypeService.findActive();
+        List<ProductType> productsTypes = productTypeService.findActive();
 
-		Page<Product> productsList = productService.findByIdTypeProductPage(idCategoria,search, pageRequest);
-		int totalPage = productsList.getTotalPages();
+        Page<Product> productsList = productService.findByIdTypeProductPage(idCategoria, search, pageRequest);
+        int totalPage = productsList.getTotalPages();
 
-		if (totalPage > 0) {
-			List<Integer> pages = IntStream.rangeClosed(1, totalPage).boxed().collect(Collectors.toList());
-			model.addAttribute("pages", pages);
-		}
+        if (totalPage > 0) {
+            List<Integer> pages = IntStream.rangeClosed(1, totalPage).boxed().collect(Collectors.toList());
+            model.addAttribute("pages", pages);
+        }
 
-		model.addAttribute("productsTypes", productsTypes);
-		model.addAttribute("idCateg", idCategoria);
-		model.addAttribute("productsList", productsList.getContent());
+        model.addAttribute("productsTypes", productsTypes);
+        model.addAttribute("idCateg", idCategoria);
+        model.addAttribute("productsList", productsList.getContent());
 
-		model.addAttribute("actual", page + 1); 
-		model.addAttribute("siguiente", page + 2);
-		model.addAttribute("anterior", page); 
-		model.addAttribute("ultimo", totalPage); 
-		model.addAttribute("s", search); 
-		
-		return "products";
-	}
+        model.addAttribute("actual", page + 1);
+        model.addAttribute("siguiente", page + 2);
+        model.addAttribute("anterior", page);
+        model.addAttribute("ultimo", totalPage);
+        model.addAttribute("s", search);
 
+        return "products";
+    }
 
     private void addProductList(Model model) {
         List<Product> productsList = productService.findActive();
         model.addAttribute("productsList", productsList);
     }
+
+	private void addRandomProductList(Model model) {
+		List<Product> productsList = productService.findActive(); // Obtén la lista completa de productos
+		Collections.shuffle(productsList); // Baraja la lista de productos de manera aleatoria
+		List<Product> randomProducts = productsList.stream().limit(8).collect(Collectors.toList()); // Selecciona los primeros 8 productos aleatorios
+		model.addAttribute("randomProducts", randomProducts); // Agrega la lista de productos aleatorios al modelo
+	}
+	
 
 }

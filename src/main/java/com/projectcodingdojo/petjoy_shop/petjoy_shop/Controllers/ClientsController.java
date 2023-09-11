@@ -23,26 +23,27 @@ import jakarta.validation.Valid;
 @Controller
 public class ClientsController {
 
-
     @Value("${role_user}")
-    private String USER_ROLE; 
+    private String USER_ROLE;
 
+    @Autowired
+    ClientsService clientsService;
+    @Autowired
+    RoleService roleService;
+    @Autowired
+    DetallesSeguridadUsuario securityUserDetails;
 
-    @Autowired ClientsService clientsService;
-    @Autowired RoleService roleService;
-    @Autowired DetallesSeguridadUsuario securityUserDetails;
-
-     @GetMapping("/login")
+    @GetMapping("/login")
     public String login() {
         return "login";
     }
 
     @GetMapping("/logout")
     public String logout(HttpSession session) {
-        session.invalidate(); 
+        session.invalidate();
         return "redirect:/";
     }
-    
+
     @GetMapping("/signup")
     public String registerForm(@ModelAttribute("client") Clients client) {
         return "signup";
@@ -50,16 +51,28 @@ public class ClientsController {
 
     @RequestMapping("/checkout")
     public String clientCheckout(HttpSession session, Model model) {
+
+        if (session.getAttribute("cliente") == null) {
+            return "redirect:/login";
+        }
+        Clients client = (Clients) session.getAttribute("cliente");
+        model.addAttribute("client", client);
+        return "checkout_cart";
+    }
+
+    /*
+     @RequestMapping("/checkout")
+    public String clientCheckout(HttpSession session, Model model) {
         Long clientId = (Long) session.getAttribute("client_id");
         if (clientId == null) {
-            return "redirect:/login1";
+            return "redirect:/login";
         }
 
         Clients client = clientsService.findById(clientId);
         model.addAttribute("client", client);
         return "checkout";
     }
-    
+     */
     @PostMapping("/signup")
     public String registerClients(
             @Valid @ModelAttribute("client") Clients client, BindingResult result, HttpSession session,
@@ -79,12 +92,8 @@ public class ClientsController {
             result.rejectValue("confirmarContrasena", "error.client", "Las contraseñas no son iguales");
             return "signup";
         }
-  
-        Clients newClient = clientsService.save(client);
 
-        session.setAttribute("client_name", newClient.getNombre());
-        session.setAttribute("client_apellido", newClient.getApellido());
-        session.setAttribute("client_id", newClient.getId());
+        Clients newClient = clientsService.save(client);
 
         Role role = roleService.findByNameContaining(USER_ROLE);
         client.setRole(role);
@@ -92,6 +101,12 @@ public class ClientsController {
         String encodePassword = securityUserDetails.bCryptPasswordEncoder().encode(client.getContrasena());
         client.setContrasena(encodePassword);
         clientsService.save(client);
+
+        session.setAttribute("client_name", newClient.getNombre());
+        session.setAttribute("client_apellido", newClient.getApellido());
+        session.setAttribute("client_id", newClient.getId());
+
+        session.setAttribute("cliente", client);
 
         return "redirect:/";
     }

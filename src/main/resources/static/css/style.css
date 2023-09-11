@@ -225,6 +225,10 @@ body {
 
 }
 
+#body-dashboard{
+    overflow-x: hidden;
+}
+
 /* dashboard */
 .dash-add{
     background: url('../img/bg-dash.png');
@@ -305,3 +309,38 @@ font-weight: bold;
     cursor: pointer;
 }
 
+.advantages{
+    margin:100px auto;
+}
+
+.advantages i{
+    color:#4DB46F;
+    font-size: 50px;
+}
+
+/* -------facturas---------- */
+
+.detail p{
+    margin: 0;
+    padding: 0;
+}
+
+.bill-container{
+    position: relative;
+}
+
+.bill-logo{
+    width: 100px;
+}
+
+.bill-header{
+    background: url("../img/bg-bill2.png") center/cover;
+    height: 170px;
+    width: 100%;
+}
+
+.bill-footer{
+    width: calc(100% - 225px);
+    position: absolute;
+    bottom: 0;
+}
