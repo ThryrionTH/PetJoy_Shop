@@ -17,25 +17,19 @@ public class UserController {
     private String ROLE_ADMIN;
     @Autowired ClientsService clientsService;
     
-    @Autowired
-    private HttpSession session;
+ 
     
     @GetMapping("/user")
-    public String user(Principal principal){
+    public String user(Principal principal, HttpSession session) {
         String usuario = principal.getName();
         Clients existingClient = clientsService.findByEmail(usuario);
-        
-        if(existingClient.getRole().getName().contentEquals(ROLE_ADMIN)){
+     
+        session.setAttribute("cliente", existingClient);
+
+        if (existingClient.getRole().getName().contentEquals("ROLE_ADMIN")) {
             return "redirect:/dashboard";
         }
-        
-        if(existingClient != null){
-            session.setAttribute("cliente", existingClient);
-        }else{
-            session.setAttribute("cliente", null);
-        }
-        
         return "redirect:/";
-        
     }
-}
+    }
+
