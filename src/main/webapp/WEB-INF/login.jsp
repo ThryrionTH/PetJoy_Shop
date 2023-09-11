@@ -28,12 +28,20 @@
                     </div>
                     <div>
                         <label for="username" class="form-label">Usuario</label>
+<<<<<<< HEAD
                         <input  type="text" name="username" id="username" class="form-control" />
+=======
+                        <input type="text" name="username" id="username" class="form-control" />
+>>>>>>> dc8a9435121ea3520508544c1b8287abb38b864d
                     </div>
                     <div class="mb-4">
                         <label for="contrasena" class="form-label">Contraseña</label>
                         <div class="input-group">
+<<<<<<< HEAD
                             <input  type="password" name="password" id="password" class="form-control" />
+=======
+                            <input type="password" name="password" id="password" class="form-control" />
+>>>>>>> dc8a9435121ea3520508544c1b8287abb38b864d
                             <button class="btn btn-outline-secondary" type="button" id="togglePassword">
                                 <i class="bi bi-eye"></i>
                             </button>
@@ -59,3 +67,14 @@
 </body>
 
 </html>
+<<<<<<< HEAD
+=======
+
+
+
+
+
+
+
+</html>
+>>>>>>> dc8a9435121ea3520508544c1b8287abb38b864d

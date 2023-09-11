@@ -26,6 +26,7 @@
             <form:form action="/dashboard/${product.id}/editProduct" modelAttribute="product" enctype="multipart/form-data" method="post" class="mt-4">
                 <input type="hidden" name="_method" value="put">
                 <div class="col-md-8">
+<<<<<<< HEAD
                     <div class="card-body d-flex align-items-center">
                         <div id="image-preview-container" class="col-md-8">
                             <div id="image-preview-placeholder" class="gray-bg">
@@ -39,6 +40,14 @@
                             Cambiar Imagen
                         </label>               
                         <form:errors path="imagenFile" class="text-danger d-block error"/>
+=======
+                    <div class="card-body">
+                        <div>
+                            <small><label for="imagenFile" class="form-label">Imagen</label></small>
+                            <input type="file" name="imagenFile" class="form-control"/>
+                            <form:errors path="imagenFile" class="text-danger d-block error"/>
+                        </div>
+>>>>>>> dc8a9435121ea3520508544c1b8287abb38b864d
                     </div>
                 </div>
                 <div class="d-flex justify-content-between">
@@ -128,7 +137,10 @@
         </div>
     </div>
 
+<<<<<<< HEAD
     <script src="/js/imagePreview.js"></script>
+=======
+>>>>>>> dc8a9435121ea3520508544c1b8287abb38b864d
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
         crossorigin="anonymous">

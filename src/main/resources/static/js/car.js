@@ -92,7 +92,11 @@ function carritoHTML() {
     limpiarHTML();
     // Recorre el carrito y genera el HTML
     articulosCarrito.forEach(producto => {
+<<<<<<< HEAD
         const { imagen, titulo, precio, cantidad, id } = producto;
+=======
+        const {imagen, titulo, precio, cantidad, id} = producto;
+>>>>>>> dc8a9435121ea3520508544c1b8287abb38b864d
         const row = document.createElement('tr');
         row.innerHTML = `
             <td>

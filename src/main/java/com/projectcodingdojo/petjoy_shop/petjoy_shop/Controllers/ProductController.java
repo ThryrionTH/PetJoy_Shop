@@ -96,8 +96,11 @@ public class ProductController {
             if (contentType != null && (contentType.equals("image/png") || contentType.equals("image/jpeg"))) {
                 try {
 
+<<<<<<< HEAD
                     product = productService.save(product);
 
+=======
+>>>>>>> dc8a9435121ea3520508544c1b8287abb38b864d
                     String originalFileName = imagenFile.getOriginalFilename();
                     String extension = originalFileName.substring(originalFileName.lastIndexOf("."));
                     String fileName = product.getId() + extension;
@@ -125,7 +128,11 @@ public class ProductController {
             productService.save(product);
         }
 
+<<<<<<< HEAD
         productService.save(product);
+=======
+        product = productService.save(product);
+>>>>>>> dc8a9435121ea3520508544c1b8287abb38b864d
         System.out.println("producto: " + product);
 
         return "redirect:/dashboard";
@@ -135,10 +142,20 @@ public class ProductController {
     public String showEditForm(@PathVariable("id") Long id, Model model) {
         Product product = productService.findById(id);
         model.addAttribute("product", product);
+<<<<<<< HEAD
         List<ProductBrand> productsBrands = productBrandService.findActive();
         model.addAttribute("productsBrands", productsBrands);
         List<ProductAnimal> productsAnimals = productAnimalService.findActive();
         model.addAttribute("productsAnimals", productsAnimals);
+=======
+
+        List<ProductBrand> productsBrands = productBrandService.findActive();
+        model.addAttribute("productsBrands", productsBrands);
+
+        List<ProductAnimal> productsAnimals = productAnimalService.findActive();
+        model.addAttribute("productsAnimals", productsAnimals);
+
+>>>>>>> dc8a9435121ea3520508544c1b8287abb38b864d
         List<ProductType> productsTypes = productTypeService.findActive();
         model.addAttribute("productsTypes", productsTypes);
 
@@ -155,9 +172,17 @@ public class ProductController {
 
         Product existingProduct = productService.findById(id);
         if (existingProduct == null) {
+<<<<<<< HEAD
             return "redirect:/dashboard";
         }
 
+=======
+            // Manejo de error si no se encuentra el producto a editar
+            return "redirect:/dashboard"; // O redireccionar a una página de error
+        }
+
+        // Actualizar los campos del producto existente con los nuevos valores
+>>>>>>> dc8a9435121ea3520508544c1b8287abb38b864d
         existingProduct.setNombre(product.getNombre());
         existingProduct.setCodigo(product.getCodigo());
         existingProduct.setPrecio(product.getPrecio());

@@ -56,6 +56,7 @@
                                     <p class="card-text">$${product.precio}</p>
                                 </div>
                                 <div class="card-footer d-flex justify-content-between">
+<<<<<<< HEAD
                                     <form action="/dashboard/${product.id}/delete" method="post" class="delete-form">
                                     <input type="hidden" name="_method" value="delete">
                                     <a href="/dashboard/${product.id}/edit" class="btn btn-dark"><i class="bi bi-pencil-square me-2"></i>Editar</a>
@@ -64,6 +65,18 @@
                                         <i class="bi bi-trash3-fill me-2"></i>Eliminar
                                     </button>
                                 </form>
+=======
+                                    <form action="dashboard/${product.id}/delete" method="post" id="deleteForm"> 
+                                        <input type="hidden" name="_method" value="delete">
+                                        <button type="button" class="btn btn-danger" onclick="confirmDeleteProduct()"> <i class="bi bi-trash3-fill"></i> Eliminar</button>
+                                    </form>
+                                    <a href="/dashboard/${product.id}/edit" class="btn btn-dark"><i class="bi bi-pencil-square me-1"></i>Editar</a>
+                                    <!-- <button type="button" class="btn btn-dark" data-bs-toggle="modal"
+                                        data-bs-target="#modalEdicion-${status.index}">
+                                        <i class="bi bi-pencil-square"></i>
+                                        Editar
+                                    </button> -->
+>>>>>>> dc8a9435121ea3520508544c1b8287abb38b864d
                                 </div>
                             </div>
 

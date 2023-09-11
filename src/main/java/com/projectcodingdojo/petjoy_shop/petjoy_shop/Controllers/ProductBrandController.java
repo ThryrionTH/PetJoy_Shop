@@ -59,6 +59,16 @@ public class ProductBrandController {
         return "redirect:/dashboard/brands";
     }
 
+    @PutMapping("/{id}/editProductBrand")
+    public String editProductBrand(@Valid @PathVariable("id") Long id,
+            @ModelAttribute("productBrand") ProductBrand productBrand, BindingResult result, Model model) {
+        if (result.hasErrors()) {
+            return "dashProductBrand";
+        }
+        productBrandService.update(productBrand);
+        return "redirect:/dashboard/brands";
+    }
+
     @DeleteMapping("/{id}/delete")
     public String deleteProductBrand(@PathVariable("id") Long id) {
         ProductBrand productBrand = productBrandService.findById(id);

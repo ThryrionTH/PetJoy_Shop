@@ -65,9 +65,13 @@ function fnValidarBloque(bloque) {
     var bloqAnt = bloque - 1;
 
     if (bloqAnt === 1) {
+<<<<<<< HEAD
         /*
          * // Se elimina la validacion por cliente logeado
          if (datos.nombre.length === 0) {
+=======
+        if (datos.nombre.length === 0) {
+>>>>>>> dc8a9435121ea3520508544c1b8287abb38b864d
             Info("El campo nombre es requerido");
             return false;
         } else if (!(datos.nombre.length >= 3 && datos.nombre.length <= 40)) {
@@ -104,9 +108,13 @@ function fnValidarBloque(bloque) {
         if (datos.correo.length === 0) {
             Info("El campo correo electronico es requerido");
             return false;
+<<<<<<< HEAD
         } 
           
          */
+=======
+        }
+>>>>>>> dc8a9435121ea3520508544c1b8287abb38b864d
 
     } else if (bloqAnt === 2) {
         if (datos.entrega === 1) {

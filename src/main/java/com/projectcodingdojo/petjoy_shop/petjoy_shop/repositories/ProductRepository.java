@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 import com.projectcodingdojo.petjoy_shop.petjoy_shop.models.Product;
 
 @Repository
+<<<<<<< HEAD
 public interface ProductRepository extends BaseRepository<Product> {
 
   @Query("select p from Product p where (:id=0 or p.tipo_producto.id=:id) and p.active=1")
@@ -25,4 +26,18 @@ public interface ProductRepository extends BaseRepository<Product> {
   Optional<Product> findByNombreAndActive(String nombre, int active);
 
   Optional<Product> findByCodigoAndActive(String codigo, int active);
+=======
+public interface ProductRepository extends BaseRepository<Product>{
+    
+    @Query("select p from Product p where (:id=0 or p.tipo_producto.id=:id) and p.active=1")
+    public List<Product> findByIdTypeProduct(int id);
+    
+    @Query("select p from Product p where (:id=0 or p.tipo_producto.id=:id) and p.active=1" + " and LOWER(p.nombre) like %:s%")
+  //  @Query("select p from Product p where (:id=0 or p.tipo_producto.id=:id) and p.active=1")
+    public Page<Product> findByIdTypeProductPage(int id, String s, Pageable pageable);
+
+    Optional<Product> findByNombreAndActive(String nombre, int active);
+
+    Optional<Product> findByCodigoAndActive(String codigo, int active);
+>>>>>>> dc8a9435121ea3520508544c1b8287abb38b864d
 }

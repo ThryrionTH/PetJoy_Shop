@@ -51,10 +51,15 @@
                                 data-bs-target="#modalEdicion-${loop.index}" data-animal="${animal.animal}">
                                 <i class="bi bi-pencil-square"></i>
                             </button>
+<<<<<<< HEAD
                             <button type="button" class="btn btn-danger" onclick="confirmDelete(this)"> 
                                 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
                                 <i class="bi bi-trash3-fill"></i>
                             </button>
+=======
+                            <button type="button" class="btn btn-danger" onclick="confirmDelete(this)"> <i
+                                    class="bi bi-trash3-fill"></i></button>
+>>>>>>> dc8a9435121ea3520508544c1b8287abb38b864d
                         </form>
 
                         <!-- Modal Edición -->
@@ -98,8 +103,14 @@
                     </c:forEach>
                 </ul>
             </main>
+<<<<<<< HEAD
         </div>
 
+=======
+
+        </div>
+
+>>>>>>> dc8a9435121ea3520508544c1b8287abb38b864d
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous">
             </script>

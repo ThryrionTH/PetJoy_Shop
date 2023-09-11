@@ -240,10 +240,13 @@ body {
         grid-template-columns: 225px auto;
     }
 
+<<<<<<< HEAD
 }
 
 #body-dashboard {
     overflow-x: hidden;
+=======
+>>>>>>> dc8a9435121ea3520508544c1b8287abb38b864d
 }
 
 /* dashboard */
@@ -278,6 +281,7 @@ body {
 .img-type {
     height: 50px;
 }
+<<<<<<< HEAD
 
 /* Carrito de compras */
 .offcanvas {
@@ -286,6 +290,13 @@ body {
 
 .borrar-producto {
 
+=======
+/* Carrito de compras */
+.offcanvas{
+    width: 500px !important;
+}
+.borrar-producto {
+>>>>>>> dc8a9435121ea3520508544c1b8287abb38b864d
     background-color: red;
     border-radius: 50%;
     padding: 5px 10px;
@@ -294,6 +305,7 @@ body {
     font-weight: bold;
 }
 
+<<<<<<< HEAD
 #image-preview-container {
     background-color: #808080;
     width: 180px;
@@ -315,6 +327,9 @@ body {
 }
 
 .sombreado_categ {
+=======
+.sombreado_categ{
+>>>>>>> dc8a9435121ea3520508544c1b8287abb38b864d
     background-color: #4DB46F;
     color: white;
 }
@@ -324,6 +339,7 @@ body {
     cursor: default !important;
     pointer-events: none;
 }
+<<<<<<< HEAD
 
 .cursor {
     cursor: pointer;
@@ -364,3 +380,8 @@ body {
     position: absolute;
     bottom: 0;
 }
+=======
+.cursor{
+    cursor: pointer;
+}
+>>>>>>> dc8a9435121ea3520508544c1b8287abb38b864d

@@ -27,6 +27,7 @@
             </div>
             <div class="offcanvas-body">
                 <jsp:include page="layouts/carrito.jsp"></jsp:include>
+<<<<<<< HEAD
                 </div>
             </div>
 
@@ -45,12 +46,36 @@
                                             <div class="mb-3">
                                                 <label class="form-label">Nombres</label>
                                                 <input readonly="" value="${client.nombre}" name="nombre" id="nombre" type="text" class="form-control" maxlength="40">
+=======
+            </div>
+        </div>
+
+        <div class="container-fluid mt-5 mb-5 agregar-carrito">
+            <!-- Card Principal-->
+
+            <div class="row g-0">
+                <div class="col-md-8">
+                    <div class="card">
+                        <div class="card-body ">
+                            <h5 class="card-title"><span onclick="fnVolverAtras(1)" title="Pagina 1"  class="cursor badge rounded-pill bg-success">1</span> Datos personales</h5>
+
+                            <div id="bloque1">
+                                <div class="row mt-3">
+                                    <div class="col-sm-6">
+                                        <div class="mb-3">
+                                            <label class="form-label">Nombres</label>
+                                            <input name="nombre" id="nombre" type="text" class="form-control" maxlength="40">
+>>>>>>> dc8a9435121ea3520508544c1b8287abb38b864d
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="mb-3">
                                             <label class="form-label">Apellidos</label>
+<<<<<<< HEAD
                                             <input readonly="" value="${client.apellido}"  name="apellido" id="apellido"  type="text" class="form-control" maxlength="40">
+=======
+                                            <input name="apellido" id="apellido"  type="text" class="form-control" maxlength="40">
+>>>>>>> dc8a9435121ea3520508544c1b8287abb38b864d
                                         </div>
                                     </div>
                                 </div>
@@ -59,13 +84,21 @@
                                     <div class="col-sm-6">
                                         <div class="mb-3">
                                             <label class="form-label">Documento Identidad</label>
+<<<<<<< HEAD
                                             <input readonly="" value="${client.nro_identificacion}" name="documento" id="documento" type="text" class="form-control">
+=======
+                                            <input name="documento" id="documento" type="number" class="form-control">
+>>>>>>> dc8a9435121ea3520508544c1b8287abb38b864d
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="mb-3">
                                             <label class="form-label">Telefono Celular</label>
+<<<<<<< HEAD
                                             <input readonly="" value="${client.celular}"  name="telefono" id="telefono" type="number" class="form-control" >
+=======
+                                            <input name="telefono" id="telefono" type="number" class="form-control" >
+>>>>>>> dc8a9435121ea3520508544c1b8287abb38b864d
                                         </div>
                                     </div>
                                 </div>
@@ -74,7 +107,11 @@
                                     <div class="col-sm-12">
                                         <div class="mb-3">
                                             <label class="form-label">Correo electrónico</label>
+<<<<<<< HEAD
                                             <input readonly="" value="${client.email}"  name="correo" id="correo" type="email" class="form-control">
+=======
+                                            <input name="correo" id="correo" type="email" class="form-control">
+>>>>>>> dc8a9435121ea3520508544c1b8287abb38b864d
                                         </div>
                                     </div>
                                 </div>

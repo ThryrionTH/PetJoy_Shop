@@ -41,6 +41,7 @@ public class HomeController {
 		return "home";
 	}
 
+<<<<<<< HEAD
 	@GetMapping("/verification")
 	public String verificationClient(HttpSession session, Model model) {
 		Long clientId = (Long) session.getAttribute("client_id");
@@ -49,6 +50,16 @@ public class HomeController {
 		}
 		return "verification";
 	}
+=======
+    @GetMapping("/verification")
+    public String verificationClient(HttpSession session, Model model) {
+		Long clientId = (Long) session.getAttribute("client_id");
+        if (clientId != null) {
+            return "redirect:/checkout";
+        }
+        return "verification";
+    }
+>>>>>>> dc8a9435121ea3520508544c1b8287abb38b864d
 
 	@GetMapping("products")
 	public String products(Model model, @RequestParam(name = "idCateg", required = false) Integer idCateg,

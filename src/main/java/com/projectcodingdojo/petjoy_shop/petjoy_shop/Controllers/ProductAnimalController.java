@@ -48,9 +48,14 @@ public class ProductAnimalController {
     }
 
     @PutMapping("/{id}/editProductAnimal")
+<<<<<<< HEAD
     public String editProductAnimal(@Valid @PathVariable("id") Long id,
             @ModelAttribute("productAnimal") ProductAnimal productAnimal, BindingResult result, Model model) {
         if (result.hasErrors()) {
+=======
+    public String editProductAnimal(@Valid @PathVariable("id") Long id, @ModelAttribute("productAnimal") ProductAnimal productAnimal, BindingResult result, Model model){
+        if(result.hasErrors()){
+>>>>>>> dc8a9435121ea3520508544c1b8287abb38b864d
             return "dashProductAnimal";
         }
         productAnimalService.update(productAnimal);
@@ -66,5 +71,10 @@ public class ProductAnimalController {
         }
         return "redirect:/dashboard/animals";
     }
+<<<<<<< HEAD
+=======
+
+}
+>>>>>>> dc8a9435121ea3520508544c1b8287abb38b864d
 
 }

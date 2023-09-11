@@ -33,6 +33,10 @@
 
         </div>
         <div class="img-buttom">
+<<<<<<< HEAD
+=======
+
+>>>>>>> dc8a9435121ea3520508544c1b8287abb38b864d
             <a href="/logout">Cerrar Sesión</a>
         </div>
     </div>
