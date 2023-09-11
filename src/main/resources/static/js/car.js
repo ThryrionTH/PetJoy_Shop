@@ -103,9 +103,9 @@ function carritoHTML() {
                 <span>${cantidad}</span>
                 <button class="aumentar-cantidad btn-cantidad" data-id="${id}">+</button>
             </td>
-            <div class="eliminar-producto">
-                <a href="#" class="borrar-producto" data-id="${id}"><i class="bi bi-trash3-fill"></i></a>
-            </div>
+            <td>
+                <a href="#" class="borrar-producto" data-id="${id}"> X </a>
+            </td>
         `;
 
         // Agrega el HTML del carrito en el tbody

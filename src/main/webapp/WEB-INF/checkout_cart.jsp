@@ -33,7 +33,7 @@
 
             <div class="container-fluid mt-5 mb-5 agregar-carrito">
                 <!-- Card Principal-->
-                <h4 class="ms-5">¡Estás a punto de hacer feliz a tu mascota.!</h4>
+                <h4 class="ms-5 mb-4">Estas a punto de hacer feliz a tu mascota, ${client.nombre} ${client.apellido}!</h4>
                 <div class="row g-0">
                     <div class="col-md-7 mx-5">
                         <div class="card">
