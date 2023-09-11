@@ -21,26 +21,26 @@
 
                 <div class="container-all">
                     <header class="bill-header"></header>
-                
+
                     <div class="container col-10 my-4 px-4 mx-auto">
 
-                <!-- <img src="/img/default.png" alt="Logo PetJoyBundler" class="bill-logo"> -->
-                
-                <div class="d-flex align-items-center detail mb-4">
-                    <div class="me-5">
-                        <h4>Datos del cliente</h4>
-                        <p>Nombre:</p>
-                        <p>Dirección:</p>
-                        <p>Correo electrónico:</p>
-                        <p>Teléfono:</p>
-                    </div>
-                
-                    <div>
-                        <p>N° Factura:</p>
-                        <p>Fecha facturación:</p>
-                        <p>N° Cliente:</p>
-                    </div>
-                </div>
+                        <!-- <img src="/img/default.png" alt="Logo PetJoyBundler" class="bill-logo"> -->
+
+                        <div class="d-flex align-items-center detail mb-4">
+                            <div class="me-5">
+                                <h4>Datos del cliente</h4>
+                                <p><b>Nombre:</b> ${factura.cliente.nombre} ${factura.cliente.apellido}</p>
+                                <p><b>Dirección:</b> ${factura.cliente.direccion}</p>
+                                <p><b>Correo electrónico:</b> ${factura.cliente.email}</p>
+                                <p><b>Teléfono:</b> ${factura.cliente.celular}</p>
+                            </div>
+
+                            <div class="ms-5"> 
+                                <p><b>N° Factura:</b> ${factura.id}</p>
+                                <p><b>Fecha facturación:</b> ${factura.createdAt}</p>
+                                <p><b>N° Cliente:</b> ${factura.cliente.id}</p>
+                            </div>
+                        </div>
                         <table class="table">
                             <thead class="table-dark">
                                 <tr>
@@ -51,24 +51,14 @@
                                 </tr>
                             </thead>
                             <tbody class="table-group-divider">
-                                <tr>
-                                    <td>Nombre producto</td>
-                                    <td class="text-center">4</td>
-                                    <td class="text-center">$10.000</td>
-                                    <td class="text-center">$40.000</td>
-                                </tr>
-                                <tr>
-                                    <td>Nombre producto</td>
-                                    <td class="text-center">4</td>
-                                    <td class="text-center">$10.000</td>
-                                    <td class="text-center">$40.000</td>
-                                </tr>
-                                <tr>
-                                    <td>Nombre producto</td>
-                                    <td class="text-center">4</td>
-                                    <td class="text-center">$10.000</td>
-                                    <td class="text-center">$40.000</td>
-                                </tr>
+                                <c:forEach items="${factura.pedidos}" var="pedido">
+                                    <tr>
+                                        <td>${pedido.producto.nombre}</td>
+                                        <td class="text-center">${pedido.cantidad}</td>
+                                        <td class="text-center">${pedido.producto.precio}</td>
+                                        <td class="text-center">${pedido.cantidad * pedido.producto.precio}</td>
+                                    </tr>
+                                </c:forEach>
                             </tbody>
                         </table>
 
@@ -77,11 +67,11 @@
                                 <tbody class="table-group-divider">
                                     <tr>
                                         <th>Subtotal</th>
-                                        <td>$120.000</td>
+                                        <td>${factura.total}</td>
                                     </tr>
                                     <tr>
                                         <th class="bg-dark text-white">TOTAL</th>
-                                        <td class="bg-dark text-white">$120.000</td>
+                                        <td class="bg-dark text-white">${factura.total}</td>
                                     </tr>
                                 </tbody>
                             </table>

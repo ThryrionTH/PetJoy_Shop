@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 
 @Controller
@@ -156,5 +157,21 @@ public class FacturaController {
         List<Factura> listFact = facturaService.findByIdClent(objCliente.getId());
         model.addAttribute("facturas", listFact);
         return "facturas";
+    }
+
+
+    // FACTURAS ADMIN
+    @GetMapping("/dashboard/bills")
+    public String showBills(Model model){
+        List<Factura> allBills = facturaService.getAllBills();
+        model.addAttribute("allBills", allBills);
+        return "dashBills";
+    }
+
+    @GetMapping("/dashboard/bills/{id}")
+    public String showBillsDetail(@PathVariable("id") Long id, Model model){
+        Factura factura = facturaService.findById(id);
+        model.addAttribute("factura", factura);
+        return "dashBillDetail";
     }
 }

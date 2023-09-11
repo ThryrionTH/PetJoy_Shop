@@ -24,25 +24,42 @@
                     <div class="container mt-5 mb-5 px-4">
 
                         <h2 class="ml-green mb-4">Facturas</h2>
-                
-                        <table class="table align-middle">
-                            <thead class="table-dark">
+
+                    <table class="table table-bordered table-responsive table-striped">
+                        <thead>
+                            <tr>
+                                <th class="text-center">Codigo Factura</th>
+                                <th class="text-center">Cliente</th>
+                                <th class="text-center">Fecha</th>
+                                <th class="text-center">Tipo de Entrega</th>
+                                <th class="text-center">Forma Pago</th>
+                                <th class="text-center">Total</th>
+                                <th class="text-center"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <c:forEach items="${allBills}" var="factura" varStatus="status">
                                 <tr>
-                                    <th scope="col" class="text-center">N° factura</th>
-                                    <th scope="col">Cliente</th>
-                                    <th scope="col" class="text-center">Fecha factura</th>
-                                    <th scope="col" class="text-center"></th>
+                                    <td class="text-center">${factura.codigo}</td>
+                                    <td >${factura.cliente.nombre} ${factura.cliente.apellido}</td>
+                                    <td class="text-center">${factura.fecha}</td>
+                                    <td class="text-center">${factura.tipoEntrega}</td>
+                                    <td class="text-center">${factura.forma_pago.descripcion}</td>
+                                    <td class="text-center">${factura.total}</td>
+                                    <td class="text-center">
+                                        <a href="/dashboard/bills/${factura.id}" class="btn btn-dark">
+                                            <i class="fa fa-info-circle"></i> Ver Detalle
+                                        </a>
                                 </tr>
-                            </thead>
-                            <tbody class="table-group-divider">
+                            </c:forEach>
+                            <c:if test="${facturas.size() == 0}">
                                 <tr>
-                                    <th scope="row" class="text-center">1</th>
-                                    <td>Nombre Cliente</td>
-                                    <td class="text-center">10/09/2023</td>
-                                    <td class="text-center"><button class="btn btn-dark">Ver detalle factura</button></td>
+                                    <td colspan="6" class="text-center">No hay datos</td>
                                 </tr>
-                            </tbody>
-                        </table>
+                            </c:if>
+                        </tbody>
+                    </table>
+            
                     </div>
                 </div>
 
