@@ -23,24 +23,23 @@ import jakarta.validation.Valid;
 @RequestMapping("/dashboard/animals")
 public class ProductAnimalController {
 
-    @Autowired
+    @Autowired 
     private ProductAnimalService productAnimalService;
-
+    
     @GetMapping("")
-    public String productAnimal(@ModelAttribute("productAnimal") ProductAnimal productAnimal, Model model) {
+    public String productAnimal(@ModelAttribute("productAnimal") ProductAnimal productAnimal, Model model){
         List<ProductAnimal> productsAnimals = productAnimalService.findActive();
         model.addAttribute("productsAnimals", productsAnimals);
         return "dashProductAnimal";
     }
 
     @PostMapping("")
-    public String saveProductAnimal(@Valid @ModelAttribute("productAnimal") ProductAnimal productAnimal,
-            BindingResult result) {
+    public String saveProductAnimal(@Valid @ModelAttribute("productAnimal") ProductAnimal productAnimal, BindingResult result){
         ProductAnimal existingActiveAnimal = productAnimalService.findByAnimalandActive(productAnimal.getAnimal(), 1);
         if (existingActiveAnimal != null) {
             result.rejectValue("animal", "duplicate", "Ya existe un tipo de animal con el mismo nombre.");
         }
-        if (result.hasErrors()) {
+        if(result.hasErrors()){
             return "dashProductAnimal";
         }
         productAnimalService.save(productAnimal);
@@ -48,14 +47,8 @@ public class ProductAnimalController {
     }
 
     @PutMapping("/{id}/editProductAnimal")
-<<<<<<< HEAD
-    public String editProductAnimal(@Valid @PathVariable("id") Long id,
-            @ModelAttribute("productAnimal") ProductAnimal productAnimal, BindingResult result, Model model) {
-        if (result.hasErrors()) {
-=======
     public String editProductAnimal(@Valid @PathVariable("id") Long id, @ModelAttribute("productAnimal") ProductAnimal productAnimal, BindingResult result, Model model){
         if(result.hasErrors()){
->>>>>>> dc8a9435121ea3520508544c1b8287abb38b864d
             return "dashProductAnimal";
         }
         productAnimalService.update(productAnimal);
@@ -71,10 +64,6 @@ public class ProductAnimalController {
         }
         return "redirect:/dashboard/animals";
     }
-<<<<<<< HEAD
-=======
 
 }
->>>>>>> dc8a9435121ea3520508544c1b8287abb38b864d
 
-}

@@ -81,7 +81,6 @@
 			<artifactId>jbcrypt</artifactId>
 			<version>0.4</version>
 		</dependency>
-<<<<<<< HEAD
 		 <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-security -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -95,13 +94,6 @@
 			<version>6.1.3</version>
 		</dependency>
 
-=======
-		 <dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-security</artifactId>
-			<version>3.1.2</version>
-    	</dependency>
->>>>>>> dc8a9435121ea3520508544c1b8287abb38b864d
 
 	</dependencies>
 

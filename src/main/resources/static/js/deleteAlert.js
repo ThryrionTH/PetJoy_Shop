@@ -19,20 +19,6 @@ function confirmDelete(button) {
 
 function Success(msg) {
     Swal.fire(
-<<<<<<< HEAD
-        "",
-        msg,
-        'success'
-    );
-}
-
-function Info(msg) {
-    Swal.fire(
-        "",
-        msg,
-        'info'
-    );
-=======
             "",
             msg,
             'success'
@@ -45,5 +31,4 @@ function Info(msg) {
             msg,
             'info'
             );
->>>>>>> dc8a9435121ea3520508544c1b8287abb38b864d
 }

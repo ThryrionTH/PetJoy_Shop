@@ -37,9 +37,5 @@ public class Pedido {
     private double precio;
 
     private int cantidad;
-<<<<<<< HEAD
-
-=======
     
->>>>>>> dc8a9435121ea3520508544c1b8287abb38b864d
 }

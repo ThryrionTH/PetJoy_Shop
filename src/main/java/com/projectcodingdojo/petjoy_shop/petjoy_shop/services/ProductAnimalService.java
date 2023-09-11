@@ -7,12 +7,13 @@ import org.springframework.stereotype.Service;
 import com.projectcodingdojo.petjoy_shop.petjoy_shop.models.ProductAnimal;
 import com.projectcodingdojo.petjoy_shop.petjoy_shop.repositories.ProductAnimalRepository;
 
+
 @Service
-public class ProductAnimalService extends BaseService<ProductAnimal> {
+public class ProductAnimalService extends BaseService<ProductAnimal>{
 
     private ProductAnimalRepository repository;
 
-    public ProductAnimalService(ProductAnimalRepository repository) {
+    public ProductAnimalService(ProductAnimalRepository repository){
         super(repository);
         this.repository = repository;
     }
@@ -21,14 +22,15 @@ public class ProductAnimalService extends BaseService<ProductAnimal> {
         return repository.findByAnimalAndActive(animal, active) != null;
     }
 
+    
     @Override
     public ProductAnimal update(ProductAnimal updatedAnimal) {
         Optional<ProductAnimal> optionalAnimal = repository.findById(updatedAnimal.getId());
-        if (optionalAnimal.isPresent()) {
+        if(optionalAnimal.isPresent()){
             ProductAnimal productAnimal = optionalAnimal.get();
             productAnimal.setAnimal(updatedAnimal.getAnimal());
             return repository.save(productAnimal);
-        } else {
+        }else{
             return null;
         }
     }
@@ -37,18 +39,18 @@ public class ProductAnimalService extends BaseService<ProductAnimal> {
         Optional<ProductAnimal> optionalProductAnimal = repository.findByAnimalAndActive(animal, active);
         if (optionalProductAnimal.isPresent()) {
             return optionalProductAnimal.get();
-        } else {
-            return null;
+        } else { 
+            return null; 
         }
     }
 
-    public ProductAnimal findByNombre_marca(String animal) {
+    public ProductAnimal findByNombre_marca(String animal){
         Optional<ProductAnimal> productAnimal = repository.findByAnimal(animal);
-        if (productAnimal.isPresent()) {
+        if(productAnimal.isPresent()){
             return productAnimal.get();
-        } else {
+        } else{
             return null;
         }
     }
-
-}
+    
+} 

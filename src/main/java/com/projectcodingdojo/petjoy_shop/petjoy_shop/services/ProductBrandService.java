@@ -9,22 +9,22 @@ import com.projectcodingdojo.petjoy_shop.petjoy_shop.repositories.ProductBrandRe
 
 @Service
 public class ProductBrandService extends BaseService<ProductBrand> {
-
+    
     private ProductBrandRepository repository;
 
-    public ProductBrandService(ProductBrandRepository repository) {
+    public ProductBrandService(ProductBrandRepository repository){
         super(repository);
         this.repository = repository;
-    }
+    } 
 
     @Override
     public ProductBrand update(ProductBrand updatedBrand) {
         Optional<ProductBrand> optionalBrand = repository.findById(updatedBrand.getId());
-        if (optionalBrand.isPresent()) {
+        if(optionalBrand.isPresent()){
             ProductBrand productBrand = optionalBrand.get();
             productBrand.setNombremarca(updatedBrand.getNombremarca());
             return repository.save(productBrand);
-        } else {
+        }else{
             return null;
         }
     }
@@ -34,16 +34,16 @@ public class ProductBrandService extends BaseService<ProductBrand> {
         if (optionalProductBrand.isPresent()) {
             return optionalProductBrand.get();
         } else {
-            return null;
+            return null; 
         }
     }
 
-    public ProductBrand findByNombre_marca(String nombremarca) {
+    public ProductBrand findByNombre_marca(String nombremarca){
         Optional<ProductBrand> productBrand = repository.findByNombremarca(nombremarca);
-        if (productBrand.isPresent()) {
+        if(productBrand.isPresent()){
             return productBrand.get();
-        } else {
+        } else{
             return null;
         }
     }
-}
+} 

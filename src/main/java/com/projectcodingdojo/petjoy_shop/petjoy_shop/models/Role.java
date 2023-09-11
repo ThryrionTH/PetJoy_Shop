@@ -17,11 +17,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Table(name = "role")
-<<<<<<< HEAD
-public class Role extends BaseModel {
-=======
 public class Role extends BaseModel{
->>>>>>> dc8a9435121ea3520508544c1b8287abb38b864d
 
     @NotNull
     @NotBlank

@@ -38,7 +38,7 @@ public class ProductTypeController {
         if (existingActiveType != null) {
             result.rejectValue("categoria", "duplicate", "Ya existe una categoría con el mismo nombre.");
         }
-
+        
         if (result.hasErrors()) {
             return "dashProductType";
         }
@@ -57,8 +57,8 @@ public class ProductTypeController {
     }
 
     // Eliminar un producto
-    @DeleteMapping("/{id}/delete")
-    public String deleteProductType(@PathVariable("id") Long id) {
+        @DeleteMapping("/{id}/delete")
+        public String deleteProductType(@PathVariable("id") Long id) {
         ProductType productType = productTypeService.findById(id);
         if (productType != null) {
             productType.setActive(0);

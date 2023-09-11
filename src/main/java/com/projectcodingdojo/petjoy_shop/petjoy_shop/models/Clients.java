@@ -2,20 +2,9 @@ package com.projectcodingdojo.petjoy_shop.petjoy_shop.models;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
-<<<<<<< HEAD
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
-=======
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.PrePersist;
-import jakarta.persistence.PreUpdate;
->>>>>>> dc8a9435121ea3520508544c1b8287abb38b864d
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 import jakarta.validation.constraints.Email;
@@ -80,11 +69,7 @@ public class Clients extends BaseModel {
     private String direccion;
 
     @OneToMany(mappedBy = "cliente", fetch = FetchType.LAZY)
-<<<<<<< HEAD
-    private List<Factura> facturas;
-=======
     private List<Factura> facturas; 
->>>>>>> dc8a9435121ea3520508544c1b8287abb38b864d
 
     public Clients() {
     }
@@ -96,16 +81,8 @@ public class Clients extends BaseModel {
         this.contrasena = contrasena;
     }
 
-<<<<<<< HEAD
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER) 
     @JoinColumn(name = "role_id")
     private Role role;
 
 }
-=======
-    @ManyToOne(fetch = FetchType.EAGER) //Tiene que leer el dato antes de cargar todo
-    @JoinColumn(name = "role_id")
-    private Role role;
-
-}
->>>>>>> dc8a9435121ea3520508544c1b8287abb38b864d

@@ -21,13 +21,11 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "productos")
+@Table(name="productos")
 
-@Getter
-@Setter
-@NoArgsConstructor
+@Getter @Setter @NoArgsConstructor
 
-public class Product extends BaseModel {
+public class Product extends BaseModel{   
 
     @NotNull
     @NotBlank(message = "El campo 'nombre' no puede estar vacío")
@@ -62,11 +60,11 @@ public class Product extends BaseModel {
     @Column(name = "stock")
     private int stock;
 
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @DateTimeFormat(pattern="yyyy-MM-dd")
     @Column(name = "fecha_vencimiento")
     private Date fechaVencimiento;
 
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @DateTimeFormat(pattern="yyyy-MM-dd")
     @Column(name = "fecha_elaboracion")
     private Date fechaElaboracion;
 
@@ -85,12 +83,8 @@ public class Product extends BaseModel {
     @JoinColumn(name = "tipo_producto_id")
     private ProductType tipo_producto;
 
-<<<<<<< HEAD
-    public void DisminuirStock(int cantidad) {
-=======
     
     public void DisminuirStock(int cantidad){
->>>>>>> dc8a9435121ea3520508544c1b8287abb38b864d
         this.stock = this.stock - cantidad;
     }
 }

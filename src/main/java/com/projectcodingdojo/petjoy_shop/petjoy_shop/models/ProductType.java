@@ -13,14 +13,12 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "tipo_productos")
+@Table (name = "tipo_productos")
 
-@Getter
-@Setter
-@NoArgsConstructor
+@Getter @Setter @NoArgsConstructor
 
 public class ProductType extends BaseModel {
-
+    
     @NotBlank
     @NotNull
     @Column(name = "categoria")

@@ -16,12 +16,10 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @MappedSuperclass
-@Getter
-@Setter
-@NoArgsConstructor
+@Getter @Setter @NoArgsConstructor
 
 public abstract class BaseModel {
-
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -29,11 +27,11 @@ public abstract class BaseModel {
 
     private int active = 1;
 
-    @Column(updatable = false)
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @Column(updatable=false)
+    @DateTimeFormat(pattern="yyyy-MM-dd")
     private Date created_at;
 
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @DateTimeFormat(pattern="yyyy-MM-dd")
     private Date updated_at;
 
     @PrePersist

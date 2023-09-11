@@ -1,6 +1,7 @@
+
 /* Sidebar */
 
-.container-sidebar ul {
+.container-sidebar ul{
     list-style: none;
 }
 
@@ -13,7 +14,7 @@
     font-family: 'Dosis', sans-serif;
 }
 
-.container-sidebar a {
+.container-sidebar a{
     text-decoration: none;
 }
 
@@ -38,17 +39,17 @@
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.266);
 }
 
-.container-sidebar .img-profile p {
+.container-sidebar .img-profile p{
     text-align: center;
     font-family: 'Dosis', sans-serif;
 }
 
-.container-sidebar .title-two {
+.container-sidebar .title-two{
     margin: 12% 5% 5% 10%;
     font-size: 19px;
 }
 
-.container-sidebar .sidebar {
+.container-sidebar .sidebar{
     width: 100%;
     margin: auto;
     height: 35%;
@@ -57,7 +58,7 @@
     font-size: 19px;
 }
 
-.container-sidebar .sidebar-options {
+.container-sidebar .sidebar-options{
     width: 95%;
     margin-right: 8px;
     display: flex;
@@ -65,17 +66,17 @@
     flex-direction: column;
 }
 
-.container-sidebar .sidebar-options li {
+.container-sidebar .sidebar-options li{
     padding: 5px 5px 5px 15px;
     border-radius: 0 10px 10px 0;
 }
 
 .sidebar-options a,
-.sidebar-options i {
-    color: white;
+.sidebar-options i{
+    color:  white;
 }
 
-.container-sidebar .sidebar-options li:hover {
+.container-sidebar .sidebar-options li:hover{
     background-color: #86EB9A;
     border-left: 4px solid #4c9c5c;
     transition: all 200ms ease;
@@ -83,29 +84,28 @@
 
 .container-sidebar .sidebar-options li:hover a,
 .container-sidebar .sidebar-options li:hover i,
-.container-sidebar .active a,
-.container-sidebar .active i {
-    color: black;
+.container-sidebar .active a, .container-sidebar .active i{
+    color:black;
 }
 
-.container-sidebar .sidebar-options i {
+.container-sidebar .sidebar-options i{
     width: 20px;
     margin-right: 10px;
 }
 
-.img-buttom {
+.img-buttom{
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     width: 100%;
     height: 160px;
-    margin: 10px auto;
+    margin:10px auto;
     text-align: center;
     background: url('../../img/cat-work.png') center/cover;
 }
 
-.img-buttom a {
+.img-buttom a{
     padding: 5px 10px;
     border-radius: 15px;
     border: none;
@@ -121,15 +121,15 @@
 }
 
 @media (max-width:1023px) {
-    aside {
+    aside{
         display: none;
     }
 }
 
 @media (min-width:1024px) {
-    #body-dashboard {
+    #body-dashboard{
         display: grid;
         grid-template-columns: 225px auto;
     }
-
+    
 }

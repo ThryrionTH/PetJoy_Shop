@@ -18,12 +18,8 @@
     <body>
 
         <%@ include file="./layouts/navbar.jsp"%>
-<<<<<<< HEAD
        
        <!-- Carousel -->
-=======
-        <!-- Carousel -->
->>>>>>> dc8a9435121ea3520508544c1b8287abb38b864d
         <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active">
@@ -54,7 +50,6 @@
             </div>
             <div class="offcanvas-body">
                 <jsp:include page="layouts/carrito.jsp"></jsp:include>
-<<<<<<< HEAD
                 </div>
             </div>
 
@@ -99,58 +94,6 @@
                         <div class="d-flex flex-wrap justify-content-between" id="lista-cursos">
                         <c:forEach items="${randomProducts}" var="producto" varStatus="status">
                             <div class="card m-1" style="width: 18rem;">
-=======
-            </div>
-        </div>
-
-        <div class="container mt-5 mb-5">
-            <!-- Card Principal-->
-            <div class="card mb-3 card-init" style="max-width: 100%;">
-                <div class="row g-0">
-                    <div class="col-md-4">
-                        <img src="./img/img1.jpg" class="img-fluid rounded-start" alt="...">
-                    </div>
-                    <div class="col-md-8">
-                        <div class="card-body">
-                            <h5 class="card-title ml-green">Lorem ipsum dolor sit amet consectetur adipisicing
-                                elit. Perspiciatis quidem vel, nobis a omnis ab libero dolorum cupiditate.</h5>
-                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
-                                additional content. This content is a little bit longer. Lorem ipsum dolor sit amet
-                                consectetur adipisicing elit. Obcaecati sed autem rerum alias provident ipsam maxime vel
-                                veritatis.
-                            </p>
-                            <button type="button" class="btn btn-success">Lorem ipsum</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Category -->
-
-            <div class="my-4 ">
-                <h2 class="ml-green">Categorías</h2>
-                <div class="d-flex">
-                    <div class="mundo container-fluid me-3">
-                        <h1 class="title">Mundo gatuno</h1>
-                        <div class="gatuno">
-                        </div>
-                    </div>
-                    <div class="mundo container-fluid ms-3">
-                        <div class="perruno">
-                        </div>
-                        <h1 class="title">Mundo perruno</h1>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Productos recomendados -->
-            <div>
-                <div class="my-4">
-                    <h2 class="ml-green">Productos recomendados</h2>
-                    <div class="d-flex flex-wrap justify-content-between" id="lista-cursos">
-                        <c:forEach items="${productsList}" var="producto" varStatus="status">
-                            <div class="card m-1" style="max-width: 18rem;">
->>>>>>> dc8a9435121ea3520508544c1b8287abb38b864d
                                 <div class="card-header d-flex justify-content-center align-self-cente">
                                     <img src="/img/products/${producto.imagen}" alt="${producto.nombre}" height="150px">
                                     <button type="button" class="btn btn-secondary modal-product" data-bs-toggle="modal"
@@ -160,7 +103,6 @@
                                 </div>
                                 <div class="card-body">
                                     <h5 class="card-title">${producto.nombre}</h5>
-<<<<<<< HEAD
                                     <p class="card-text precio"><span>$${producto.precio}</span></p>
                                 </div>
                                 <div class="card-footer">
@@ -170,19 +112,6 @@
                                     </button>
 
 
-=======
-                                    <p class="card-text precio "><span>$${producto.precio}</span></p>
-                                </div>
-                                <div class="card-footer">
-                                    <button type="button" class="btn btn-dark"><i class="bi bi-dash-lg"></i></button>
-                                    <strong class="m-1">1</strong>
-                                    <button type="button" class="btn btn-dark"><i class="bi bi-plus-lg"></i></button>
-
-                                    <button id="cart-button" class="btn btn-success add-to-cart-button agregar-carrito" data-id="$${producto.id}"
-                                            data-product-id="2">
-                                        <i class="bi bi-cart-fill"></i>Agregar
-                                    </button>                                
->>>>>>> dc8a9435121ea3520508544c1b8287abb38b864d
                                 </div>
                             </div>
 
@@ -192,18 +121,13 @@
                                 <div class="modal-dialog modal-dialog-centered">
                                     <div class="modal-content">
                                         <div class="modal-header">
-<<<<<<< HEAD
                                             <h1 class="modal-title fs-5" id="exampleModalLabel">${producto.nombre}</h1>
-=======
-                                            <h1 class="modal-title fs-5" id="exampleModalLabel">${producto.nombre} MODAL</h1>
->>>>>>> dc8a9435121ea3520508544c1b8287abb38b864d
                                             <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                     aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body">
                                             <div class="mb-3" style="max-width: 540px;">
                                                 <div class="row g-0">
-<<<<<<< HEAD
                                                     <div class="card-body">
                                                         <div class="row">
                                                             <div class="col-sm-5 d-flex align-items-center">
@@ -214,23 +138,6 @@
                                                                 <p class="card-text"><small class="text-body-secondary">Código de producto:000000</small></p>
                                                                 <p class="card-text precio"><span>$${producto.precio}</span></p>
                                                                 <hr width="215px">
-=======
-
-                                                    <div class="col-md-7">
-                                                        <div class="card-body">
-                                                            <div class="col-md-5 d-flex align-items-center">
-                                                                <img src="/img/products/${producto.imagen}" alt="${producto.nombre}" height="150px">
-                                                            </div>
-
-                                                            <h5 class="card-title">${producto.nombre}</h5>
-                                                            <p class="card-text"><small class="text-body-secondary">Código de producto:000000</small></p>
-                                                            <p class="card-text precio "><span>$${producto.precio}</span></p>
-                                                            <hr width="215px">
-                                                            <div>
-                                                                <button type="button" class="btn btn-dark"><i class="bi bi-dash-lg"></i></button>
-                                                                <strong class="m-1">1</strong>
-                                                                <button type="button" class="btn btn-dark"><i class="bi bi-plus-lg"></i></button>
->>>>>>> dc8a9435121ea3520508544c1b8287abb38b864d
                                                                 <button id="cart-button" class="btn btn-success add-to-cart-button agregar-carrito" data-id="$${producto.id}"
                                                                         data-product-id="2">
                                                                     <i class="bi bi-cart-fill"></i>Agregar
@@ -258,74 +165,6 @@
 
     <%@ include file="./layouts/footer.jsp"%>
 
-<<<<<<< HEAD
-=======
-                    <hr class="w-100 clearfix d-md-none" />
-
-                    <!-- Grid column -->
-                    <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
-                        <h6 class="text-uppercase mb-4 font-weight-bold">Products</h6>
-                        <p>
-                            <a class="text-white">LoremIpsum</a>
-                        </p>
-                        <p>
-                            <a class="text-white">LoremIpsum</a>
-                        </p>
-                    </div>
-                    <!-- Grid column -->
-
-                    <hr class="w-100 clearfix d-md-none" />
-
-                    <!-- Grid column -->
-                    <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
-                        <h6 class="text-uppercase mb-4 font-weight-bold">
-                            Useful links
-                        </h6>
-                        <p>
-                            <a class="text-white">Your Account</a>
-                        </p>
-                        <p>
-                            <a class="text-white">Become an Affiliate</a>
-                        </p>
-                    </div>
-                    <hr class="w-100 clearfix d-md-none" />
-
-                    <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
-                        <h6 class="text-uppercase mb-4 font-weight-bold">Contact</h6>
-                        <p><i class="fas fa-home mr-3"></i> New York, NY 10012, US</p>
-                        <p><i class="fas fa-envelope mr-3"></i> info@gmail.com</p>
-                        <p><i class="fas fa-phone mr-3"></i> + 01 234 567 88</p>
-                    </div>
-                </div>
-            </section>
-            <hr class="my-3">
-            <section class="p-3 pt-0">
-                <div class="row d-flex align-items-center">
-                    <div class="col-md-7 col-lg-8 text-center text-md-start">
-                        <div class="p-3">
-                            © 2023 Copyright:
-                            <a class="text-white" href="#">petjoyshop.com</a>
-                        </div>
-                    </div>
-                    <div class="col-md-5 col-lg-4 ml-lg-0 text-center text-md-end">
-                        <a class="btn btn-outline-light btn-floating m-1" class="text-white" role="button">
-                            <i class="bi bi-facebook"></i>
-                        </a>
-                        <a class="btn btn-outline-light btn-floating m-1" class="text-white" role="button">
-                            <i class="bi bi-twitter"></i>
-                        </a>
-                        <a class="btn btn-outline-light btn-floating m-1" class="text-white" role="button">
-                            <i class="bi bi-google"></i>
-                        </a>
-                        <a class="btn btn-outline-light btn-floating m-1" class="text-white" role="button">
-                            <i class="bi bi-instagram"></i>
-                        </a>
-                    </div>
-                </div>
-            </section>
-        </div>
-    </footer>
->>>>>>> dc8a9435121ea3520508544c1b8287abb38b864d
     <script src="/js/car.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"

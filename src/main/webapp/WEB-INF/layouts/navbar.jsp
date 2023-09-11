@@ -12,7 +12,6 @@
                 aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-<<<<<<< HEAD
       
         <!-- <c:if test="${sessionScope.cliente == null}">
             <a class="navbar-brand c-white" href="/login"><i class="bi bi-shop"></i> Iniciar Sesión</a>
@@ -27,19 +26,6 @@
                                 class="bi bi-person-circle"></i> ${sessionScope.cliente.nombre} ${sessionScope.cliente.apellido}</a>
                     </li>
                 </c:if>
-=======
-        <a class="navbar-brand c-white" href="/login"><i class="bi bi-shop"></i> Iniciar Sesión</a>
-        <a class="navbar-brand c-white" href="/signup"><i class="bi bi-shop"></i> Registrarse</a>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <c:if test="${not empty client_name}">
-                    <li class="nav-item">
-                        <a class="nav-link active c-white" aria-current="page" href="#"><i
-                                class="bi bi-person-circle"></i> ${client_name} ${client_apellido}</a>
-                    </li>
-                </c:if>
-
->>>>>>> dc8a9435121ea3520508544c1b8287abb38b864d
             </ul>
             <div class="d-flex">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
@@ -57,7 +43,6 @@
                         <a class="nav-link active c-white" aria-current="page" href="products"><i
                                 class="bi bi-gift-fill"></i> Productos</a>
                     </li>
-<<<<<<< HEAD
                     <c:if test="${sessionScope.cliente != null}">
                         <li class="nav-item">
                             <a href="/pedidos" class="nav-link active c-white" aria-current="page" >
@@ -67,29 +52,16 @@
 
                         <li class="nav-item">
                             <a class="nav-link active c-white" aria-current="page" href="<c:url value='/logout' />">
-=======
-                    <c:if test="${not empty client_name}">
-                        <li class="nav-item">
-                            <a class="nav-link active c-white" aria-current="page" href="/logout">
->>>>>>> dc8a9435121ea3520508544c1b8287abb38b864d
                                 <i class="bi bi-box-arrow-right"></i> Logout
                             </a>
                         </li>
                     </c:if>
-<<<<<<< HEAD
 
 
                     <li class="nav-item">
                         <!-- Button trigger modal -->
                         <button id="btnProdCart" class="btn btn-outline-success c-white b-white" type="submit" data-bs-toggle="offcanvas"
                                 data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><i class="bi bi-cart4"></i> <span
-=======
-                  
-                    <li class="nav-item">
-                        <!-- Button trigger modal -->
-                        <button id="btnProdCart" class="btn btn-outline-success c-white b-white" type="submit" data-bs-toggle="offcanvas"
-                        data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><i class="bi bi-cart4"></i> <span
->>>>>>> dc8a9435121ea3520508544c1b8287abb38b864d
                                 class="badge bg-success rounded-pill">Tus productos</span> </button>
                     </li>
                 </ul>

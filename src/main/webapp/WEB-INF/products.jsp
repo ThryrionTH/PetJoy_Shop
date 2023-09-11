@@ -60,7 +60,6 @@
             </div>
             <div class="offcanvas-body">
                 <jsp:include page="layouts/carrito.jsp"></jsp:include>
-<<<<<<< HEAD
                 </div>
             </div>
 
@@ -70,17 +69,6 @@
                 <!-- categorias -->
                 <h2 class="ml-green">Categorías</h2>
                 <div class="d-flex justify-content mb-5">
-=======
-            </div>
-        </div>
-
-
-        <div class="container mt-5 mb-5">
-
-            <!-- categorias -->
-            <h2 class="ml-green">Categorías</h2>
-            <div class="d-flex justify-content mb-5">
->>>>>>> dc8a9435121ea3520508544c1b8287abb38b864d
                 <c:forEach items="${productsTypes}" var="category">
                     <c:if test='${category.id == idCateg}'>
                         <c:set value="sombreado_categ" var="cssClass"></c:set>
@@ -90,7 +78,6 @@
                     </c:if>
 
                     <a href="/products?idCateg=${category.id}"
-<<<<<<< HEAD
                        style="text-decoration: none; color:black;">
                         <div class="d-flex align-items-center justify-content-around bg-green rounded ${cssClass} me-3 pe-2"
                             style="width: 14rem;">
@@ -103,20 +90,6 @@
                 </c:forEach>
             </div>
 
-=======
-                       style="text-decoration: none;">
-                        <div
-                            class="d-flex align-items-center justify-content-around bg-green rounded ${cssClass}"
-                            style="width: 14rem;">
-                            <img src="img/categories/${category.imagen}"
-                                 alt="imagen categoría" height="100px">
-                            <p class="text-center m-0">${category.categoria}</p>
-                        </div>
-                    </a>
-                </c:forEach>
-            </div>
-
->>>>>>> dc8a9435121ea3520508544c1b8287abb38b864d
             <c:if test="${productsList.size() == 0}">
                 <div class="alert alert-info" role="alert">No se encontraron productos.</div>
             </c:if>
@@ -137,15 +110,9 @@
 
                 <!-- Productos-->
                 <div>
-<<<<<<< HEAD
                     <div class="d-flex flex-wrap justify-content-between text-center" id="lista-cursos">
                         <c:forEach items="${productsList}" var="producto" varStatus="status" >
                             <div class="card mt-2 m-1" style="width: 18rem;">
-=======
-                    <div class="d-flex flex-wrap justify-content text-center" id="lista-cursos">
-                        <c:forEach items="${productsList}" var="producto" varStatus="status" >
-                            <div class="card mt-2 m-1" style="max-width: 18rem;">
->>>>>>> dc8a9435121ea3520508544c1b8287abb38b864d
                                 <div class="card-header d-flex justify-content-center align-self-cente">
                                     <img src="/img/products/${producto.imagen}" alt="${producto.nombre}" height="150px">
                                     <button type="button" class="btn btn-secondary modal-product"
@@ -188,7 +155,6 @@
                                         <div class="modal-body">
                                             <div class="mb-3" style="max-width: 540px;">
                                                 <div class="row g-0">
-<<<<<<< HEAD
                                                     <div class="card-body">
                                                         <div class="row">
                                                             <div class="col-sm-5 d-flex align-items-center">
@@ -203,40 +169,11 @@
                                                                         data-product-id="2">
                                                                     <i class="bi bi-cart-fill"></i>Agregar
                                                                 </button>
-=======
-                                                    
-                                                    <div class="col-md-7">
-                                                        <div class="card-body">
-                                                            <div class="col-md-5 d-flex align-items-center">
-                                                                <img src="/img/products/${producto.imagen}" alt="${producto.nombre}" height="150px">
-                                                            </div>
-                                                            <h5 class="card-title">${producto.nombre}</h5>
-                                                            <p class="card-text">
-                                                                <small class="text-body-secondary">${producto.codigo}</small>
-                                                            </p>
-                                                            <p class="card-text precio"><span>$${producto.precio}</span></p>
-                                                            <hr width="215px">
-                                                            <div class="card-footer">
-                                                                <!-- <button type="button" class="btn btn-dark">
-                                                                        <i class="bi bi-dash-lg"></i>
-                                                                </button>
-                                                                <strong class="m-1">1</strong>
-                                                                <button type="button" class="btn btn-dark">
-                                                                        <i class="bi bi-plus-lg"></i>
-                                                                </button> -->
-                                                                <button id="cart-button" class="btn btn-success add-to-cart-button agregar-carrito" data-id="$${producto.id}"
-                                                                        data-product-id="2">
-                                                                    <i class="bi bi-cart-fill"></i>Agregar
-                                                                </button> 
->>>>>>> dc8a9435121ea3520508544c1b8287abb38b864d
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <p class="mt-4">${producto.descripcion}</p>
-<<<<<<< HEAD
 
-=======
->>>>>>> dc8a9435121ea3520508544c1b8287abb38b864d
                                                 </div>
                                             </div>
                                         </div>
@@ -291,7 +228,6 @@
                 </nav>
             </c:if>
         </div>
-<<<<<<< HEAD
 
         <div class="container advantages">
             <div class="row">
@@ -322,93 +258,6 @@
         
         <%@ include file="./layouts/footer.jsp"%>
 
-=======
-
-        <!-- Footer -->
-        <footer class="text-center text-lg-start text-white"
-                style="background-color: #202123">
-            <!-- Grid container -->
-            <div class="container p-4 pb-0">
-                <!-- Section: Links -->
-                <section class="">
-                    <!--Grid row-->
-                    <div class="row">
-                        <!-- Grid column -->
-                        <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
-                            <h6 class="text-uppercase mb-4 font-weight-bold">PetJoy Shop
-                            </h6>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                Ad, eligendi accusamus nemo natus quod quaerat sunt adipisci.</p>
-                        </div>
-                        <!-- Grid column -->
-
-                        <hr class="w-100 clearfix d-md-none" />
-
-                        <!-- Grid column -->
-                        <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
-                            <h6 class="text-uppercase mb-4 font-weight-bold">Products</h6>
-                            <p>
-                                <a class="text-white">LoremIpsum</a>
-                            </p>
-                            <p>
-                                <a class="text-white">LoremIpsum</a>
-                            </p>
-                        </div>
-                        <!-- Grid column -->
-
-                        <hr class="w-100 clearfix d-md-none" />
-
-                        <!-- Grid column -->
-                        <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
-                            <h6 class="text-uppercase mb-4 font-weight-bold">Useful links
-                            </h6>
-                            <p>
-                                <a class="text-white">Your Account</a>
-                            </p>
-                            <p>
-                                <a class="text-white">Become an Affiliate</a>
-                            </p>
-                        </div>
-                        <hr class="w-100 clearfix d-md-none" />
-
-                        <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
-                            <h6 class="text-uppercase mb-4 font-weight-bold">Contact</h6>
-                            <p>
-                                <i class="fas fa-home mr-3"></i> New York, NY 10012, US
-                            </p>
-                            <p>
-                                <i class="fas fa-envelope mr-3"></i> info@gmail.com
-                            </p>
-                            <p>
-                                <i class="fas fa-phone mr-3"></i> + 01 234 567 88
-                            </p>
-                        </div>
-                    </div>
-                </section>
-                <hr class="my-3">
-                <section class="p-3 pt-0">
-                    <div class="row d-flex align-items-center">
-                        <div class="col-md-7 col-lg-8 text-center text-md-start">
-                            <div class="p-3">
-                                © 2023 Copyright: <a class="text-white" href="#">petjoyshop.com</a>
-                            </div>
-                        </div>
-                        <div class="col-md-5 col-lg-4 ml-lg-0 text-center text-md-end">
-                            <a class="btn btn-outline-light btn-floating m-1"
-                               class="text-white" role="button"> <i class="bi bi-facebook"></i>
-                            </a> <a class="btn btn-outline-light btn-floating m-1"
-                                    class="text-white" role="button"> <i class="bi bi-twitter"></i>
-                            </a> <a class="btn btn-outline-light btn-floating m-1"
-                                    class="text-white" role="button"> <i class="bi bi-google"></i>
-                            </a> <a class="btn btn-outline-light btn-floating m-1"
-                                    class="text-white" role="button"> <i class="bi bi-instagram"></i>
-                            </a>
-                        </div>
-                    </div>
-                </section>
-            </div>
-        </footer>
->>>>>>> dc8a9435121ea3520508544c1b8287abb38b864d
         <script src="/js/car.js"></script>
         <script
             src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"

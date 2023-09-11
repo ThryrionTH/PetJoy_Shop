@@ -33,29 +33,17 @@ public class ProductBrandController {
     }
 
     @PostMapping("")
-    public String saveProductBrand(@Valid @ModelAttribute("productBrand") ProductBrand productBrand,
-            BindingResult result) {
-
-        ProductBrand existingActiveBrand = productBrandService
-                .findByNombre_marcaAndActive(productBrand.getNombremarca(), 1);
+    public String saveProductBrand(@Valid @ModelAttribute("productBrand") ProductBrand productBrand, BindingResult result){
+    
+        ProductBrand existingActiveBrand = productBrandService.findByNombre_marcaAndActive(productBrand.getNombremarca(), 1);
         if (existingActiveBrand != null) {
             result.rejectValue("nombremarca", "duplicate", "Ya existe una marca con el mismo nombre.");
         }
-
-        if (result.hasErrors()) {
+        
+        if(result.hasErrors()){
             return "dashProductBrand";
         }
-        productBrandService.save(productBrand);
-        return "redirect:/dashboard/brands";
-    }
-
-    @PutMapping("/{id}/editProductBrand")
-    public String editProductBrand(@Valid @PathVariable("id") Long id,
-            @ModelAttribute("productBrand") ProductBrand productBrand, BindingResult result, Model model) {
-        if (result.hasErrors()) {
-            return "dashProductBrand";
-        }
-        productBrandService.update(productBrand);
+        productBrandService.save(productBrand); 
         return "redirect:/dashboard/brands";
     }
 
