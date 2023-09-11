@@ -12,7 +12,8 @@
               integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
         <link rel="stylesheet" href="./css/style.css">
-        <title>PetJoy Shop</title>
+        <link rel="shortcut icon" href="/img/favicon.png">
+        <title>Facturación | PetJoyBundler</title>
     </head>
 
     <body>
@@ -32,9 +33,9 @@
 
             <div class="container-fluid mt-5 mb-5 agregar-carrito">
                 <!-- Card Principal-->
-                <h4 >Estas a punto de hacer feliz a tu mascota.!</h4>
+                <h4 class="ms-5">¡Estás a punto de hacer feliz a tu mascota.!</h4>
                 <div class="row g-0">
-                    <div class="col-md-8">
+                    <div class="col-md-7 mx-5">
                         <div class="card">
                             <div class="card-body ">
                                 <h5 class="card-title"><span onclick="fnVolverAtras(1)" title="Pagina 1"  class="cursor badge rounded-pill bg-success">1</span> Datos personales</h5>
@@ -224,91 +225,7 @@
     </div>
 
 
-    <!-- Footer -->
-    <footer class="text-center text-lg-start text-white" style="background-color: #202123">
-        <!-- Grid container -->
-        <div class="container p-4 pb-0">
-            <!-- Section: Links -->
-            <section class="">
-                <!--Grid row-->
-                <div class="row">
-                    <!-- Grid column -->
-                    <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
-                        <h6 class="text-uppercase mb-4 font-weight-bold">
-                            PetJoy Shop
-                        </h6>
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad, eligendi accusamus nemo natus
-                            quod quaerat sunt adipisci.
-                        </p>
-                    </div>
-                    <!-- Grid column -->
-
-                    <hr class="w-100 clearfix d-md-none" />
-
-                    <!-- Grid column -->
-                    <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
-                        <h6 class="text-uppercase mb-4 font-weight-bold">Products</h6>
-                        <p>
-                            <a class="text-white">LoremIpsum</a>
-                        </p>
-                        <p>
-                            <a class="text-white">LoremIpsum</a>
-                        </p>
-                    </div>
-                    <!-- Grid column -->
-
-                    <hr class="w-100 clearfix d-md-none" />
-
-                    <!-- Grid column -->
-                    <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
-                        <h6 class="text-uppercase mb-4 font-weight-bold">
-                            Useful links
-                        </h6>
-                        <p>
-                            <a class="text-white">Your Account</a>
-                        </p>
-                        <p>
-                            <a class="text-white">Become an Affiliate</a>
-                        </p>
-                    </div>
-                    <hr class="w-100 clearfix d-md-none" />
-
-                    <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
-                        <h6 class="text-uppercase mb-4 font-weight-bold">Contact</h6>
-                        <p><i class="fas fa-home mr-3"></i> New York, NY 10012, US</p>
-                        <p><i class="fas fa-envelope mr-3"></i> info@gmail.com</p>
-                        <p><i class="fas fa-phone mr-3"></i> + 01 234 567 88</p>
-                    </div>
-                </div>
-            </section>
-            <hr class="my-3">
-            <section class="p-3 pt-0">
-                <div class="row d-flex align-items-center">
-                    <div class="col-md-7 col-lg-8 text-center text-md-start">
-                        <div class="p-3">
-                            © 2023 Copyright:
-                            <a class="text-white" href="#">petjoyshop.com</a>
-                        </div>
-                    </div>
-                    <div class="col-md-5 col-lg-4 ml-lg-0 text-center text-md-end">
-                        <a class="btn btn-outline-light btn-floating m-1" class="text-white" role="button">
-                            <i class="bi bi-facebook"></i>
-                        </a>
-                        <a class="btn btn-outline-light btn-floating m-1" class="text-white" role="button">
-                            <i class="bi bi-twitter"></i>
-                        </a>
-                        <a class="btn btn-outline-light btn-floating m-1" class="text-white" role="button">
-                            <i class="bi bi-google"></i>
-                        </a>
-                        <a class="btn btn-outline-light btn-floating m-1" class="text-white" role="button">
-                            <i class="bi bi-instagram"></i>
-                        </a>
-                    </div>
-                </div>
-            </section>
-        </div>
-    </footer>
+    <%@ include file="./layouts/footer.jsp"%>
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"

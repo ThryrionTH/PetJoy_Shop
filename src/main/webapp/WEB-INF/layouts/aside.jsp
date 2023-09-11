@@ -3,6 +3,8 @@
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
 <link rel="stylesheet" href="/css/layouts/aside.css">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 
 <aside>
     <div class="container-sidebar">
@@ -32,10 +34,11 @@
             </ul>
 
         </div>
-        <div class="img-buttom">
+        <div class="img-buttom btn-logout">
             <a href="/logout">Cerrar Sesión</a>
         </div>
     </div>
 </aside>
 
 <script src="/js/sidebar.js"></script>
+<script src="/js/logout.js"></script>

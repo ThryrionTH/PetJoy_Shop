@@ -1,5 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -11,8 +12,10 @@
         integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
         crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="/css/style.css">
-    <title>PetJoy Shop</title>
+    <link rel="shortcut icon" href="/img/favicon.png">
+    <title>Productos | Panel Administración</title>
 </head>
 
 <body id="body-dashboard">
@@ -43,9 +46,9 @@
                 <div>
                     <div class="d-flex flex-wrap justify-content-between">
                         <c:forEach items="${products}" var="product" varStatus="status">
-                            <div class="card m-1 card-product">
+                            <div class="card m-1 card-product" data-aos="fade-up">
                                 <div class="card-header d-flex justify-content-center align-self-cente" id="container-img">
-                                    <img src="/img/products/${product.imagen}" alt="${product.nombre}" height="150px">
+                                    <img src="/img/products/${product.imagen}" alt="${product.nombre}" height="150px" loading="lazy">
                                     <button type="button" class="btn btn-secondary modal-product"
                                         data-bs-toggle="modal" data-bs-target="#modalProduct-${status.index}">
                                         <i class="bi bi-search"></i>
@@ -53,7 +56,7 @@
                                 </div>
                                 <div class="card-body">
                                     <h5 class="card-title">${product.nombre}</h5>
-                                    <p class="card-text">$${product.precio}</p>
+                                    <fmt:formatNumber value="${product.precio}" type="currency" currencyCode="COP" pattern="¤ #,##0"/>
                                 </div>
                                 <div class="card-footer d-flex justify-content-between">
                                     <form action="/dashboard/${product.id}/delete" method="post" class="delete-form">
@@ -85,15 +88,15 @@
                                                     <div class="col-md-5 d-flex align-items-center">
                                                         <img src="/img/products/${product.imagen}"
                                                             class="img-fluid rounded-start"
-                                                            alt="${producto.nombre}" width="80%">
+                                                            alt="${producto.nombre}" width="80%" loading="lazy">
                                                     </div>
                                                     <div class="col-md-7">
                                                         <div class="card-body">
                                                             <h5 class="card-title">${product.nombre}</h5>
                                                             <p class="card-text"><small
                                                                     class="text-body-secondary">Código de
-                                                                    product:</small></p>
-                                                            <p class="card-text">Precio: $${product.precio}</p>
+                                                                    producto: ${product.codigo}</small></p>
+                                                                    <fmt:formatNumber value="${product.precio}" type="currency" currencyCode="COP" pattern="¤ #,##0"/>
                                                             <hr width="215px">
                                                         </div>
                                                     </div>
@@ -119,6 +122,10 @@
         </script>
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script src="/js/deleteAlert.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+        <script>
+            AOS.init();
+        </script>
 </body>
 
 </html>

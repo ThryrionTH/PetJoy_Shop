@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster+Two&display=swap');
+
 body {
     margin: 0;
     padding: 0;
@@ -5,6 +7,10 @@ body {
 #navbar-petjoy {
     background-color: #5AA469 !important;
     color: aliceblue !important;
+}
+.font-lobster{
+    font-family: 'Lobster Two', cursive;
+    font-size: 25px;
 }
 .c-white {
     color: #fff !important;
@@ -44,6 +50,45 @@ body {
     background-color: #B3EEA5;
 }
 
+/* ----------- slide images ----------*/
+
+.carousel-container {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+.carousel-track {
+    display: flex;
+    animation: scroll 50s linear infinite;
+    width: fit-content;
+}
+
+.carousel-track img {
+    width: 200px;
+    margin: 30px;
+    border-radius: 5px;
+    transition: filter 0.3s;
+}
+
+.carousel-track img:hover {
+    filter: brightness(0.8);
+    animation-play-state: paused;
+}
+
+
+@keyframes scroll {
+    0% {
+        -webkit-transform: translateX(0);
+        transform: translateX(0);
+    }
+
+    100% {
+        -webkit-transform: translateX(calc(-320px * 6));
+        transform: translateX(calc(-320px * 6));
+    }
+}
+
 /* page products */
 .mundo{
     background: url('../img/bg-gatuno.png');
@@ -80,6 +125,14 @@ body {
 .title{
     color: white;
     width: 40%;
+    text-align: center;
+}
+
+.btn-cantidad{
+    background: #202123;
+    color: white;
+    border-radius: 3px;
+    width: 22px;
     text-align: center;
 }
 
@@ -211,6 +264,10 @@ body {
     background: #86EB9A;
 }
 
+.add-to-cart-button{
+    width: 80%;
+}
+
 @media (max-width:1023px) {
     aside{
         display: none;
@@ -263,17 +320,39 @@ body {
 }
 /* Carrito de compras */
 .offcanvas{
-    width: 500px !important;
+    width: 550px !important;
 }
-.borrar-producto {
 
-background-color: red;
-border-radius: 50%;
-padding: 5px 10px;
-text-decoration: none;
-color: white;
-font-weight: bold;
+#listCarrito tr{
+    position: relative;
+    vertical-align: middle;
 }
+
+.eliminar-producto{
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.borrar-producto {
+    color: red;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.total-carrito{
+    font-size: 25px;
+    font-weight: bold;
+}
+
+/* .borrar-producto {
+    background-color: red;
+    border-radius: 50%;
+    padding: 5px 10px;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+} */
 
 #image-preview-container{
     background-color: #808080;

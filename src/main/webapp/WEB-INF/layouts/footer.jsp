@@ -39,10 +39,10 @@
                         <h6 class="text-uppercase mb-4 font-weight-bold">Enlaces útiles
                         </h6>
                         <p>
-                            <a class="text-white">Tu cuenta</a>
+                            <a href="/login" class="text-white">Tu cuenta</a>
                         </p>
                         <p>
-                            <a class="text-white">Regístrate</a>
+                            <a href="/signup" class="text-white">Regístrate</a>
                         </p>
                     </div>
                     <hr class="w-100 clearfix d-md-none" />

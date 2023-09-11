@@ -176,7 +176,7 @@ function fnListarCarrito() {
                 <img src="${item.imagen}" width="100">
             </td>
             <td>${item.titulo}</td>
-            <td>$${item.cantidad * item.precio}</td>
+            <td>${formatPrecio(item.cantidad * item.precio)}</td>
             </tr>
         `;
         total += item.cantidad * item.precio;
@@ -266,3 +266,12 @@ function fnInit() {
     document.getElementById("btnProdCart").disabled = true;
 }
 fnInit();
+
+function formatPrecio(precio) {
+    const formatter = new Intl.NumberFormat('es-CO', {
+        style: 'currency',
+        currency: 'COP',
+        minimumFractionDigits: 0, 
+    });
+    return formatter.format(precio);
+}

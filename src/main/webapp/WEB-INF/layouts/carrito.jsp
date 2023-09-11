@@ -6,7 +6,7 @@
     <table id="lista-carrito" class=" table u-full-width">
         <thead>
             <tr>
-                <th>Imagen</th>
+                <th class="text-center">Imagen</th>
                 <th>Nombre</th>
                 <th>Precio</th>
                 <th>Cantidad</th>
@@ -19,10 +19,10 @@
         <a href="#" id="vaciar-carrito" class="btn btn-danger">Vaciar Carrito</a>
         
         <c:if test="${sessionScope.cliente == null}">
-            <a href="/login" id="pagar-carrito" class="btn btn-primary">Pagar</a>
+            <a href="/login" id="pagar-carrito" class="btn btn-dark">Pagar</a>
         </c:if>
                <c:if test="${sessionScope.cliente != null}">
-            <a href="/checkout" id="pagar-carrito" class="btn btn-primary">Pagar</a>
+            <a href="/checkout" id="pagar-carrito" class="btn btn-dark">Pagar</a>
         </c:if>
     </div>
 

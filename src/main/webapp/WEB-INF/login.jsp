@@ -14,7 +14,8 @@
     <link rel="stylesheet"
         href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <link rel="stylesheet" href="./css/style.css">
-    <title>PetJoy Shop</title>
+    <link rel="shortcut icon" href="/img/favicon.png">
+    <title>Inicio de sesión</title>
 </head>
 
 <body id="body-login">
@@ -41,7 +42,7 @@
                     </div>
                     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                     <button type="submit" class="btn btn-success">Ingresar</button>
-                    <small><a class="d-block text-center" href="/signup">Registrate aquí</a></small>
+                    <small><a class="d-block text-center text-light" href="/signup">Registrate aquí</a></small>
                 </form>
                 <c:if test="${not empty error}">
                     <p class="text-danger">${error}</p>

@@ -13,7 +13,8 @@
         crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <link rel="stylesheet" href="/css/style.css">
-    <title>PetJoy Shop</title>
+    <link rel="shortcut icon" href="/img/favicon.png">
+    <title>Categorías | Panel Administración</title>
 </head>
 
 <body id="body-dashboard">

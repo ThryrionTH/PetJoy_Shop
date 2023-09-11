@@ -1,5 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+    <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
         <!DOCTYPE html>
         <html lang="en">
@@ -12,7 +13,8 @@
                 crossorigin="anonymous">
             <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
             <link rel="stylesheet" href="/css/style.css">
-            <title>Facturas</title>
+            <link rel="shortcut icon" href="/img/favicon.png">
+            <title>Detalle Factura | Panel Administración</title>
         </head>
 
         <body id="body-dashboard">
@@ -28,7 +30,7 @@
                     <table class="table table-bordered table-responsive table-striped">
                         <thead>
                             <tr>
-                                <th class="text-center">Codigo Factura</th>
+                                <th class="text-center">Código Factura</th>
                                 <th class="text-center">Cliente</th>
                                 <th class="text-center">Fecha</th>
                                 <th class="text-center">Tipo de Entrega</th>
@@ -45,7 +47,7 @@
                                     <td class="text-center">${factura.fecha}</td>
                                     <td class="text-center">${factura.tipoEntrega}</td>
                                     <td class="text-center">${factura.forma_pago.descripcion}</td>
-                                    <td class="text-center">${factura.total}</td>
+                                    <td class="text-center">                                    <fmt:formatNumber value="${factura.total}" type="currency" currencyCode="COP" pattern="¤ #,##0"/></td>
                                     <td class="text-center">
                                         <a href="/dashboard/bills/${factura.id}" class="btn btn-dark">
                                             <i class="fa fa-info-circle"></i> Ver Detalle

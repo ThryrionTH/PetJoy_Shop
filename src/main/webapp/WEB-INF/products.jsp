@@ -1,5 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -12,11 +13,11 @@
             rel="stylesheet"
             integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
             crossorigin="anonymous">
-        <link rel="stylesheet"
-              href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+        <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
         <link rel="stylesheet" href="./css/style.css">
-
-        <title>PetJoy Shop </title>
+        <link rel="shortcut icon" href="/img/favicon.png">
+        <title>Productos | PetJoyBundler</title>
     </head>
 
     <body>
@@ -62,14 +63,20 @@
                 <jsp:include page="layouts/carrito.jsp"></jsp:include>
                 </div>
             </div>
-
-
+            
             <div class="container mt-5 mb-5">
 
                 <!-- categorias -->
                 <h2 class="ml-green">Categorías</h2>
-                <div class="d-flex justify-content mb-5">
-                <c:forEach items="${productsTypes}" var="category">
+                <div class="d-flex justify-content mb-5" data-aos="fade-up">
+                    <a href="/products" style="text-decoration: none; color:black;">
+                        <div class="d-flex align-items-center justify-content-around bg-green rounded ${empty idCateg ? 'sombreado_categ' : ''} me-3 pe-2"
+                            style="width: 14rem;">
+                            <img src="/img/categories/todas.png" alt="imagen categoría" height="100px" loading="lazy">
+                            <p class="text-center m-0">Todos</p>
+                        </div>
+                    </a>
+                    <c:forEach items="${productsTypes}" var="category">
                     <c:if test='${category.id == idCateg}'>
                         <c:set value="sombreado_categ" var="cssClass"></c:set>
                     </c:if>
@@ -82,7 +89,7 @@
                         <div class="d-flex align-items-center justify-content-around bg-green rounded ${cssClass} me-3 pe-2"
                             style="width: 14rem;">
 
-                            <img src="${category.imagen}" alt="imagen categoría" height="100px">
+                            <img src="${category.imagen}" alt="imagen categoría" height="100px" loading="lazy">
 
                             <p class="text-center m-0">${category.categoria}</p>
                         </div>
@@ -110,11 +117,11 @@
 
                 <!-- Productos-->
                 <div>
-                    <div class="d-flex flex-wrap justify-content-between text-center" id="lista-cursos">
+                    <div class="d-flex flex-wrap justify-content-between" id="lista-cursos">
                         <c:forEach items="${productsList}" var="producto" varStatus="status" >
-                            <div class="card mt-2 m-1" style="width: 18rem;">
+                            <div class="card mt-2 m-1" style="width: 18rem;" data-aos="fade-up">
                                 <div class="card-header d-flex justify-content-center align-self-cente">
-                                    <img src="/img/products/${producto.imagen}" alt="${producto.nombre}" height="150px">
+                                    <img src="/img/products/${producto.imagen}" alt="${producto.nombre}" height="150px" loading="lazy">
                                     <button type="button" class="btn btn-secondary modal-product"
                                             data-bs-toggle="modal" data-bs-target="#modalProduct-${status.index}">
                                         <i class="bi bi-search"></i>
@@ -122,19 +129,13 @@
                                 </div>
                                 <div class="card-body">
                                     <h5 class="card-title">${producto.nombre}</h5>
-                                    <p class="card-text precio "><span>$${producto.precio}</span></p>
+                                    <p class="card-text precio d-none"><span>$${producto.precio}</span></p>
+                                    <fmt:formatNumber value="${producto.precio}" type="currency" currencyCode="COP" pattern="¤ #,##0"/>
                                 </div>
-                                <div class="card-footer">
-                                    <!-- <button type="button" class="btn btn-dark">
-                                            <i class="bi bi-dash-lg"></i>
-                                    </button>
-                                    <strong class="m-1">1</strong>
-                                    <button type="button" class="btn btn-dark">
-                                            <i class="bi bi-plus-lg"></i>
-                                    </button> -->
+                                <div class="card-footer d-flex justify-content-center">
                                     <button id="cart-button" class="btn btn-success add-to-cart-button agregar-carrito" data-id="$${producto.id}"
                                             data-product-id="2">
-                                        <i class="bi bi-cart-fill"></i>Agregar
+                                        <i class="bi bi-cart-fill me-2"></i>Agregar
                                     </button>
                                 </div>
 
@@ -158,16 +159,17 @@
                                                     <div class="card-body">
                                                         <div class="row">
                                                             <div class="col-sm-5 d-flex align-items-center">
-                                                                <img src="/img/products/${producto.imagen}" alt="${producto.nombre}" height="150px">
+                                                                <img src="/img/products/${producto.imagen}" alt="${producto.nombre}" height="150px" loading="lazy">
                                                             </div>
                                                             <div class="col-sm-7">
                                                                 <h5 class="card-title">${producto.nombre}</h5>
-                                                                <p class="card-text"><small class="text-body-secondary">Código de producto:000000</small></p>
-                                                                <p class="card-text precio"><span>$${producto.precio}</span></p>
+                                                                <p class="card-text"><small class="text-body-secondary">Código de producto: ${producto.codigo}</small></p>
+                                                                <p class="card-text precio d-none"><span>$${producto.precio}</span></p>
+                                                                <fmt:formatNumber value="${producto.precio}" type="currency" currencyCode="COP" pattern="¤ #,##0"/>
                                                                 <hr width="215px">
                                                                 <button id="cart-button" class="btn btn-success add-to-cart-button agregar-carrito" data-id="$${producto.id}"
                                                                         data-product-id="2">
-                                                                    <i class="bi bi-cart-fill"></i>Agregar
+                                                                    <i class="bi bi-cart-fill me-2"></i>Agregar
                                                                 </button>
                                                             </div>
                                                         </div>
@@ -179,7 +181,7 @@
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary"
-                                                    data-bs-dismiss="modal">Cancelar</button>
+                                                    data-bs-dismiss="modal">Cerrar</button>
                                         </div>
                                     </div>
                                 </div>
@@ -229,7 +231,7 @@
             </c:if>
         </div>
 
-        <div class="container advantages">
+        <div class="container advantages" data-aos="fade">
             <div class="row">
                 <div class="col-md-1"></div>
                 <div class="col-md-3">
@@ -251,7 +253,7 @@
                     </div>
                 </div>
                 <div class="col-md-1 text-center">
-                    <img src="/img/doggy.png" alt="Perrito feliz" class="img-fluid">
+                    <img src="/img/doggy.png" alt="Perrito feliz" class="img-fluid" loading="lazy">
                 </div>
             </div>
         </div>
@@ -264,6 +266,12 @@
             integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
             crossorigin="anonymous">
         </script>
+        <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+        <script>
+                AOS.init();
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     </body>
 
 </html>

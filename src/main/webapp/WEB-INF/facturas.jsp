@@ -1,5 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -13,7 +14,8 @@
               integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
         <link rel="stylesheet" href="./css/style.css">
-        <title>PetJoy Shop</title>
+        <link rel="shortcut icon" href="/img/favicon.png">
+        <title>Mis pedidos | PetJoyBundler</title>
     </head>
     <body>
         <%@ include file="./layouts/navbar.jsp"%>
@@ -38,7 +40,7 @@
                         <table class="table table-bordered table-responsive table-striped">
                             <thead>
                                 <tr>
-                                    <th>Codigo Factura</th>
+                                    <th>Código Factura</th>
                                     <th>Fecha</th>
                                     <th>Tipo de Entrega</th>
                                     <th>Forma Pago</th>
@@ -53,7 +55,7 @@
                                     <td>${item.fecha}</td>
                                     <td>${item.tipoEntrega}</td>
                                     <td>${item.forma_pago.descripcion}</td>
-                                    <td>${item.total}</td>
+                                    <td><fmt:formatNumber value="${item.total}" type="currency" currencyCode="COP" pattern="¤ #,##0"/></td>
                                     <td>
                                         <a href="#" data-bs-toggle="modal"
                                            data-bs-target="#modalFactura-${status.index}" class="btn btn-info">
@@ -113,21 +115,21 @@
                                                                         <tr>
                                                                             <td>${detalle.producto.tipo_producto.categoria}</td>
                                                                             <td>${detalle.producto.nombre}</td>
-                                                                            <td>${detalle.precio}</td>
+                                                                            <td><fmt:formatNumber value="${detalle.precio}" type="currency" currencyCode="COP" pattern="¤ #,##0"/></td>
                                                                             <td>${detalle.cantidad}</td>
-                                                                            <td>${detalle.precio * detalle.cantidad}</td>
+                                                                            <td><fmt:formatNumber value="${detalle.precio * detalle.cantidad}" type="currency" currencyCode="COP" pattern="¤ #,##0"/></td>
                                                                         </tr>
                                                                     </c:forEach>
                                                                         <tr>
                                                                             <td colspan="4" style="font-weight: bold;">Importe Total:</td>
-                                                                            <td  style="font-weight: bold;">${item.total}</td>
+                                                                            <td  style="font-weight: bold;"><fmt:formatNumber value="${item.total}" type="currency" currencyCode="COP" pattern="¤ #,##0"/></td>
                                                                         </tr>
                                                                 </tbody>
                                                             </table>
                                                         </div>
                                                     </div>
                                                     <div class="modal-footer">
-                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
                                                     </div>
                                                 </div>
                                             </div>
