@@ -13,10 +13,10 @@
             <span class="navbar-toggler-icon"></span>
         </button>
       
-        <c:if test="${sessionScope.cliente == null}">
+        <!-- <c:if test="${sessionScope.cliente == null}">
             <a class="navbar-brand c-white" href="/login"><i class="bi bi-shop"></i> Iniciar Sesión</a>
             <a class="navbar-brand c-white" href="/signup"><i class="bi bi-shop"></i> Registrarse</a>
-        </c:if>
+        </c:if> -->
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
@@ -26,7 +26,6 @@
                                 class="bi bi-person-circle"></i> ${sessionScope.cliente.nombre} ${sessionScope.cliente.apellido}</a>
                     </li>
                 </c:if>
-
             </ul>
             <div class="d-flex">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
@@ -45,8 +44,8 @@
                                 class="bi bi-gift-fill"></i> Productos</a>
                     </li>
                     <c:if test="${sessionScope.cliente != null}">
-                             <li class="nav-item">
-                                 <a href="/pedidos" class="nav-link active c-white" aria-current="page" >
+                        <li class="nav-item">
+                            <a href="/pedidos" class="nav-link active c-white" aria-current="page" >
                                 <i class="bi bi-gift-fill"></i> Mis Pedidos
                             </a>
                         </li>
@@ -56,7 +55,6 @@
                                 <i class="bi bi-box-arrow-right"></i> Logout
                             </a>
                         </li>
-          
                     </c:if>
 
 

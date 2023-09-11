@@ -88,16 +88,11 @@ public class HomeController {
         return "products";
     }
 
-    private void addProductList(Model model) {
-        List<Product> productsList = productService.findActive();
-        model.addAttribute("productsList", productsList);
-    }
-
 	private void addRandomProductList(Model model) {
-		List<Product> productsList = productService.findActive(); // Obtén la lista completa de productos
-		Collections.shuffle(productsList); // Baraja la lista de productos de manera aleatoria
-		List<Product> randomProducts = productsList.stream().limit(8).collect(Collectors.toList()); // Selecciona los primeros 8 productos aleatorios
-		model.addAttribute("randomProducts", randomProducts); // Agrega la lista de productos aleatorios al modelo
+		List<Product> productsList = productService.findActive(); 
+		Collections.shuffle(productsList); 
+		List<Product> randomProducts = productsList.stream().limit(8).collect(Collectors.toList()); 
+		model.addAttribute("randomProducts", randomProducts); 
 	}
 	
 
