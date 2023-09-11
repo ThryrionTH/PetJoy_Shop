@@ -18,6 +18,14 @@ public class FacturaService {
         return repository.save(obj);
     }
 
+    public List<Factura> getAllBills() {
+        return repository.findAll();
+    }
+
+    public Factura findById(Long id) {
+        return repository.findById(id).orElse(null);
+    }
+
     public List<Factura> findByIdClent(Long id) {
         return repository.findByIdClent(id);
     }

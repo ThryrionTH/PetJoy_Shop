@@ -9,6 +9,8 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface FacturaRepository extends JpaRepository<Factura, Long> {
 
+    List<Factura> findAll();
+
     @Query("SELECT f FROM Factura f WHERE f.cliente.id = :id")
     List<Factura> findByIdClent(Long id);
 }
