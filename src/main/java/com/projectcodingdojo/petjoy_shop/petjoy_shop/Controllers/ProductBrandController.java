@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.projectcodingdojo.petjoy_shop.petjoy_shop.models.ProductBrand;
@@ -32,17 +33,29 @@ public class ProductBrandController {
     }
 
     @PostMapping("")
-    public String saveProductBrand(@Valid @ModelAttribute("productBrand") ProductBrand productBrand, BindingResult result){
-    
-        ProductBrand existingActiveBrand = productBrandService.findByNombre_marcaAndActive(productBrand.getNombremarca(), 1);
+    public String saveProductBrand(@Valid @ModelAttribute("productBrand") ProductBrand productBrand,
+            BindingResult result) {
+
+        ProductBrand existingActiveBrand = productBrandService
+                .findByNombre_marcaAndActive(productBrand.getNombremarca(), 1);
         if (existingActiveBrand != null) {
             result.rejectValue("nombremarca", "duplicate", "Ya existe una marca con el mismo nombre.");
         }
-        
-        if(result.hasErrors()){
+
+        if (result.hasErrors()) {
             return "dashProductBrand";
         }
-        productBrandService.save(productBrand); 
+        productBrandService.save(productBrand);
+        return "redirect:/dashboard/brands";
+    }
+
+    @PutMapping("/{id}/editProductBrand")
+    public String editProductBrand(@Valid @PathVariable("id") Long id,
+            @ModelAttribute("productBrand") ProductBrand productBrand, BindingResult result, Model model) {
+        if (result.hasErrors()) {
+            return "dashProductBrand";
+        }
+        productBrandService.update(productBrand);
         return "redirect:/dashboard/brands";
     }
 

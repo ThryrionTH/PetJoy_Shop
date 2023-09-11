@@ -14,12 +14,14 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table (name = "producto_animal")
+@Table(name = "producto_animal")
 
-@Getter @Setter @NoArgsConstructor
+@Getter
+@Setter
+@NoArgsConstructor
 
-public class ProductAnimal extends BaseModel{
-    
+public class ProductAnimal extends BaseModel {
+
     @NotNull
     @NotBlank
     @Column(name = "animal")

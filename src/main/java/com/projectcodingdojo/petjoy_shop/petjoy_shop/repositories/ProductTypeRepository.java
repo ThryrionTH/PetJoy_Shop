@@ -8,10 +8,10 @@ import com.projectcodingdojo.petjoy_shop.petjoy_shop.models.ProductType;
 
 @Repository
 public interface ProductTypeRepository extends BaseRepository<ProductType> {
-    
+
     @Query("SELECT pt FROM ProductType pt WHERE pt.categoria = :categoria")
     Optional<ProductType> findByCategoria(String categoria);
-    
+
     Optional<ProductType> findByCategoriaAndActive(String categoria, int active);
 
 }

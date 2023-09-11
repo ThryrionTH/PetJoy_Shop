@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.projectcodingdojo.petjoy_shop.petjoy_shop.models.ProductType;
@@ -37,7 +38,7 @@ public class ProductTypeController {
         if (existingActiveType != null) {
             result.rejectValue("categoria", "duplicate", "Ya existe una categoría con el mismo nombre.");
         }
-        
+
         if (result.hasErrors()) {
             return "dashProductType";
         }
@@ -45,9 +46,19 @@ public class ProductTypeController {
         return "redirect:/dashboard/categories";
     }
 
+    @PutMapping("/{id}/editProductType")
+    public String editProductType(@Valid @PathVariable("id") Long id,
+            @ModelAttribute("productType") ProductType productType, BindingResult result, Model model) {
+        if (result.hasErrors()) {
+            return "dashProductType";
+        }
+        productTypeService.update(productType);
+        return "redirect:/dashboard/categories";
+    }
+
     // Eliminar un producto
-        @DeleteMapping("/{id}/delete")
-        public String deleteProductType(@PathVariable("id") Long id) {
+    @DeleteMapping("/{id}/delete")
+    public String deleteProductType(@PathVariable("id") Long id) {
         ProductType productType = productTypeService.findById(id);
         if (productType != null) {
             productType.setActive(0);

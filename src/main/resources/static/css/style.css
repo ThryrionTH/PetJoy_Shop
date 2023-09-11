@@ -2,32 +2,41 @@ body {
     margin: 0;
     padding: 0;
 }
+
 #navbar-petjoy {
     background-color: #5AA469 !important;
     color: aliceblue !important;
 }
+
 .c-white {
     color: #fff !important;
 }
+
 .b-white {
     border: 1px solid white !important;
 }
-.carousel, .carousel-inner>.carousel-item>img {
+
+.carousel,
+.carousel-inner>.carousel-item>img {
     height: 250px;
 }
-.card-init{
+
+.card-init {
     border: none;
     margin: 20px;
     color: #595959;
 }
-.card-product{
+
+.card-product {
     width: 15rem;
 }
-.ml-green{
+
+.ml-green {
     border-left: 5px solid #5AA469;
     padding-left: 10px;
 }
-.modal-product{
+
+.modal-product {
     height: 30px;
     width: 30px;
     vertical-align: middle;
@@ -36,16 +45,17 @@ body {
     top: 15px;
     right: 15px;
 }
-.modal-product i{
+
+.modal-product i {
     font-size: 14px;
 }
 
-.bg-green{
+.bg-green {
     background-color: #B3EEA5;
 }
 
 /* page products */
-.mundo{
+.mundo {
     background: url('../img/bg-gatuno.png');
     height: 250px;
     margin-bottom: 20px;
@@ -54,41 +64,47 @@ body {
     align-items: center;
     border-radius: 5px;
 }
-.mundo:nth-of-type(2){
+
+.mundo:nth-of-type(2) {
     background: url('../img/bg-perruno.png');
 }
-.mundo div{
+
+.mundo div {
     height: 200%;
     width: 80%;
     border-radius: 50%;
 }
-.mundo:hover div{
+
+.mundo:hover div {
     transform: scale(1.1);
     transition: .2s ease-out;
 }
-.perruno{
+
+.perruno {
     background: url('../img/mundo-perruno.jpg');
     background-position: 80px 120px;
     background-size: cover;
     margin-left: -100px;
 }
-.gatuno{
+
+.gatuno {
     background: url('../img/mundo-gatuno.jpg');
     background-size: cover;
     margin-right: -100px;
 }
-.title{
+
+.title {
     color: white;
     width: 40%;
     text-align: center;
 }
 
 /* page login */
-#body-login{
+#body-login {
     background: url('../img/bg-login.jpg') center/cover no-repeat;
 }
 
-.form-login{
+.form-login {
     background: url('../img/bg-form.png') center/contain no-repeat rgba(17, 17, 17, 0.8);
     backdrop-filter: blur(5px);
     height: 80vh;
@@ -98,7 +114,7 @@ body {
 
 /* Sidebar */
 
-.container-sidebar ul{
+.container-sidebar ul {
     list-style: none;
 }
 
@@ -111,7 +127,7 @@ body {
     font-family: 'Dosis', sans-serif;
 }
 
-.container-sidebar a{
+.container-sidebar a {
     text-decoration: none;
 }
 
@@ -136,17 +152,17 @@ body {
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.266);
 }
 
-.container-sidebar .img-profile p{
+.container-sidebar .img-profile p {
     text-align: center;
     font-family: 'Dosis', sans-serif;
 }
 
-.container-sidebar .title-two{
+.container-sidebar .title-two {
     margin: 12% 5% 5% 10%;
     font-size: 19px;
 }
 
-.container-sidebar .sidebar{
+.container-sidebar .sidebar {
     width: 100%;
     margin: auto;
     height: 30%;
@@ -155,7 +171,7 @@ body {
     font-size: 19px;
 }
 
-.container-sidebar .sidebar-options{
+.container-sidebar .sidebar-options {
     width: 95%;
     margin-right: 8px;
     display: flex;
@@ -163,18 +179,18 @@ body {
     flex-direction: column;
 }
 
-.container-sidebar .sidebar-options li{
+.container-sidebar .sidebar-options li {
     padding: 5px 5px 5px 15px;
     border-radius: 0 10px 10px 0;
 }
 
 .sidebar-options a,
-.sidebar-options i{
-    color:  white;
+.sidebar-options i {
+    color: white;
 }
 
 .container-sidebar .sidebar-options li:hover,
-.container-sidebar .active{
+.container-sidebar .active {
     background-color: #86EB9A;
     border-left: 4px solid #4c9c5c;
     transition: all 200ms ease;
@@ -182,28 +198,29 @@ body {
 
 .container-sidebar .sidebar-options li:hover a,
 .container-sidebar .sidebar-options li:hover i,
-.container-sidebar .active a, .container-sidebar .active i{
-    color:black;
+.container-sidebar .active a,
+.container-sidebar .active i {
+    color: black;
 }
 
-.container-sidebar .sidebar-options i{
+.container-sidebar .sidebar-options i {
     width: 20px;
     margin-right: 10px;
 }
 
-.img-buttom{
+.img-buttom {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     width: 100%;
     height: 160px;
-    margin:10px auto;
+    margin: 10px auto;
     text-align: center;
     background: url('../img/cat-work.png') center/cover;
 }
 
-.img-buttom button{
+.img-buttom button {
     padding: 5px 10px;
     border-radius: 15px;
     border: none;
@@ -212,33 +229,37 @@ body {
 }
 
 @media (max-width:1023px) {
-    aside{
+    aside {
         display: none;
     }
 }
 
 @media (min-width:1024px) {
-    #body-dashboard{
+    #body-dashboard {
         display: grid;
         grid-template-columns: 225px auto;
     }
-    
+
+}
+
+#body-dashboard {
+    overflow-x: hidden;
 }
 
 /* dashboard */
-.dash-add{
+.dash-add {
     background: url('../img/bg-dash.png');
-    height: 100vh;
+    height: 180vh;
 }
 
 
 /*categories*/
-.bg-categories{
+.bg-categories {
     height: 100vh;
     background: url('../img/bg-categories.png') center/cover;
 }
 
-.list-categories{
+.list-categories {
     list-style: none;
     margin: 50px auto;
     padding: 0;
@@ -247,13 +268,99 @@ body {
     row-gap: 10px;
 }
 
-.list-item{
+.list-item {
     background: #B3EEA5;
     border-radius: 5px;
     padding: 2px 20px;
-    width: 90%;
+    width: 82%;
 }
 
-.img-type{
+.img-type {
     height: 50px;
+}
+
+/* Carrito de compras */
+.offcanvas {
+    width: 500px !important;
+}
+
+.borrar-producto {
+
+    background-color: red;
+    border-radius: 50%;
+    padding: 5px 10px;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}
+
+#image-preview-container {
+    background-color: #808080;
+    width: 180px;
+    height: 130px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+}
+
+#image-preview-container i {
+    font-size: 60px;
+}
+
+#image-preview-container img {
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+}
+
+.sombreado_categ {
+    background-color: #4DB46F;
+    color: white;
+}
+
+.ocultar {
+    opacity: .7;
+    cursor: default !important;
+    pointer-events: none;
+}
+
+.cursor {
+    cursor: pointer;
+}
+
+.advantages {
+    margin: 100px auto;
+}
+
+.advantages i {
+    color: #4DB46F;
+    font-size: 50px;
+}
+
+/* -------facturas---------- */
+
+.detail p {
+    margin: 0;
+    padding: 0;
+}
+
+.bill-container {
+    position: relative;
+}
+
+.bill-logo {
+    width: 100px;
+}
+
+.bill-header {
+    background: url("../img/bg-bill2.png") center/cover;
+    height: 170px;
+    width: 100%;
+}
+
+.bill-footer {
+    width: calc(100% - 225px);
+    position: absolute;
+    bottom: 0;
 }

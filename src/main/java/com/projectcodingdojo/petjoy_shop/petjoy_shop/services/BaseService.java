@@ -4,17 +4,17 @@ import java.util.List;
 import java.util.Optional;
 
 import com.projectcodingdojo.petjoy_shop.petjoy_shop.repositories.BaseRepository;
+import jakarta.transaction.Transactional;
 
-
-public abstract class BaseService <T> {
+public abstract class BaseService<T> {
 
     private BaseRepository<T> baseRepository;
 
-    public BaseService(BaseRepository<T> baseRepository){
+    public BaseService(BaseRepository<T> baseRepository) {
         this.baseRepository = baseRepository;
     }
 
-    public List<T> findAll(){
+    public List<T> findAll() {
         return baseRepository.findAll();
     }
 
@@ -22,20 +22,21 @@ public abstract class BaseService <T> {
         return baseRepository.findByActive(1);
     }
 
-    public T save(T object){
+    @Transactional
+    public T save(T object) {
         return baseRepository.save(object);
     }
 
-    public T findById(Long id){
+    public T findById(Long id) {
         Optional<T> optional = baseRepository.findById(id);
-        if (optional.isPresent()){
+        if (optional.isPresent()) {
             return optional.get();
-        }else{
+        } else {
             return null;
         }
     }
 
-    public T update(T object){
+    public T update(T object) {
         return save(object);
     }
 
@@ -43,5 +44,5 @@ public abstract class BaseService <T> {
         baseRepository.delete(objeto);
         return objeto;
     }
-    
+
 }

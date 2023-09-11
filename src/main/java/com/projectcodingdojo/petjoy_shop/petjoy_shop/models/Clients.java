@@ -1,23 +1,17 @@
 package com.projectcodingdojo.petjoy_shop.petjoy_shop.models;
 
-import java.util.Date;
-
-import org.springframework.format.annotation.DateTimeFormat;
-
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.PrePersist;
-import jakarta.persistence.PreUpdate;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Past;
 import jakarta.validation.constraints.Size;
+import java.util.List;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -25,11 +19,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Table(name = "clients")
-public class Clients {
-    
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+public class Clients extends BaseModel {
 
     @NotNull
     @NotBlank(message = "El nombre no debe estar vacio")
@@ -78,34 +68,21 @@ public class Clients {
     @Size(max = 60, message = "La dirección maximo debe tener 60 caracteres")
     private String direccion;
 
-    @Past
-    private Date fecha;
-    
-    @Column(updatable = false)
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private Date createdAt;
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private Date updatedAt;
+    @OneToMany(mappedBy = "cliente", fetch = FetchType.LAZY)
+    private List<Factura> facturas;
 
-    public Clients() {}
+    public Clients() {
+    }
 
-    public Clients(String nombre, String apellido, String email, String contrasena)  {
+    public Clients(String nombre, String apellido, String email, String contrasena) {
         this.nombre = nombre;
         this.apellido = apellido;
-        this.email = email; 
+        this.email = email;
         this.contrasena = contrasena;
     }
 
-
-    @PrePersist
-    protected void onCreate() {
-        this.createdAt = new Date();
-    }
-
-    @PreUpdate
-    protected void onUpdate() {
-        this.updatedAt = new Date();
-    }
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "role_id")
+    private Role role;
 
 }
-

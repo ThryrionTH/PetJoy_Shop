@@ -7,7 +7,7 @@ import com.projectcodingdojo.petjoy_shop.petjoy_shop.models.ProductType;
 import com.projectcodingdojo.petjoy_shop.petjoy_shop.repositories.ProductTypeRepository;
 
 @Service
-public class ProductTypeService extends BaseService<ProductType>{
+public class ProductTypeService extends BaseService<ProductType> {
 
     private ProductTypeRepository repository;
 
@@ -25,15 +25,13 @@ public class ProductTypeService extends BaseService<ProductType>{
         }
     }
 
-    public ProductType findByCategoria(String categoria){
-        Optional <ProductType> productType = repository.findByCategoria(categoria);
-        if(productType.isPresent()){
+    public ProductType findByCategoria(String categoria) {
+        Optional<ProductType> productType = repository.findByCategoria(categoria);
+        if (productType.isPresent()) {
             return productType.get();
-        }else{
+        } else {
             return null;
         }
     }
-    
-    
 
 }

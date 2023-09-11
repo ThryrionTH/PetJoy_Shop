@@ -4,18 +4,35 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign Up</title>
-    <link rel="stylesheet"
-        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Sign Up</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+              integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+        <link rel="stylesheet" href="./css/style.css">
+    </head>
 
-<body>
-    <div class="container mt-5">
-        <h1 class="mb-4">Registrate para poder comprar!!</h1>
-        <h2>Register</h2>
+    <body>
+        <%@ include file="./layouts/navbar.jsp"%>
+    <!-- Carrito de compras -->
+    <div class="offcanvas offcanvas-end" width="500px" tabindex="-1" id="offcanvasRight"
+         aria-labelledby="offcanvasRightLabel">
+        <div class="offcanvas-header" id="lista-cursos">
+            <h5 class="offcanvas-title" id="offcanvasRightLabel">Carrito de
+                compras</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas"
+                    aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <jsp:include page="layouts/carrito.jsp"></jsp:include>
+            </div>
+        </div> 
+
+        <div class="container mt-5">
+            <h1 class="mb-4">Registrate para poder comprar!!</h1>
+            <h2>Register</h2>
         <form:form action="/signup" method="post" modelAttribute="client">
             <div class="mb-3">
                 <form:label path="nombre" class="form-label">Nombre:</form:label>
@@ -70,11 +87,16 @@
             <c:if test="${not empty error}">
                 <p class="text-danger">${error}</p>
             </c:if>
-            <input type="submit" value="Sign Up" class="btn btn-primary" />
+            <input type="submit" value="Registrarse" class="btn btn-primary" />
         </form:form>
         <br>
-        <a href="/" class="btn btn-secondary">Cancel</a>
+        <a href="/" class="btn btn-secondary">Cancelar</a>
     </div>
+    <script src="/js/car.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+            crossorigin="anonymous">
+    </script>
 </body>
 
 </html>

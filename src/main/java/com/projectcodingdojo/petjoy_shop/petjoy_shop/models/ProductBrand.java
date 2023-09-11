@@ -15,10 +15,12 @@ import lombok.Setter;
 @Entity
 @Table(name = "marcas_productos")
 
-@Getter @Setter @NoArgsConstructor
+@Getter
+@Setter
+@NoArgsConstructor
 
-public class ProductBrand extends BaseModel{
-    
+public class ProductBrand extends BaseModel {
+
     @NotBlank
     @NotNull
     @Column(name = "nombre_marca")
