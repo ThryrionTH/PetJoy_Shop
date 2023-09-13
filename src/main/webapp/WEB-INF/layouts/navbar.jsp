@@ -22,7 +22,7 @@
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <c:if test="${not empty sessionScope.cliente}">
                     <li class="nav-item">
-                        <a class="nav-link active c-white" aria-current="page"  href="/dash/edit"><i
+                        <a class="nav-link active c-white" aria-current="page" href="/dash/edit"><i
                                 class="bi bi-person-circle"></i> ${sessionScope.cliente.nombre} ${sessionScope.cliente.apellido}</a>
                     </li>
                 </c:if>

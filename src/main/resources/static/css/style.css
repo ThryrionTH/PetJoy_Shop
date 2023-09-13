@@ -50,6 +50,16 @@ body {
     background-color: #B3EEA5;
 }
 
+.bg-input{
+    background: #e2e2e26f;
+}
+
+.bg-input:focus{
+    background: #e2e2e26f;
+    outline: none;
+    border: none;
+}
+
 /* ----------- slide images ----------*/
 
 .carousel-container {

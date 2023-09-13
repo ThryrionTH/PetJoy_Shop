@@ -48,33 +48,7 @@ public class SeguridadWeb {
             .clearAuthentication(true)
             .deleteCookies("JSESSIONID")
         )
-        .csrf(Customizer.withDefaults()); //evitar suplantación en el sitio
-
-//                 .authorizeHttpRequests((request) -> {
-//                     request
-//                             .requestMatchers(new AntPathRequestMatcher("/"))
-//                             .permitAll()
-//                             .requestMatchers(new AntPathRequestMatcher("/dashboard/**"))
-//                             .hasAnyRole(ADMIN)
-//                             .requestMatchers(new AntPathRequestMatcher("/dashboard/*/delete"))
-//                             .hasRole(ADMIN)
-//                             .anyRequest()
-//                             .permitAll();
-//                 })
-//                 .formLogin((login -> {
-//                     Customizer.withDefaults();
-//                     login
-//                             .loginPage("/login")
-//                             .defaultSuccessUrl("/user");
-//                 }))
-//                 .logout(logout -> logout
-//                 .logoutUrl("/logout")
-//                 .logoutSuccessUrl("/")
-//                 .invalidateHttpSession(true)
-//                 .clearAuthentication(true)
-//                 .deleteCookies("JSESSIONID")
-//                 )
-//                 .csrf(Customizer.withDefaults()); //evitar suplantación en el sitio
+        .csrf(Customizer.withDefaults()); 
 
         return http.build();
     }

@@ -15,13 +15,14 @@
         </thead>
         <tbody id="listCarrito"></tbody>
     </table>
+
     <div class="d-grid gap-2 d-md-flex justify-content-md-end">
         <a href="#" id="vaciar-carrito" class="btn btn-danger">Vaciar Carrito</a>
         
         <c:if test="${sessionScope.cliente == null}">
             <a href="/login" id="pagar-carrito" class="btn btn-dark">Pagar</a>
         </c:if>
-               <c:if test="${sessionScope.cliente != null}">
+        <c:if test="${sessionScope.cliente != null}">
             <a href="/checkout" id="pagar-carrito" class="btn btn-dark">Pagar</a>
         </c:if>
     </div>
